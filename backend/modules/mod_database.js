@@ -12,8 +12,13 @@ function CONNECT() {
         }, 5000);
     }
     connection.on('error', function (e) {
-        console.error("Failed to establish connection with the database!");
-        console.error(e);
+        if (e.code == "PROTOCOL_CONNECTION_LOST") {
+            console.error("Connection lost: The server closed the connection! Retrying in 5 seconds...");
+        }
+        else {
+            console.error("Failed to establish connection with the database!");
+            console.error(e);
+        }
         setTimeout(function () {
             CONNECT();
         }, 5000);
