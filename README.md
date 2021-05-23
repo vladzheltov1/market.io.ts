@@ -5,7 +5,7 @@
 Основная концепция - показать, что такое сайты и
 как они создаются на реальном примере.
 
-Автор: VladZheltov<vlad.zheltov1@gmail.com>
+Автор: VladZheltov <vlad.zheltov1@gmail.com>
 
 ## Система
 
