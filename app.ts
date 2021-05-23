@@ -2,11 +2,14 @@
 const express = require('express');
 const fs      = require('fs');
 const path    = require('path');
+const sessionA = require('express-session');
 /* ----------- */
 
 
-/* Мои модули */
+/* Мои модули и api */
 const appRouter  = require('./backend/modules/mod_router');
+const authRouter = require('./backend/modules/mod_auth');
+// const sessionApi  = require('./backend/api/api_session');
 /* ----------- */
 
 
@@ -19,6 +22,7 @@ const PRODUCTION: boolean = false; // изменить на true на хости
 const APP  = express();
 const PORT: string = process.env.PORT || '3000';
 const IP: string   = process.env.IP   || "localhost";
+const PARSE        = ['/login', '/signup'];
 /* ----------- */
 
 
@@ -27,6 +31,8 @@ APP.set("view engine", "ejs");
 APP.use("/frontend/source", express.static(__dirname + '/frontend/source'));
 APP.set("views", __dirname + "/frontend/views");
 APP.use(appRouter);
+APP.use('/api/user/', authRouter);
+// APP.use(sessionApi);
 /* ----------- */
 
 

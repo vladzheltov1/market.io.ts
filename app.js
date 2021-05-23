@@ -2,9 +2,12 @@
 var express = require('express');
 var fs = require('fs');
 var path = require('path');
+var sessionA = require('express-session');
 /* ----------- */
-/* Мои модули */
+/* Мои модули и api */
 var appRouter = require('./backend/modules/mod_router');
+var authRouter = require('./backend/modules/mod_auth');
+// const sessionApi  = require('./backend/api/api_session');
 /* ----------- */
 /* Флаги */
 var PRODUCTION = false; // изменить на true на хостинге
@@ -13,12 +16,15 @@ var PRODUCTION = false; // изменить на true на хостинге
 var APP = express();
 var PORT = process.env.PORT || '3000';
 var IP = process.env.IP || "localhost";
+var PARSE = ['/login', '/signup'];
 /* ----------- */
 /* Настройки сервера */
 APP.set("view engine", "ejs");
 APP.use("/frontend/source", express.static(__dirname + '/frontend/source'));
 APP.set("views", __dirname + "/frontend/views");
 APP.use(appRouter);
+APP.use('/api/user/', authRouter);
+// APP.use(sessionApi);
 /* ----------- */
 /* Запуск сервера */
 try {

@@ -18,7 +18,7 @@ a:hover:not(header a){
 .wrapper{
     max-width: 1170px;
     margin: 0 auto;
-    padding: 0 15px;
+    padding: 10px 15px;
 }
 .form-wrapper{
     max-width: 800px;
@@ -31,4 +31,13 @@ a:hover:not(header a){
 }
 .shop-block{
     margin: 10px 0;
+}
+.form-error{
+    color: red;
+    font-weight: 600;
+    font-size: 18px;
+
+    width: 100%;
+
+    text-align: center;
 }
