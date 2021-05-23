@@ -4,10 +4,6 @@ const dbConfig = JSON.parse(JSON.stringify(require('../configs/cfg_database.json
 function CONNECT(): void{
     const connection = mysql.createConnection(dbConfig);
 
-    if(connection){
-        console.log("Connection with the database established!"); 
-    }
-
     if(!connection){
         console.error("Can't connect to the database!"); 
 

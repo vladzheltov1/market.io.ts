@@ -1,0 +1,20 @@
+<%- include('../layouts/header') %>
+
+<div class="wrapper form-wrapper">
+    <h2>Вход</h2>
+    <form action="/checkLogin" method="POST">
+        <p class="form-p">
+            <label for="login" class="form-lable">Логин:</label>
+            <input type="text" name="login" class="form-control">
+        </p>
+        <p class="form-p">
+            <label for="pass" class="form-lable">Пароль:</label>
+            <input type="password" autocomplete="current-password" name="pass" class="form-control">
+        </p>
+        <p class="form-p">
+            <input type="submit" name="btn" class="btn btn-primary" value="Войти">
+        </p>
+    </form>
+</div>
+
+<%- include("../layouts/bottom") %> 

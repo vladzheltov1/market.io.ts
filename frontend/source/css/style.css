@@ -1,0 +1,34 @@
+*{
+    margin: 0;
+    padding: 0;
+    user-select: 0;
+    box-sizing: border-box;
+    font-weight: 400; /* Regular */
+}
+
+a:not(header a){
+    color: rgb(138, 43, 226);
+    font-weight: 600; /* Bold */
+}
+
+a:hover:not(header a){
+    color: rgb(124, 32, 211);
+}
+
+.wrapper{
+    max-width: 1170px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+.form-wrapper{
+    max-width: 800px;
+    padding: 30px;
+}
+.error{
+    color: red;
+    font-weight: 600;
+    font-size: 24px;
+}
+.shop-block{
+    margin: 10px 0;
+}
