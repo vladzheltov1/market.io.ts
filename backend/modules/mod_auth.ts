@@ -1,21 +1,22 @@
-// npm
-const auth = require('../modules/mod_routerInit');
+import { User } from '../classes/User';
+import { RouterServer } from "../modules/mod_routerInit";
+import { ServerUtils } from "../modules/mod_serverUtils";
+
 const database = require('../modules/mod_database');
 const bodyParser = require('body-parser');
 const hashPass = require('password-hash');
 
-// my modules
-const serverUtilsMod = require('./mod_serverUtils');
-
-// some settings
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
 const jsonParser = bodyParser.json();
 
-auth.post('/signup', (req, res) => {
+/* ------------------------------------------------------------------ */
+
+RouterServer.post('/signup', (req, res) => {
     res.send("Sign up server page");
 });
 
-auth.post('/signin', urlencodedParser, (req, res) => {
+RouterServer.post('/signin', urlencodedParser, (req, res) => {
+    
     const params = {
         login: req.body.login,
         password: req.body.password
@@ -23,27 +24,44 @@ auth.post('/signin', urlencodedParser, (req, res) => {
 
     if(!params.login.trim() || !params.login.trim()){
         res.redirect('/login/0');
+        return;
     }
-    else{
-        database.query('SELECT * FROM `users` WHERE user_login = ?', [params.login], (error, result, field) => {
-            
-            if(result[0] == undefined){
-                res.redirect('/login/2');
-                return;
-            }
-            
-            const resp = serverUtilsMod.jsonConvert(result[0]);
+    
+    database.query('SELECT * FROM `users` WHERE user_login = ?', [params.login], (error, result, field) => {
+
+        if(result[0] == undefined){
+            res.redirect('/login/2');
+            return;
+        }
+        
+        const resp = ServerUtils.JsonConvert(result[0]);
 
 
-            if(!hashPass.verify(params.password, resp.user_password)){
-                res.redirect('/login/3');
-                return;
-            }
+        if(!hashPass.verify(params.password, resp.user_password)){
+            res.redirect('/login/3');
+            return;
+        }
 
-            // Здесь заносим в сессию
-            res.redirect('/login/7');
-        });
-    }
+        // Здесь создаём сессию, заносим в кукки
+
+        const user = new User(
+            resp.user_id,
+            resp.user_firstname,
+            resp.user_lastname,
+            resp.user_login,
+            resp.user_email,
+            resp.user_password,
+            resp.user_joined,
+            resp.user_sex,
+            resp.user_role,
+            resp.user_block_reason,
+            resp.user_phone
+        );
+
+        res.cookie("user", user);
+
+        res.redirect('/');
+    });
 });
 
-module.exports = auth;
+module.exports = RouterServer;

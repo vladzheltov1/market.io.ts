@@ -1,7 +1,17 @@
-const serverUtils = {
-    jsonConvert: (json) => {
+export const ServerUtils = {
+    JsonConvert: (json) => {
         return(JSON.parse(JSON.stringify(json)))
     }
 }
 
-module.exports = serverUtils;
+export const FormErrors = [
+    "Одно из полей пустое!", 
+    "Пароль не может содержать менее 8 символов!",
+    "Такого пользователя не существует!",
+    "Неправильный пароль!",
+    "Такой пользователь уже существует!",
+    "Пароли не совпадают!",
+    "Ошибка сервера. Попробуйте ещё раз.",
+    "Всё хорошо!",
+    "Не удалось подключиться к базе данных!"
+];

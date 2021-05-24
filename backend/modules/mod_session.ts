@@ -7,6 +7,4 @@ const settings = session({
     cookie: { secret: true }
 });
 
-console.log("Secret from cookie", session.cookie.secret);
-
 module.exports = settings;

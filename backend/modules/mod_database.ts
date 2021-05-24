@@ -26,7 +26,7 @@ function CONNECT(): void{
             CONNECT();
         }, 5000);
     });
-// 
+
     module.exports = connection;
 }  
 
