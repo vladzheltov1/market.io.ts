@@ -15,7 +15,7 @@ RouterServer.get('/shop/:category?/:priceMin?/:priceMax?/:page?', (req, res) => 
         category: req.params.category || "all",
         priceMin: req.params.priceMin || 0,
         priceMax: req.params.priceMax || Infinity,
-        page: req.params.page || 1
+        page: req.params.page         || 1
     };
 
 
