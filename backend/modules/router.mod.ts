@@ -1,5 +1,5 @@
-import { RouterServer } from "../modules/mod_routerInit";
-import { FormErrors } from "../modules/mod_serverUtils";
+import { RouterServer } from "../modules/routerInit.mod";
+import { FormErrors } from "../modules/serverUtils.mod";
 
 const db = require('../modules/mod_database');
 

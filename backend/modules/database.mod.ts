@@ -1,5 +1,5 @@
 const mysql = require('mysql2');
-const dbConfig = JSON.parse(JSON.stringify(require('../configs/cfg_database.json')));
+const dbConfig = JSON.parse(JSON.stringify(require('../configs/database.cfg.json')));
 
 function CONNECT(): void{
     const connection = mysql.createConnection(dbConfig);

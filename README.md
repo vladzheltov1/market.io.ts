@@ -53,8 +53,8 @@ npm run build
 У некоторых файлов в системе есть префиксы, чтобы не путаться, зачем они нужны.
 
 ```
-mod_* - модуль из папки ./backend/modules/
-cfg_* - конфиг из папки ./backend/configs/
+*.mod - модуль из папки ./backend/modules/
+*.cfg - конфиг из папки ./backend/configs/
 I*    - интерфейс из папки ./backend/interfaces/
 ^*^*  - класс из папки ./backend/classes/ (^*^ - значит одна любая большая буква между ^)
 ```

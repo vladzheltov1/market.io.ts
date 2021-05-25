@@ -36,7 +36,7 @@ header a:hover{
 
 .active-header{
     /* color: #50C878 !important; */
-    color: #f68300 !important;
+    color: var(--m-orange) !important;
     font-weight: 600;
 }
 

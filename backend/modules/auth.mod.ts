@@ -1,8 +1,8 @@
-import { User } from '../classes/User';
-import { RouterServer } from "../modules/mod_routerInit";
-import { ServerUtils } from "../modules/mod_serverUtils";
+import { User } from '../classes/User.class';
+import { RouterServer } from "../modules/routerInit.mod";
+import { ServerUtils } from "../modules/serverUtils.mod";
 
-const database = require('../modules/mod_database');
+const database = require('../modules/database.mod');
 const bodyParser = require('body-parser');
 const hashPass = require('password-hash');
 

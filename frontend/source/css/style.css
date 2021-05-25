@@ -4,15 +4,16 @@
     user-select: 0;
     box-sizing: border-box;
     font-weight: 400; /* Regular */
+    font-family: 'Rubik', sans-serif;
 }
 
 a:not(header a){
-    color: rgb(138, 43, 226);
+    color: var(--m-violet);
     font-weight: 600; /* Bold */
 }
 
 a:hover:not(header a){
-    color: rgb(124, 32, 211);
+    color: var(--m-violet-active);
 }
 
 .wrapper{
