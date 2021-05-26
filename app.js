@@ -5,8 +5,8 @@ var path = require('path');
 var cookieParser = require("cookie-parser");
 /* ----------- */
 /* Мои модули и api */
-var appRouter = require('./backend/modules/mod_router');
-var authRouter = require('./backend/modules/mod_auth');
+var appRouter = require('./backend/modules/router.mod');
+var authRouter = require('./backend/modules/auth.mod');
 // const sessionApi  = require('./backend/api/api_session');
 /* ----------- */
 /* Флаги */

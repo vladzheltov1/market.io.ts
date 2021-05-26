@@ -1,13 +1,18 @@
 import { RouterServer } from "../modules/routerInit.mod";
 import { FormErrors } from "../modules/serverUtils.mod";
 
-const db = require('../modules/mod_database');
+const db = require('../modules/database.mod');
 
 /* ------------------------------------------------------------------ */
 
 RouterServer.get('/', (req, res) => {
-    console.log("Cookies: ", req.cookie);
+    // console.log("Cookies: ", req.cookie);
     res.render('pages/main', { title: "Главная страница - Market.io", navActive: "index" });
+});
+
+RouterServer.get('/product/:id?', (req, res) => {
+    // console.log("Cookies: ", req.cookie);
+    res.render('pages/product-page', { title: "Товар - Market.io", navActive: "shop" });
 });
 
 RouterServer.get('/shop/:category?/:priceMin?/:priceMax?/:page?', (req, res) => {

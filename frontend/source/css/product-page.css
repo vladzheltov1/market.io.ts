@@ -1,0 +1,36 @@
+.product-info{
+    display: grid;
+    grid-template-columns: 40% 60%;
+}
+
+.product-info-left{
+    width: 100%;
+
+}
+
+.product-photo-wrapper{
+    width: 100%;
+}
+
+.product-photo-source{
+    width: 100%;
+}
+
+.product-info-right{
+    margin-top: 50px;
+}
+.product-rating{
+    display: flex;
+}
+
+.product-rating > ul{
+}
+
+.rating-stars{
+    display: flex;
+}
+
+.star{
+    height: 20px;
+    width: 20px;
+}

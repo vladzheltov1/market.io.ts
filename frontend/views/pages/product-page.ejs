@@ -1,0 +1,48 @@
+<%- include('../layouts/header') %>
+
+<link rel="stylesheet" href="/frontend/source/css/product-page.css">
+
+<div class="wrapper">
+
+    <!-- Основная информация о продукте -->
+    <div class="product-info">
+        <div class="product-info-left">
+            <div class="product-photo-wrapper">
+                <img class="product-photo-source" src="/frontend/source/upload/products/red-shirt.jpg">
+            </div>
+        </div>
+        <div class="product-info-right">
+            <h2 class="product-title">Название</h2>
+            <div class="product-description">
+                Краткое описание товара. Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam nulla reprehenderit magni alias iusto dolores et ab totam quae est dolor aliquid numquam rerum eaque optio, qui tempore iure maiores?
+            </div>
+            <hr class="product-hr">
+            <div class="product-rating">
+                <div class="rating-stars">
+                    <div class="star"><i class="icon icon-star"></i></div>
+                    <div class="star"><i class="icon icon-star"></i></div>
+                    <div class="star"><i class="icon icon-star"></i></div>
+                    <div class="star"><i class="icon icon-star"></i></div>
+                    <div class="star"><i class="icon icon-star"></i></div>
+                </div>
+                <div class="vertical"></div>
+                <a href="#reviews" class="rating-review-amount no-link">
+                    <span class="review-amount">3023</span>
+                    отзывов
+                </a>
+                <div class="vertical"></div>
+                <div class="rating-bought-amount">
+                    <span class="review-bought">31</span>
+                    заказа(ов)
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Отзывы -->
+    <div class="product-review" id="reviews">
+
+    </div>
+</div>
+
+<%- include("../layouts/bottom") %> 

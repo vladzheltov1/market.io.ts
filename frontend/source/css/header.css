@@ -24,6 +24,11 @@ header a:hover{
 .header-item{
     margin: 0 10px 10px 10px;
 }
+.header-item > a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 .header-top-title{
     font-size: 36px;
@@ -50,4 +55,23 @@ header a:hover{
 .navbar-toggler-icon{
     background-image: url(/client/public/icon/menu.svg);
     outline: none !important;
+}
+.dropdown-item{
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.index::before{
+    content: "";
+    background-image: url(/frontend/source/icon/key.svg);
+    width: 20px;
+    height: 20px;
+}
+
+@media(max-width: 425px){
+    .header-hav{
+        flex-direction: column;
+        align-items:flex-start;
+    }
 }

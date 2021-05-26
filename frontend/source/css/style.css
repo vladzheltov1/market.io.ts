@@ -16,6 +16,24 @@ a:hover:not(header a){
     color: var(--m-violet-active);
 }
 
+a.no-link{
+    color: #000;
+    text-decoration: none;
+    font-weight: 400; /* Regular */
+}
+a.no-link:hover{
+    color: #000;
+    text-decoration: none;
+}
+
+.vertical{
+    display: block;
+    width: 1px;
+    height: 24px;
+    background: var(--m-border-active);
+    margin: 0 5px;
+}
+
 .wrapper{
     max-width: 1170px;
     margin: 0 auto;

@@ -7,8 +7,8 @@ const cookieParser = require("cookie-parser");
 
 
 /* Мои модули и api */
-const appRouter  = require('./backend/modules/mod_router');
-const authRouter = require('./backend/modules/mod_auth');
+const appRouter  = require('./backend/modules/router.mod');
+const authRouter = require('./backend/modules/auth.mod');
 // const sessionApi  = require('./backend/api/api_session');
 /* ----------- */
 

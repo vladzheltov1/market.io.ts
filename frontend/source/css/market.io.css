@@ -197,6 +197,7 @@
         font-weight: 400;
         font-size: 1rem;
     }
+
     .form-input{
         color: #212529;
         display: block;
@@ -212,4 +213,45 @@
     .form-input:active{
         outline: none;
         border-color: var(--m-border-active);
+    }
+
+    .noresize{
+        resize: none;
+    }
+
+/* Icons */
+
+    .icon{
+        height: 20px;
+        width: 20px;
+        display: flex;
+        background: #fff;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size:cover;
+        stroke: #fff;
+        
+        padding: 0;
+        margin: 0 5px 0 0;
+    }
+    .icon-home{
+        background: url(/frontend/source/icon/home.svg);
+    }
+    .icon-shop{
+        background: url(/frontend/source/icon/shopping-cart.svg);
+    }
+    .icon-user{
+        background: url(/frontend/source/icon/user.svg);
+    }
+    .icon-key{
+        background: url(/frontend/source/icon/key.svg);
+    }
+    .icon-userAdd{
+        background: url(/frontend/source/icon/user-plus.svg);
+    }
+    .icon-star{
+        background: url(/frontend/source/icon/star.svg);
+    }
+    .icon-star-filled{
+        background: url(/frontend/source/icon/star-filled.svg);
     }
