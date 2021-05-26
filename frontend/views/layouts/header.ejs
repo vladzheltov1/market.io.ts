@@ -18,9 +18,7 @@
         $(document).ready(function(){
             // Добавление класса active-header элементу в header, чтобы он подсвечивался активным.
             const current = '<%= navActive %>';
-
-            if(current !== "")
-                document.querySelector('.'+current).firstElementChild.classList.add('active-header');
+            if(current !== "") document.querySelector('.'+current).firstElementChild.classList.add('active-header');
         });
     </script>
 
@@ -51,11 +49,26 @@
                 Личный кабинет
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="/profile/(id человека)"><i class="icon icon-user"></i>Имя пользователя</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="/login"><i class="icon icon-key"></i>Вход</a></li>
+                <% if (cookies.user !== undefined) { %>
+                    <li>
+                        <a class="dropdown-item" href="/profile/<%= cookies.user.id %>">
+                            <i class="icon icon-user-dark"></i><%= cookies.user.user_firstname %> <%= cookies.user.user_lastname %>
+                        </a>
+                    </li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="/cart"><i class="icon icon-bag"></i>Корзина</a></li>
+                    <li><a class="dropdown-item" href="/logout"><i class="icon icon-logout"></i>Выход</a></li>
+                <% } else { %>
+                <li><a class="dropdown-item" href="/login"><i class="icon icon-login"></i>Вход</a></li>
                 <li><a class="dropdown-item" href="/signup"><i class="icon icon-userAdd"></i>Регистрация</a></li>
+                <% } %>
             </ul>
         </div>
     </div>
 </header>
+
+<noscript>
+    <div class="wrapper error">
+        Необходимо включить исполнение скриптов JavaScript, чтобы увидеть содержимое сайта!
+    </div>
+</noscript>

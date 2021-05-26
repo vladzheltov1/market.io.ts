@@ -1,7 +1,7 @@
 import { IUser } from "../interfaces/IUser";
 
 export class User implements IUser{
-    user_id;
+    id;
     user_firstname;
     user_lastname;
     user_login;
@@ -14,7 +14,7 @@ export class User implements IUser{
     user_phone?;
 
     constructor(id, firstname, lastname, login, email, password, joined, sex, role, blockReason?, phone?){
-        this.user_id           = id;
+        this.id           = id;
         this.user_firstname    = firstname;
         this.user_lastname     = lastname;
         this.user_login        = login;

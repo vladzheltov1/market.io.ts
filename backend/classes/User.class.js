@@ -3,7 +3,7 @@ exports.__esModule = true;
 exports.User = void 0;
 var User = /** @class */ (function () {
     function User(id, firstname, lastname, login, email, password, joined, sex, role, blockReason, phone) {
-        this.user_id = id;
+        this.id = id;
         this.user_firstname = firstname;
         this.user_lastname = lastname;
         this.user_login = login;

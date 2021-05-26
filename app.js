@@ -1,13 +1,10 @@
 /* Модули node */
 var express = require('express');
-var fs = require('fs');
-var path = require('path');
 var cookieParser = require("cookie-parser");
 /* ----------- */
-/* Мои модули и api */
+/* Мои модули */
 var appRouter = require('./backend/modules/router.mod');
 var authRouter = require('./backend/modules/auth.mod');
-// const sessionApi  = require('./backend/api/api_session');
 /* ----------- */
 /* Флаги */
 var PRODUCTION = false; // изменить на true на хостинге

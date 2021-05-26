@@ -1,15 +1,12 @@
 /* Модули node */
 const express      = require('express');
-const fs           = require('fs');
-const path         = require('path');
 const cookieParser = require("cookie-parser");
 /* ----------- */
 
 
-/* Мои модули и api */
+/* Мои модули */
 const appRouter  = require('./backend/modules/router.mod');
 const authRouter = require('./backend/modules/auth.mod');
-// const sessionApi  = require('./backend/api/api_session');
 /* ----------- */
 
 

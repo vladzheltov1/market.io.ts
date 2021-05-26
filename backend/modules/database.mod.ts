@@ -1,33 +1,41 @@
 const mysql = require('mysql2');
 const dbConfig = JSON.parse(JSON.stringify(require('../configs/database.cfg.json')));
 
-function CONNECT(): void{
-    const connection = mysql.createConnection(dbConfig);
+// function CONNECT(){
+//     const connection = mysql.createConnection(dbConfig);
 
-    if(!connection){
-        console.error("Can't connect to the database!"); 
+//     if(!connection){
+//         console.error("Can't connect to the database!"); 
 
-        setTimeout(function(){
-            CONNECT();
-        }, 5000);
-    }
+//         setTimeout(function(){
+//             CONNECT();
+//         }, 5000);
+//     }
 
-    connection.on('error', function(e){
+//     connection.on('error', function(e){
+//         if(e.code == "PROTOCOL_CONNECTION_LOST"){
+//             console.error("Connection lost: The server closed the connection! Retrying in 5 seconds...");
+//         }
+//         else{
+//             console.error("Failed to establish connection with the database!");
+//             console.error(e);
+//         }
 
-        if(e.code == "PROTOCOL_CONNECTION_LOST"){
-            console.error("Connection lost: The server closed the connection! Retrying in 5 seconds...");
-        }
-        else{
-            console.error("Failed to establish connection with the database!");
-            console.error(e);
-        }
+//         setTimeout(function(){
+//             CONNECT();
+//         }, 5000);
+//     });
 
-        setTimeout(function(){
-            CONNECT();
-        }, 5000);
-    });
+//     module.exports = connection;
+// }  
 
-    module.exports = connection;
-}  
+// CONNECT();
 
-CONNECT();
+
+export const database = mysql.createPool(dbConfig);
+
+if(!database) console.error("Не удалось подключиться к базе данных!");
+
+database.on('error', function(e){
+    console.error("Error: " + e.code);
+})

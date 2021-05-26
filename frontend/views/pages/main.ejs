@@ -1,28 +1,91 @@
 <%- include('../layouts/header') %>
 
-<div class="wrapper">
-    <h1>Некоторый текст здесь</h1>
+<link rel="stylesheet" href="/frontend/source/css/index.css">
 
-    <button class="btn btn-red">Красный</button>
-    <button class="btn btn-outline-red">Красный</button>
-    <br>
-    <button class="btn btn-orange">Оранжевый</button>
-    <button class="btn btn-outline-orange">Оранжевый</button>
-    <br>
-    <button class="btn btn-green">Зелёный</button>
-    <button class="btn btn-outline-green">Зелёный</button>
-    <br>
-    <button class="btn btn-blue">Синий</button>
-    <button class="btn btn-outline-blue">Синий</button>
-    <br>
-    <button class="btn btn-violet">Фиолетовый</button>
-    <button class="btn btn-outline-violet">Фиолетовый</button>
-    <br>
-    <br>
-    <input type="text" class="form-input">
-    <br>
-    <textarea class="form-input"></textarea>
+<div class="wrapper index-wrapper">
+    
+    <div class="index-search">
+        <div class="h1 index-title">Market.io</div>
+        <div class="index-input-block">
+            <div class="icon icon-search index-icon"></div>
+            <input type="text" 
+                class="form-input index-search-input" 
+                odninput="search.input(this)">
+            <div class="search-realtime-result">
+                <div class="search-realtime-result-container">
+                    <a href="/search/" class="search-reatime-result-link"></a>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>
+
+<script>
+    // Перенести в search-view.js
+
+    window.addEventListener('keypress', (event) => { search.find(event); });
+
+    const search = {
+        find: (event) => {
+            
+            if(event.key == "Enter"){
+                const text = document.querySelector('.index-search-input').value;
+                location.replace("/search/"+text);
+            }
+        },
+        input: (inputField) => {
+            const field = inputField;
+            const resultList = document.querySelector('.search-realtime-result');
+            const firstLink = document.querySelector('.search-reatime-result-link');
+
+            if(field.value.length > 0){
+                $(resultList).css('display', 'block');
+                
+                $(field).css("border-bottom-left-radius", 0);
+                $(field).css("border-bottom-right-radius", 0);
+
+                $(firstLink).html(field.value);
+
+                const output = [];
+
+                output.push({
+                    text: "что-то",
+                    link: "ссылка 1"
+                });
+
+                search.autoComplete(output);
+
+                return;
+            }
+
+            $(resultList).css('display', 'none');
+
+            $(field).css("border-bottom-left-radius", '30px');
+            $(field).css("border-bottom-right-radius", '30px');
+
+
+        },
+        autoComplete: (object) => {
+
+            const autoCompleteContainer = document.querySelector('.search-realtime-result-container');
+            const autoCompleteLinks = object;
+
+            for(let i = 0; i < object.length; i++){
+                DOM.addElement(object[i].text, object[i].link, autoCompleteContainer);
+            }
+        }
+    };
+
+    const DOM = {
+        addElement: (text, link, parent) => {
+            const element = "<a href='"+ link +"' class='search-reatime-result-link'>" + text + "</a>";
+
+            const allElements = $(parent).children();
+
+            if(!element in allElements) $(parent).append(element);
+        }
+    }
+</script>
 
 <%- include("../layouts/bottom") %> 

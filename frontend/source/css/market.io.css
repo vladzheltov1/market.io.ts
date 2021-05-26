@@ -15,16 +15,32 @@
     --m-green-active: #40bb69;
     --m-violet: #8A2BE2;
     --m-violet-active: #7C20D3;
+    --m-gray: #d0d0d0;
+    --m-light: #fafafa;
+    --m-black: #0A0E13;
 
     --m-border: #ced4da;
     --m-border-active: #798da0;
+
+
+
+    /* Fonts */
+    --m-font-primary: 'Rubik', sans-serif;
 }
 
 /* Buttons */
 
     .btn{
         font-weight: 500; /* Bold */
-        font-family: 'Rubik', sans-serif;
+        font-family: var(--m-font-primary);
+        border: solid 2px #fff;
+        margin-right: 5px;
+    }
+    .btn:hover,
+    .btn:focus,
+    .btn-active{
+        outline: none;
+        box-shadow: none;
     }
 
 /* Red button styles */
@@ -32,14 +48,14 @@
     .btn-red{
         color: #fff;
         background: var(--m-red);
+        border-color: var(--m-red);
     }
     .btn-red:hover,
     .btn-red:focus,
     .btn-red:active{
         color: #fff;
         background: var(--m-red-active);
-        outline: none;
-        box-shadow: none;
+        border-color: var(--m-red-active);
     }
     .btn-outline-red{
         color: #000;
@@ -59,12 +75,14 @@
     .btn-orange{
         color: #fff;
         background: var(--m-orange);
+        border-color: var(--m-orange);
     }
     .btn-orange:hover,
     .btn-orange:focus,
     .btn-orange:active{
         color: #fff;
         background: var(--m-orange-active);
+        border-color: var(--m-orange-active);
         outline: none;
         box-shadow: none;
     }
@@ -86,12 +104,14 @@
     .btn-yellow{
         color: #fff;
         background: var(--m-yellow);
+        border-color: var(--m-yellow);
     }
     .btn-yellow:hover,
     .btn-yellow:focus,
     .btn-yellow:active{
         color: #fff;
         background: var(--m-yellow-active);
+        border-color: var(--m-yellow-active);
         outline: none;
         box-shadow: none;
     }
@@ -113,12 +133,14 @@
     .btn-green{
         color: #fff;
         background: var(--m-green);
+        border-color: var(--m-green);
     }
     .btn-green:hover,
     .btn-green:focus,
     .btn-green:active{
         color: #fff;
         background: var(--m-green-active);
+        border-color: var(--m-green-active);
         outline: none;
         box-shadow: none;
     }
@@ -140,12 +162,14 @@
     .btn-blue{
         color: #fff;
         background: var(--m-blue);
+        border-color: var(--m-blue);
     }
     .btn-blue:hover,
     .btn-blue:focus,
     .btn-blue:active{
         color: #fff;
         background: var(--m-blue-active);
+        border-color: var(--m-blue-active);
         outline: none;
         box-shadow: none;
     }
@@ -167,12 +191,14 @@
     .btn-violet{
         color: #fff;
         background: var(--m-violet);
+        border-color: var(--m-violet);
     }
     .btn-violet:hover,
     .btn-violet:focus,
     .btn-violet:active{
         color: #fff;
         background: var(--m-violet-active);
+        border-color: var(--m-violet-active);
         outline: none;
         box-shadow: none;
     }
@@ -188,12 +214,37 @@
         background-color: var(--m-violet-active);
         border-color: var(--m-violet-active);
     }
+/* Button white */
+    .btn-white{
+        border: solid 2px var(--m-gray);
+    }
+    .btn-white:hover,
+    .btn-white:focus,
+    .btn-white:active{
+        border-color: var(--m-red);
+    }
+
+    .btn-active{
+        border-color: var(--m-red);
+    }
+
+/* Button forms and sizes */
+
+    .btn-big{
+        padding: 15px 30px;
+    }
+    .btn-round{
+        border-radius: 30px;
+    }
+    .btn-square{
+        margin: 10px;
+    }
 
 /* Inputs */
     input{
         color: #212529;
         background-color: #fff;
-        font-family: 'Rubik', sans-serif;
+        font-family: var(--m-font-primary);
         font-weight: 400;
         font-size: 1rem;
     }
@@ -230,9 +281,11 @@
         background-repeat: no-repeat;
         background-size:cover;
         stroke: #fff;
-        
+
         padding: 0;
         margin: 0 5px 0 0;
+        object-fit: contain;
+        object-position: center;
     }
     .icon-home{
         background: url(/frontend/source/icon/home.svg);
@@ -242,6 +295,9 @@
     }
     .icon-user{
         background: url(/frontend/source/icon/user.svg);
+    }
+    .icon-user-dark{
+        background: url(/frontend/source/icon/user-dark.svg);
     }
     .icon-key{
         background: url(/frontend/source/icon/key.svg);
@@ -254,4 +310,44 @@
     }
     .icon-star-filled{
         background: url(/frontend/source/icon/star-filled.svg);
+    }
+    .icon-search{
+        background: url(/frontend/source/icon/search.svg);
+    }
+    .icon-login{
+        background: url(/frontend/source/icon/log-in.svg);
+    }
+    .icon-logout{
+        background: url(/frontend/source/icon/log-out.svg);
+    }
+    .icon-bag{
+        background: url(/frontend/source/icon/bag-outline.svg);
+    }
+
+/* Staff */
+    .margin-5{
+        height: 5px;
+    }
+    .margin-10{
+        height: 10px;
+    }
+    .margin-15{
+        height: 15px;
+    }
+    .margin-20{
+        height: 20px;
+    }
+    .margin-25{
+        height: 25px;
+    }
+    .margin-30{
+        height: 30px;
+    }
+
+    .vertical{
+        display: block;
+        width: 1px;
+        height: 24px;
+        background: var(--m-gray);
+        margin: 0 5px;
     }

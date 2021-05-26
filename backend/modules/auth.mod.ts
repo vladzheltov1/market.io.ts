@@ -1,8 +1,9 @@
 import { User } from '../classes/User.class';
+import { database } from "../modules/database.mod";
 import { RouterServer } from "../modules/routerInit.mod";
 import { ServerUtils } from "../modules/serverUtils.mod";
 
-const database = require('../modules/database.mod');
+// const database = require('../modules/database.mod');
 const bodyParser = require('body-parser');
 const hashPass = require('password-hash');
 
@@ -29,7 +30,7 @@ RouterServer.post('/signin', urlencodedParser, (req, res) => {
     
     database.query('SELECT * FROM `users` WHERE user_login = ?', [params.login], (error, result, field) => {
 
-        if(result[0] == undefined){
+        if(result == undefined){
             res.redirect('/login/2');
             return;
         }
@@ -45,7 +46,7 @@ RouterServer.post('/signin', urlencodedParser, (req, res) => {
         // Здесь создаём сессию, заносим в кукки
 
         const user = new User(
-            resp.user_id,
+            resp.id,
             resp.user_firstname,
             resp.user_lastname,
             resp.user_login,

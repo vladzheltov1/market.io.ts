@@ -16,7 +16,7 @@
             <div class="product-description">
                 Краткое описание товара. Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam nulla reprehenderit magni alias iusto dolores et ab totam quae est dolor aliquid numquam rerum eaque optio, qui tempore iure maiores?
             </div>
-            <hr class="product-hr">
+            <div class="margin-20"></div>
             <div class="product-rating">
                 <div class="rating-stars">
                     <div class="star"><i class="icon icon-star"></i></div>
@@ -24,10 +24,12 @@
                     <div class="star"><i class="icon icon-star"></i></div>
                     <div class="star"><i class="icon icon-star"></i></div>
                     <div class="star"><i class="icon icon-star"></i></div>
+                    <div class="rating-amount">4.6</div>
+                    <div class="rating-amount">/ 5.0</div>
                 </div>
                 <div class="vertical"></div>
                 <a href="#reviews" class="rating-review-amount no-link">
-                    <span class="review-amount">3023</span>
+                    <span class="review-amount">20</span>
                     отзывов
                 </a>
                 <div class="vertical"></div>
@@ -35,14 +37,92 @@
                     <span class="review-bought">31</span>
                     заказа(ов)
                 </div>
+                <!-- /product-rating -->
             </div>
+            <div class="margin-20"></div>
+
+            <hr class="product-hr">
+            <div class="product-price">
+                <span class="product-price-amount">4003</span>
+                <span class="product-price-currency">руб.</span>
+            </div>
+            <hr class="product-hr">
+
+            <div class="product-sizes">
+                Размер:
+                <div class="product-sizes-container">
+                    <button class="btn btn-square btn-white">S</button>
+                    <button class="btn btn-square btn-white">M</button>
+                    <button class="btn btn-square btn-white">L</button>
+                    <button class="btn btn-square btn-white">XL</button>
+                    <button class="btn btn-square btn-white">XXL</button>
+                </div>
+            </div>
+
+            <div class="product-onstore">
+                <span class="product-onstore-amount">12</span>
+                <span class="product-onstore-currency">шт. в наличии</span>
+            </div>
+
+            <hr class="product-hr">
+
+            <div class="margin-20"></div>
+            <div class="product-buy">
+                <button class="btn btn-big btn-round btn-orange">Купить</button>
+                <button class="btn btn-big btn-round btn-outline-orange">В корзину</button>
+            </div>
+
+            <!-- /product-right-info -->
         </div>
+        <!-- /product-info -->
     </div>
 
     <!-- Отзывы -->
     <div class="product-review" id="reviews">
+        <h2 class="product-review-title">Отзывы</h2>
 
+        <div class="reviews-container">
+            <div class="review-block">
+                <div class="user-info">
+                    <div class="review-user-logo"></div>
+                    <div class="review-user-name">Имя человека</div>
+                </div>
+                <div class="margin-10"></div>
+                <div class="review-rating">
+                    <div class="rating-stars">
+                        <div class="star"><i class="icon icon-star"></i></div>
+                        <div class="star"><i class="icon icon-star"></i></div>
+                        <div class="star"><i class="icon icon-star"></i></div>
+                        <div class="star"><i class="icon icon-star"></i></div>
+                        <div class="star"><i class="icon icon-star"></i></div>
+                        <div class="rating-amount">4.6</div>
+                        <div class="rating-amount">/ 5.0</div>
+                    </div>
+                </div>
+                <div class="review-user-content">
+                    <p>
+                        <div class="review-block-title">Достоинства</div>
+                        <div class="review-block-cons">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam sint ut ab voluptatum iste numquam optio quibusdam magni ipsa reiciendis molestias, quis fugit eum voluptatem adipisci facere pariatur ipsam in!</div>
+                    </p>
+                    <p>
+                        <div class="review-block-title">Недостатки</div>
+                        <div class="review-block-pros">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam sint ut ab voluptatum iste numquam optio quibusdam magni ipsa reiciendis molestias, quis fugit eum voluptatem adipisci facere pariatur ipsam in!</div>
+                    </p>
+                    <p>
+                        <div class="review-block-title">Комментарии</div>
+                        <div class="review-block-comments">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam sint ut ab voluptatum iste numquam optio quibusdam magni ipsa reiciendis molestias, quis fugit eum voluptatem adipisci facere pariatur ipsam in!</div>
+                    </p>
+                    <p>
+                        <div class="review-publish-date">21 марта 2021</div>
+                    </p>
+                </div>
+                <!-- /review-block -->
+            </div>
+            <!-- /reviews-container -->
+        </div>
+        <!-- /product-review -->
     </div>
+    <!-- /wrapper -->
 </div>
 
 <%- include("../layouts/bottom") %> 

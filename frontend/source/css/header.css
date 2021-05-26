@@ -1,6 +1,6 @@
 header{
     width: 100%;
-    background: rgb(10, 14, 19);
+    background: var(--m-black);
 
     display: flex;
     flex-direction: column;
@@ -60,13 +60,6 @@ header a:hover{
     display: flex;
     /* justify-content: center; */
     align-items: center;
-}
-
-.index::before{
-    content: "";
-    background-image: url(/frontend/source/icon/key.svg);
-    width: 20px;
-    height: 20px;
 }
 
 @media(max-width: 425px){
