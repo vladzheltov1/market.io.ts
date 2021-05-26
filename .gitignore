@@ -1,3 +1,5 @@
 node_modules
 backend/api/*.js
 backend/modules/*.js
+backend/classes/*.js
+backend/interfaces/*.js
