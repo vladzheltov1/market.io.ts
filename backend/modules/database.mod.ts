@@ -39,3 +39,9 @@ if(!database) console.error("Не удалось подключиться к б�
 database.on('error', function(e){
     console.error("Error: " + e.code);
 })
+
+export const db = {
+    isConnected: () => {
+        return database ? true : false;
+    }
+}

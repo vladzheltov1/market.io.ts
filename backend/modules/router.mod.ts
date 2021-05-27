@@ -1,6 +1,6 @@
 import { database } from "./database.mod";
 import { RouterServer } from "./routerInit.mod";
-import { FormErrors, ServerUtils } from "./serverUtils.mod";
+import { ServerUtils } from "./serverUtils.mod";
 
 /* ------------------------------------------------------------------ */
 
@@ -73,15 +73,27 @@ RouterServer.get('/shop/:category?/:page?/:priceMin?/:priceMax?/', (req, res) =>
 // Log in page
 RouterServer.get('/login/:error?', (req, res) => {
 
+    const params = {
+        title: "Вход - Market.io",
+        navActive: "dropdown",
+        cookies: req.cookies,
+        error: ""
+    }
+
     if(req.cookies.user) res.redirect("/");
 
-    let error = "";
 
-    if(req.params.error){
-        error = FormErrors[req.params.error];
-    }
+    // if(req)
+
     
-    res.render('pages/login', { title: "Вход - Market.io", navActive: "dropdown", error: error, cookies: req.cookies});
+    // if(req.params.error){
+    //     error = FormErrors[req.params.error];
+    // }
+    // if(req.message) error = req.message;
+
+    console.log(req.message);
+    
+    res.render('pages/login', params);
 });
 
 

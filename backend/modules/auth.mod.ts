@@ -3,12 +3,12 @@ import { database } from "../modules/database.mod";
 import { RouterServer } from "../modules/routerInit.mod";
 import { ServerUtils } from "../modules/serverUtils.mod";
 
-// const database = require('../modules/database.mod');
 const bodyParser = require('body-parser');
 const hashPass = require('password-hash');
 
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
 const jsonParser = bodyParser.json();
+// const jsonParser = express.json();
 
 /* ------------------------------------------------------------------ */
 
@@ -16,31 +16,42 @@ RouterServer.post('/signup', (req, res) => {
     res.send("Sign up server page");
 });
 
-RouterServer.post('/signin', urlencodedParser, (req, res) => {
+RouterServer.post('/signin', jsonParser, (req, res) => {
     
     const params = {
         login: req.body.login,
-        password: req.body.password
+        password: req.body.pass
     };
 
     if(!params.login.trim() || !params.login.trim()){
-        res.redirect('/login/0');
-        return;
+        return res.json({status: 400, error: "Одно или несколько полей пустые!"});
     }
+
+    // if(!db.isConnected()){
+    //     res.redirect('/login/11');
+    //     return;
+    // }
+
+    // console.log(db.isConnected());
     
     database.query('SELECT * FROM `users` WHERE user_login = ?', [params.login], (error, result, field) => {
+        // Ошибка подключения
+        if(error){
+            return res.json({ status: 400, error: 'Ошибка при соединении с базой данных!' });
+        }
 
-        if(result == undefined){
-            res.redirect('/login/2');
-            return;
+        console.log("RRR", result);
+
+        // Результат пустой
+        if(result == [] || result == undefined){
+            return res.json({status: 400, error: "Такого пользователя не существует!"});
         }
         
-        const resp = ServerUtils.JsonConvert(result[0]);
+        const resp = result[0] ? ServerUtils.JsonConvert(result[0]) : null;
 
-
+        
         if(!hashPass.verify(params.password, resp.user_password)){
-            res.redirect('/login/3');
-            return;
+            return res.json({status: 400, error: "Неправильный пароль!"});
         }
 
         // Здесь создаём сессию, заносим в кукки
@@ -61,7 +72,7 @@ RouterServer.post('/signin', urlencodedParser, (req, res) => {
 
         res.cookie("user", user);
 
-        res.redirect('/');
+        return res.json({status: 200});
     });
 });
 

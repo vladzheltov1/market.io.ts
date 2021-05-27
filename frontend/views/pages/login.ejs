@@ -5,23 +5,56 @@
     <form action="/api/user/signin" method="POST">
         <p class="form-p">
             <label for="login" class="form-lable">Логин:</label>
-            <input type="text" name="login" class="form-input" required>
+            <input type="text" id="login" name="login" class="form-input" required>
         </p>
         <p class="form-p">
             <label for="pass" class="form-lable">Пароль:</label>
-            <input type="password" autocomplete="current-password" name="password" class="form-input" required>
+            <input type="password" autocomplete="current-password" id="password" name="password" class="form-input" required>
         </p>
 
-        <% if (error) { %>
-            <p class="form-error">
-                <%= error %> 
-            </p>
-        <% } %>
+        <p class="form-error"></p>
 
         <p class="form-p">
-            <input type="submit" name="btn" class="btn btn-primary" value="Войти">
+            <input type="button" name="btn" class="btn btn-primary" id="submit" value="Войти">
         </p>
     </form>
 </div>
+
+<script>
+
+    const btn = document.querySelector('#submit');
+
+    btn.addEventListener('click', function(e){
+        form.submit(e);
+    });
+
+    const form = {
+        submit: (e) => {
+            e.preventDefault();
+
+            const login = document.querySelector('#login').value;
+            const password = document.querySelector('#password').value;
+
+            const json = JSON.stringify({ login: login, pass: password });
+
+            let request = new XMLHttpRequest();
+
+            request.open('POST', '/api/user/signin', true);
+            request.setRequestHeader("Content-Type", "application/json");
+
+            request.addEventListener('load', function(){
+                let serverData = JSON.parse(request.response);
+
+                console.log(serverData);
+
+                if(serverData.status !== 200) document.querySelector('.form-error').innerHTML = serverData.error;
+                else{
+                    location.replace('/');
+                }
+            });
+            request.send(json);
+        }
+    }
+</script>
 
 <%- include("../layouts/bottom") %> 
