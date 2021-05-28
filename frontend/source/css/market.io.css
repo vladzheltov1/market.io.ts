@@ -323,6 +323,9 @@
     .icon-bag{
         background: url(/frontend/source/icon/bag-outline.svg);
     }
+    .icon-settings{
+        background: url(/frontend/source/icon/settings.svg);
+    }
 
 /* Staff */
     .margin-5{
@@ -350,4 +353,8 @@
         height: 24px;
         background: var(--m-gray);
         margin: 0 5px;
+    }
+    .block{
+        display: block;
+        margin: 0;
     }

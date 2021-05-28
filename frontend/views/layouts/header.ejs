@@ -56,6 +56,9 @@
                         </a>
                     </li>
                     <li><hr class="dropdown-divider"></li>
+                    <% if (cookies.user.user_role == 2) { %>
+                        <li><a class="dropdown-item" href="/admin"><i class="icon icon-settings"></i>Админ панель</a></li>
+                    <% } %>
                     <li><a class="dropdown-item" href="/cart"><i class="icon icon-bag"></i>Корзина</a></li>
                     <li><a class="dropdown-item" href="/logout"><i class="icon icon-logout"></i>Выход</a></li>
                 <% } else { %>

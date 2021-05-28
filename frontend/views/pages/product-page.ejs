@@ -8,34 +8,48 @@
     <div class="product-info">
         <div class="product-info-left">
             <div class="product-photo-wrapper">
-                <img class="product-photo-source" src="/frontend/source/upload/products/red-shirt.jpg">
+                <img class="product-photo-source" src="<%= product.product_photo %>">
             </div>
         </div>
         <div class="product-info-right">
-            <h2 class="product-title">Название</h2>
+            <h2 class="product-title"><%= product.product_title %></h2>
             <div class="product-description">
-                Краткое описание товара. Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam nulla reprehenderit magni alias iusto dolores et ab totam quae est dolor aliquid numquam rerum eaque optio, qui tempore iure maiores?
+                <%= product.product_description %>
             </div>
             <div class="margin-20"></div>
             <div class="product-rating">
                 <div class="rating-stars">
-                    <div class="star"><i class="icon icon-star"></i></div>
-                    <div class="star"><i class="icon icon-star"></i></div>
-                    <div class="star"><i class="icon icon-star"></i></div>
-                    <div class="star"><i class="icon icon-star"></i></div>
-                    <div class="star"><i class="icon icon-star"></i></div>
-                    <div class="rating-amount">4.6</div>
+
+                    <% for( let i = 0; i < ratingRound; i++ ) { %>
+                        <div class="star"><i class="icon icon-star icon-star-filled"></i></div>
+                    <% } %>
+                    <% for( let i = 0; i < 5 - ratingRound; i++ ) { %>
+                        <div class="star"><i class="icon icon-star"></i></div>
+                    <% } %>
+                    <div class="rating-amount">
+
+                    <%= rating %>
+
+                    </div>
                     <div class="rating-amount">/ 5.0</div>
                 </div>
                 <div class="vertical"></div>
                 <a href="#reviews" class="rating-review-amount no-link">
-                    <span class="review-amount">20</span>
+                    <span class="review-amount"><%= reviews.length %> </span>
                     отзывов
                 </a>
                 <div class="vertical"></div>
                 <div class="rating-bought-amount">
-                    <span class="review-bought">31</span>
-                    заказа(ов)
+                    <span class="review-bought"><%= bought %></span>
+                    <% if(bought == 1){ %> 
+                    заказ
+                    <% } %> 
+                    <% if(bought > 1 && bought < 5){ %> 
+                    заказа
+                    <% } %> 
+                    <% if(bought == 0 || bought >= 5){ %> 
+                    заказов
+                    <% } %> 
                 </div>
                 <!-- /product-rating -->
             </div>
@@ -43,7 +57,7 @@
 
             <hr class="product-hr">
             <div class="product-price">
-                <span class="product-price-amount">4003</span>
+                <span class="product-price-amount"><%= product.product_price %></span>
                 <span class="product-price-currency">руб.</span>
             </div>
             <hr class="product-hr">
@@ -60,16 +74,26 @@
             </div>
 
             <div class="product-onstore">
-                <span class="product-onstore-amount">12</span>
+                <span class="product-onstore-amount"><%= product.product_available %></span>
                 <span class="product-onstore-currency">шт. в наличии</span>
             </div>
 
             <hr class="product-hr">
 
-            <div class="margin-20"></div>
+            <div class="margin-10"></div>
+            <% if(product.product_available == 0){%>
+                На данный момент этого товара нет в наличии
+            <% } %>
+            <div class="margin-10"></div>
             <div class="product-buy">
-                <button class="btn btn-big btn-round btn-orange">Купить</button>
-                <button class="btn btn-big btn-round btn-outline-orange">В корзину</button>
+                <button class="btn btn-big btn-round btn-orange"
+                <% if(product.product_available == 0){%>
+                    disabled
+                <% } %> >Купить</button>
+                <button class="btn btn-big btn-round btn-outline-orange"
+                <% if(product.product_available == 0){%>
+                    disabled
+                <% } %>>В корзину</button>
             </div>
 
             <!-- /product-right-info -->
@@ -81,43 +105,54 @@
     <div class="product-review" id="reviews">
         <h2 class="product-review-title">Отзывы</h2>
 
+        <center>
+            <% if (reviews.length == 0) { %>
+                Отзывов пока нет :(
+            <% } %>
+        </center>
+
         <div class="reviews-container">
-            <div class="review-block">
-                <div class="user-info">
-                    <div class="review-user-logo"></div>
-                    <div class="review-user-name">Имя человека</div>
-                </div>
-                <div class="margin-10"></div>
-                <div class="review-rating">
-                    <div class="rating-stars">
-                        <div class="star"><i class="icon icon-star"></i></div>
-                        <div class="star"><i class="icon icon-star"></i></div>
-                        <div class="star"><i class="icon icon-star"></i></div>
-                        <div class="star"><i class="icon icon-star"></i></div>
-                        <div class="star"><i class="icon icon-star"></i></div>
-                        <div class="rating-amount">4.6</div>
-                        <div class="rating-amount">/ 5.0</div>
+
+            <%for (let i = 0; i < reviews.length; i++) { %>
+                <div class="review-block">
+                    <div class="user-info">
+                        <div class="review-user-logo"></div>
+                        <div class="review-user-name"><%= reviews[i].review_author_fullname %></div>
                     </div>
+                    <div class="margin-10"></div>
+                    <div class="review-rating">
+                        <div class="rating-stars">
+                            <% for( let j = 0; j < reviews[i].review_rate; j++ ) { %>
+                                <div class="star"><i class="icon icon-star icon-star-filled"></i></div>
+                            <% } %>
+                            <% for( let j = 0; j < 5 - reviews[i].review_rate; j++ ) { %>
+                                <div class="star"><i class="icon icon-star"></i></div>
+                            <% } %>
+                            <div class="rating-amount"><%= reviews[i].review_rate %>.0</div>
+                            <div class="rating-amount">/ 5.0</div>
+                        </div>
+                    </div>
+                    <div class="review-user-content">
+                        <p>
+                            <div class="review-block-title">Достоинства</div>
+                            <div class="review-block-cons"><%= reviews[i].review_pros %></div>
+                        </p>
+                        <p>
+                            <div class="review-block-title">Недостатки</div>
+                            <div class="review-block-cons"><%= reviews[i].review_cons %></div>
+                        </p>
+                        <p>
+                            <div class="review-block-title">Комментарии</div>
+                            <div class="review-block-cons"><%= reviews[i].review_comment %></div>
+                        </p>
+                        <p>
+                            <div class="review-publish-date"><%= reviews[i].review_published %></div>
+                        </p>
+                    </div>
+                    <!-- /review-block -->
                 </div>
-                <div class="review-user-content">
-                    <p>
-                        <div class="review-block-title">Достоинства</div>
-                        <div class="review-block-cons">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam sint ut ab voluptatum iste numquam optio quibusdam magni ipsa reiciendis molestias, quis fugit eum voluptatem adipisci facere pariatur ipsam in!</div>
-                    </p>
-                    <p>
-                        <div class="review-block-title">Недостатки</div>
-                        <div class="review-block-pros">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam sint ut ab voluptatum iste numquam optio quibusdam magni ipsa reiciendis molestias, quis fugit eum voluptatem adipisci facere pariatur ipsam in!</div>
-                    </p>
-                    <p>
-                        <div class="review-block-title">Комментарии</div>
-                        <div class="review-block-comments">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam sint ut ab voluptatum iste numquam optio quibusdam magni ipsa reiciendis molestias, quis fugit eum voluptatem adipisci facere pariatur ipsam in!</div>
-                    </p>
-                    <p>
-                        <div class="review-publish-date">21 марта 2021</div>
-                    </p>
-                </div>
-                <!-- /review-block -->
-            </div>
+            <% } %>
+
             <!-- /reviews-container -->
         </div>
         <!-- /product-review -->
