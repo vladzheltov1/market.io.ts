@@ -1,9 +1,21 @@
 <%- include('../layouts/header') %>
 
-<div class="wrapper">
-    <p>Category: <%= params.category %></p>
-    <p>Price filter: <%= params.priceMin %> and <%= params.priceMax %></p>
-    <p>Page: <%= params.page %></p>
+<link rel="stylesheet" href="/frontend/source/css/shop.css">
+
+<!-- Make them not grow in height -->
+
+<div class="wrapper shop-wrapper">
+    <% for( let i = 0; i < products.length; i++ ) { %>
+        <div class="card" style="width: 18rem;">
+            <img src="<%= products[i].product_photo %>" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title"><a href="/product/<%= products[i].id %>"><%= products[i].product_title %></a></h5>
+              <p class="card-text"><%= products[i].product_description %></p>
+              <p class="card-text card-price"><%= products[i].product_price %> руб.</p>
+            </div>
+          </div>
+    <% } %>
 </div>
+
 
 <%- include("../layouts/bottom") %> 

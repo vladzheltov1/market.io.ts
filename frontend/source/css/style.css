@@ -1,7 +1,8 @@
 *{
     margin: 0;
     padding: 0;
-    user-select: 0;
+    user-select: none;
+    -webkit-user-drag: none;
     box-sizing: border-box;
     font-weight: 400; /* Regular */
     font-family: var(--m-font-primary);

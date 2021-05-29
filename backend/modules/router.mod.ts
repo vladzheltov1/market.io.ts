@@ -67,6 +67,7 @@ RouterServer.get('/product/:id?', (req, res) => {
     database.query("SELECT * FROM products WHERE id = ?", [req.params.id], function(err, results, fields){
         if(err){
             console.error(err);
+            res.redirect('/shop');
             return;
         }
 
@@ -133,17 +134,47 @@ RouterServer.get('/shop/:category?/:page?/:priceMin?/:priceMax?/', (req, res) =>
         category: req.params.category || "all",
         page:     req.params.page     || 1,
         priceMin: req.params.priceMin || 0,
-        priceMax: req.params.priceMax || Infinity
+        priceMax: req.params.priceMax || Infinity,
+        uri: ""
     };
 
-    const params = {
-        title: "Магазин - Market.io",
-        navActive: "shop",
-        searchParams: searchParams,
-        cookies: req.cookies
+    searchParams.uri = "/shop/" + searchParams.category + "/" + searchParams.page + "/" + searchParams.priceMin + "/" + searchParams.priceMax;
+
+    var query = "";
+
+    var bottomBlockLimit = (searchParams.page - 1) * 15;
+    var topBlockLimit = searchParams.page * 15;
+
+    if(searchParams.category !== "all"){
+        query = "SELECT * FROM products WHERE product_category = "+ searchParams.category +" LIMIT " + bottomBlockLimit + "," + topBlockLimit;
+    }
+    else{
+        query = "SELECT * FROM products LIMIT " + bottomBlockLimit + "," + topBlockLimit;
     }
 
-    res.render('pages/shop', params);
+    database.query(query, function(err, products, field){
+
+        if(err){
+            console.error(err);
+            res.redirect('/');
+            return;
+        }
+        if(!products[0]){
+            console.error('no products');
+            res.redirect('/');
+            return;
+        }
+
+        const params = {
+            title: "Магазин - Market.io",
+            navActive: "shop",
+            cookies: req.cookies,
+            products: products
+        }
+
+        res.render('pages/shop', params);
+    });
+
 });
 
 
