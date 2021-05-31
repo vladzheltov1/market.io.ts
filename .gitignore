@@ -1,4 +1,2 @@
 node_modules
-backend/modules/*.js
-backend/classes/*.js
-backend/interfaces/*.js
+backend/*.js
