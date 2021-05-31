@@ -1,47 +1,85 @@
+import { dbErrors } from "../enums/dbErrors";
+
 const mysql = require('mysql2');
 const dbConfig = JSON.parse(JSON.stringify(require('../configs/database.cfg.json')));
 
-// function CONNECT(){
-//     const connection = mysql.createConnection(dbConfig);
+/* ------------------------------------------------------------------ */
 
-//     if(!connection){
-//         console.error("Can't connect to the database!"); 
+export const pool = mysql.createPool(dbConfig);
 
-//         setTimeout(function(){
-//             CONNECT();
-//         }, 5000);
-//     }
+if(!pool) console.error(dbErrors.CANTCONNECT);
 
-//     connection.on('error', function(e){
-//         if(e.code == "PROTOCOL_CONNECTION_LOST"){
-//             console.error("Connection lost: The server closed the connection! Retrying in 5 seconds...");
-//         }
-//         else{
-//             console.error("Failed to establish connection with the database!");
-//             console.error(e);
-//         }
-
-//         setTimeout(function(){
-//             CONNECT();
-//         }, 5000);
-//     });
-
-//     module.exports = connection;
-// }  
-
-// CONNECT();
-
-
-export const database = mysql.createPool(dbConfig);
-
-if(!database) console.error("Не удалось подключиться к базе данных!");
-
-database.on('error', function(e){
+pool.on('error', function(e){
     console.error("Error: " + e.code);
 })
 
-export const db = {
-    isConnected: () => {
-        return database ? true : false;
-    }
+
+class Database{
+    /* 
+        Проверяет, есть ли подключение к базе данных
+    */
+    isConnected = () => {
+        pool('SELECT id FROM users WHERE id = 5', function(err){
+            if(err) return false;
+            else return true;
+        });
+    };
+    /* 
+        Получает на вход sql запрос и параметры (если есть)
+        Возвращает все ряды, найденные по этому запросу
+    */
+    getAll = (query, params = [], callback): any[] | any | null => {
+
+        /* Пустой запрос */
+        if(!query) throw new Error(dbErrors.EMPTYQUERY);
+
+        pool.query(query, params, function(error, results: any[]){
+
+            /* Если есть ошибка при обращении к базе */
+            if(error){
+                callback({error: dbErrors[error.code]});
+                return;
+            }
+
+            /* Ничего не найдено */
+            if(!results[0]){
+                callback(null);
+                return;
+            }
+
+            /* Всё нормально */
+            callback(results);
+
+        });
+    };
+    /* 
+        Тоже самое, что и функция выше, но возвращает только один ряд
+    */
+    getOne = (query, params = [], callback): any[] | any | null => {
+
+        /* Пустой запрос */
+        if(!query) throw new Error(dbErrors.EMPTYQUERY);
+
+        pool.query(query, params, function(error, results: any[]){
+
+            /* Если есть ошибка при обращении к базе */
+            if(error){
+                callback({error: dbErrors[error.code]});
+                return;
+            }
+
+            /* Ничего не найдено */
+            if(!results[0]){
+                callback(null);
+                return;
+            }
+
+            /* Всё нормально */
+            callback(results[0]);
+
+        });
+    };
+
 }
+
+export const db = new Database();

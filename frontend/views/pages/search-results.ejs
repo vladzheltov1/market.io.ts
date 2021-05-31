@@ -8,6 +8,8 @@
 
     <% if(notFound){ %> 
         По Вашему запросу ничего не найдено!
+    <% }else if(error){ %> 
+        <%= error  %> 
     <% }else{ %>
         <% for( let i = 0; i < serverResponse.length; i++ ) { %>
             <div class="result-block">

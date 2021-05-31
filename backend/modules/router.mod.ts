@@ -1,6 +1,5 @@
-import { database } from "./database.mod";
+import { db, pool } from "./database.mod";
 import { RouterServer } from "./routerInit.mod";
-import { ServerUtils } from "./serverUtils.mod";
 
 /* ------------------------------------------------------------------ */
 
@@ -21,38 +20,39 @@ RouterServer.get('/profile/:id?', (req, res) => {
 
     // ПЕРЕДЕЛАТЬ!!!
 
-    let user = {};
-    let id = req.params.id;
+    // let user = {};
+    // let id = req.params.id;
 
-    if(!id) id = req.cookies.id;
+    // if(!id) id = req.cookies.id;
 
-    if(id == req.cookies.id){
-        user = req.cookies.user;
-    }
-    else{
-        database.query("SELECT * FROM users WHERE 'id' = ?", [id], function(err, result, field){
+    // if(id == req.cookies.id){
+    //     user = req.cookies.user;
+    // }
+    // else{
+    //     db.getOne
+    //     database.query("SELECT * FROM users WHERE 'id' = ?", [id], function(err, result, field){
 
-            const resultObj = result !== undefined ? ServerUtils.JsonConvert(result[0]) : undefined;
-            const isPermited = req.cookies.user.user_role == 2 ? true : false;
+    //         const resultObj = result !== undefined ? ServerUtils.JsonConvert(result[0]) : undefined;
+    //         const isPermited = req.cookies.user.user_role == 2 ? true : false;
 
-            res.render('pages/product-page', { 
-                title: " - Market.io",
-                navActive: "user",
-                cookies: req.cookies,
-                userinfo: resultObj,
-                isPermited: isPermited 
-            });
-        });
-        return;
-    }
+    //         res.render('pages/product-page', { 
+    //             title: " - Market.io",
+    //             navActive: "user",
+    //             cookies: req.cookies,
+    //             userinfo: resultObj,
+    //             isPermited: isPermited 
+    //         });
+    //     });
+    //     return;
+    // }
 
-    res.render('pages/product-page', {
-        title: req.cookies.user.user_login + " - Market.io",
-        navActive: "user",
-        cookies: req.cookies,
-        userinfo: req.cookies.user,
-        isPermited: true
-    });
+    // res.render('pages/product-page', {
+    //     title: req.cookies.user.user_login + " - Market.io",
+    //     navActive: "user",
+    //     cookies: req.cookies,
+    //     userinfo: req.cookies.user,
+    //     isPermited: true
+    // });
 });
 
 
@@ -64,7 +64,7 @@ RouterServer.get('/product/:id?', (req, res) => {
         return;
     }
 
-    database.query("SELECT * FROM products WHERE id = ?", [req.params.id], function(err, results, fields){
+    pool.query("SELECT * FROM products WHERE id = ?", [req.params.id], function(err, results, fields){
         if(err){
             console.error(err);
             res.redirect('/shop');
@@ -78,12 +78,12 @@ RouterServer.get('/product/:id?', (req, res) => {
 
         const product = results[0];
 
-        database.query("SELECT * FROM reviews WHERE review_product_id = ?", [req.params.id], function(error1, reviews, field){
+        pool.query("SELECT * FROM reviews WHERE review_product_id = ?", [req.params.id], function(error1, reviews, field){
             if(error1){
                 console.error(error1);
                 return;
             }
-            database.query('SELECT product_amount FROM purchases WHERE product_id = ?', [req.params.id], function(error2, amounts, fields){
+            pool.query('SELECT product_amount FROM purchases WHERE product_id = ?', [req.params.id], function(error2, amounts, fields){
 
                 if(error2){
                     console.error(error2);
@@ -129,7 +129,9 @@ RouterServer.get('/product/:id?', (req, res) => {
 
 // Shop page
 RouterServer.get('/shop/:category?/:page?/:priceMin?/:priceMax?/', (req, res) => {
-    
+
+    // ПЕРЕДЕЛАТЬ!!! (слишком много запросов в базе)
+
     const searchParams = {
         category: req.params.category || "all",
         page:     req.params.page     || 1,
@@ -152,7 +154,7 @@ RouterServer.get('/shop/:category?/:page?/:priceMin?/:priceMax?/', (req, res) =>
         query = "SELECT * FROM products LIMIT " + bottomBlockLimit + "," + topBlockLimit;
     }
 
-    database.query(query, function(err, products, field){
+    pool.query(query, function(err, products, field){
 
         if(err){
             console.error(err);
@@ -214,58 +216,50 @@ RouterServer.get('/logout', (req, res) => {
 });
 
 
-// Search results page
-// RouterServer.get('/search/:isError/:', (req, res) => {
-//     res.clearCookie("user");
-//     res.redirect('/');
-// });
-
-
 // Search logic
 RouterServer.get('/search/:query?', (req, res) => {
-    // Здесь нужно произвести поиск, пропарсить строку, и сделать 
-    // редирект на страницу "Магазин" с нужными фильтрами.
+    const queryStr = req.params.query.trim();
 
-    if(req.params.query.trim()){
-        const query = req.params.query !== undefined ? req.params.query.trim() : null;
+    const params = {
+        title: "Результаты поиска - Market.io",
+        navActive: "",
+        cookies: req.cookies,
+        notFound: false,
+        error: "",
+        query: queryStr,
+        serverResponse: []
+    }
 
-        if(query == null) return "";
-
-        database.query("SELECT * FROM `products` WHERE product_title LIKE '%"+query+"%' OR product_description LIKE '%"+query+"%'", function(err, results, fields){
-            if(err){
-                console.error(err);
-                return;
-            }
-
-            const params = {
-                title: "Результаты поиска - Market.io",
-                navActive: "",
-                cookies: req.cookies,
-                notFound: false,
-                serverResponse: [],
-                query: query
-            }
-
-            if(!results[0]){
-                params.notFound = true;
-
-                res.render('pages/search-results', params);
-
-                return;
-            }
-            else{
-                params.serverResponse = results;
-
-                res.render('pages/search-results', params);
-
-                return;
-            }
-        });
-
+    if(!queryStr) throw new Error("Пустой SQL запрос!");
+    if(!db.isConnected){
+        params.error = "Нет подключения к базе данных!";
+        
+        res.render('pages/search-results', params);
         return;
     }
+
+    const query = "SELECT * FROM `products` WHERE product_title LIKE '%"+queryStr+"%' OR product_description LIKE '%"+queryStr+"%'";
     
-    res.redirect('/');
+    db.getAll(query, [], function(searchFields){
+
+        if(searchFields.error){
+            params.error = searchFields.error;
+            res.render('pages/search-results', params);
+
+            return;
+        }
+
+        if(!searchFields[0]){
+            params.notFound = true;
+            res.render('pages/search-results', params);
+
+            return;
+        }
+
+        params.serverResponse = searchFields;
+
+        res.render('pages/search-results', params);
+    });
 });
 
 
