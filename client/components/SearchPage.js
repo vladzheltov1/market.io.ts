@@ -4,7 +4,7 @@ class SearchPage extends React.Component{
 
         this.state = {
             value: "",
-            suggestions: ["что-то 1", "что-то 2"]
+            suggestions: []
         }
 
         this.listSuggest = this.state.suggestions.map((listItem) =>
@@ -12,6 +12,15 @@ class SearchPage extends React.Component{
         );
 
         this.handleChange = this.handleChange.bind(this);
+        this.handlePress = this.handlePress.bind(this);
+    }
+
+    componentDidMount(){
+        fetch('/fetch/data/product/'+this.state.value)
+            .then(result => this.setState({ suggestions: result }))
+            .catch(e => {
+              console.log(e);
+            });
     }
 
     handleChange(event){
@@ -24,8 +33,23 @@ class SearchPage extends React.Component{
             }
         });
     }
+    handlePress(event){
+        if(event.key === "Enter"){
+            window.location.replace('/search/'+this.state.value);
+        }
+    }
 
     render(){
+
+        // if(this.state.value !== ""){
+        //     const suggest = fetch('/fetch/data/product/'+this.state.value);
+
+        //     if(suggest.ok){
+        //         console.log('suggest ', suggest.json());
+        //     }
+        // }
+
+
         return (
             <div className="index-search">
                 <div className="h1 index-title">Market.io</div>
@@ -35,6 +59,7 @@ class SearchPage extends React.Component{
                         type="text" 
                         className="form-input index-search-input" 
                         onChange={this.handleChange}
+                        onKeyPress={this.handlePress}
                         value={this.state.value}
                     />
                     {

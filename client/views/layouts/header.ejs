@@ -19,13 +19,29 @@
     <!-- Local scripts -->
     <script src="/client/source/js/script_client.js"></script>
 
-    <script src="/client/components/Header.js"></script>
+    <script type="text/babel" src="/client/components/Header.js"></script>
+
+    <script>
+        <% if(cookies.user !== undefined){ %>
+        const user = <%-JSON.stringify(cookies.user)%>;
+        <% } else { %>
+        const user = undefined;
+        <% } %>
+        const active = '<%= navActive %>';
+    </script>
+
+    <script type="text/babel"> 
+        ReactDOM.render(<Header active={active} userData={user}/>, document.querySelector('#header'));
+    </script>
 
     <script>
         $(document).ready(function(){
-            // Добавление класса active-header элементу в header, чтобы он подсвечивался активным.
-            const current = '<%= navActive %>';
-            if(current !== "") document.querySelector('.'+current).firstElementChild.classList.add('active-header');
+            if(active !== "") document.querySelector('.'+active).firstElementChild.classList.add('active-header');
+            $(document.querySelector('input')).focus();
+        });
+
+        $(document).on("keydown", () => {
+            $(document.querySelector('input')).focus();
         });
     </script>
 
@@ -45,8 +61,8 @@
 </head>
 <body>
     
-<header>
-    <div class="header-top-title"><a href="/">Market.io</a></div>
+<header id="header">
+    <!-- <div class="header-top-title"><a href="/">Market.io</a></div>
     <div class="header-hav">
         <div class="header-item index"><a href="/"><i class="icon icon-home"></i>Главная</a></div>
         <div class="header-item shop"><a href="/shop"><i class="icon icon-shop"></i>Магазин</a></div>
@@ -56,25 +72,25 @@
                 Личный кабинет
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <% if (cookies.user !== undefined) { %>
+                < % if (cookies.user !== undefined) { %>
                     <li>
-                        <a class="dropdown-item" href="/profile/<%= cookies.user.id %>">
-                            <i class="icon icon-user-dark"></i><%= cookies.user.user_firstname %> <%= cookies.user.user_lastname %>
+                        <a class="dropdown-item" href="/profile/< %= cookies.user.id %>">
+                            <i class="icon icon-user-dark"></i>< %= cookies.user.user_firstname %> < %= cookies.user.user_lastname %>
                         </a>
                     </li>
                     <li><hr class="dropdown-divider"></li>
-                    <% if (cookies.user.user_role == 2) { %>
+                    < % if (cookies.user.user_role == 2) { %>
                         <li><a class="dropdown-item" href="/admin"><i class="icon icon-settings"></i>Админ панель</a></li>
-                    <% } %>
+                    < % } %>
                     <li><a class="dropdown-item" href="/cart"><i class="icon icon-bag"></i>Корзина</a></li>
                     <li><a class="dropdown-item" href="/logout"><i class="icon icon-logout"></i>Выход</a></li>
-                <% } else { %>
+                < % } else { %>
                 <li><a class="dropdown-item" href="/login"><i class="icon icon-login"></i>Вход</a></li>
                 <li><a class="dropdown-item" href="/signup"><i class="icon icon-userAdd"></i>Регистрация</a></li>
-                <% } %>
+                < % } %>
             </ul>
         </div>
-    </div>
+    </div> -->
 </header>
 
 <noscript>

@@ -34,7 +34,7 @@
 .index-search-input{
     padding: 10px 20px 10px 45px;
     font-size: 18px;
-    border-radius: 30px;
+    border-radius: 20px;
     transition-duration: 0s !important;
 }
 .index-search-input:hover,
@@ -81,8 +81,8 @@
 }
 
 .search-reatime-result-link:last-child{
-    border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
     border-bottom-color: var(--m-border-active);
 }
 

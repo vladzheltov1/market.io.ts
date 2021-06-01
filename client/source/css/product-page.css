@@ -117,7 +117,7 @@
 .review-user-logo{
     width: 50px;
     height: 50px;
-    background-image: url(/frontend/source/img/user-default-logo.png);
+    background-image: url(/client/source/img/user-default-logo.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;

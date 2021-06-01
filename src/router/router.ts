@@ -1,6 +1,6 @@
 import { pool } from "../database/connect";
-import { db } from "../database/query";
 import { RouterServer } from "../helper/create_router";
+import { searchData } from "./search";
 
 /* ------------------------------------------------------------------ */
 
@@ -218,50 +218,7 @@ RouterServer.get('/logout', (req, res) => {
 
 
 // Search logic
-RouterServer.get('/search/:query?', (req, res) => {
-    const queryStr = req.params.query.trim();
-
-    const params = {
-        title: "Результаты поиска - Market.io",
-        navActive: "",
-        cookies: req.cookies,
-        notFound: false,
-        error: "",
-        query: queryStr,
-        serverResponse: []
-    }
-
-    if(!queryStr) throw new Error("Пустой SQL запрос!");
-    if(!db.isConnected){
-        params.error = "Нет подключения к базе данных!";
-        
-        res.render('pages/search-results', params);
-        return;
-    }
-
-    const query = "SELECT * FROM `products` WHERE product_title LIKE '%"+queryStr+"%' OR product_description LIKE '%"+queryStr+"%'";
-    
-    db.getAll(query, [], function(searchFields){
-
-        if(searchFields.error){
-            params.error = searchFields.error;
-            res.render('pages/search-results', params);
-
-            return;
-        }
-
-        if(!searchFields[0]){
-            params.notFound = true;
-            res.render('pages/search-results', params);
-
-            return;
-        }
-
-        params.serverResponse = searchFields;
-
-        res.render('pages/search-results', params);
-    });
-});
+RouterServer.get('/search/:query?', searchData);
 
 
 // 404 page

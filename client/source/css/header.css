@@ -1,7 +1,9 @@
 header{
     width: 100%;
     background: var(--m-black);
+}
 
+header > div{
     display: flex;
     flex-direction: column;
     justify-content: center;
