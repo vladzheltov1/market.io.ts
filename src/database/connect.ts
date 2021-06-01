@@ -1,12 +1,11 @@
+import { db_config } from "../configs/database";
 import { dbErrors } from "../list/db_errors";
-import { utils } from "../script/utils";
 
 const mysql = require('mysql2');
-const dbConfig = utils.json(require('../configs/database.json'));
 
 /* ------------------------------------------------------------------ */
 
-export const pool = mysql.createPool(dbConfig);
+export const pool = mysql.createPool(db_config);
 
 if(!pool) console.error(dbErrors.CANTCONNECT);
 

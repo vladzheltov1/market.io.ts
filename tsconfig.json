@@ -3,5 +3,8 @@
       "esModuleInterop": true,
       "outDir": "build",
       "baseUrl": "."
-    }
+    },
+    "exclude": [
+      "node_modules"
+    ]
 }

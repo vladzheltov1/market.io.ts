@@ -5,7 +5,7 @@
     <form action="/api/user/signin" method="POST">
         <p class="form-p">
             <label for="login" class="form-lable">Логин:</label>
-            <input type="text" id="login" name="login" class="form-input" required>
+            <input type="text" id="login" name="login" class="form-input" autocomplete="username" required>
         </p>
         <p class="form-p">
             <label for="pass" class="form-lable">Пароль:</label>
@@ -44,8 +44,6 @@
 
             request.addEventListener('load', function(){
                 let serverData = JSON.parse(request.response);
-
-                console.log(serverData);
 
                 if(serverData.status !== 200) document.querySelector('.form-error').innerHTML = serverData.error;
                 else{

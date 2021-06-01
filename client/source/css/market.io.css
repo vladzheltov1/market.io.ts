@@ -288,43 +288,43 @@
         object-position: center;
     }
     .icon-home{
-        background: url(/frontend/source/icon/home.svg);
+        background: url(/client/source/icon/home.svg);
     }
     .icon-shop{
-        background: url(/frontend/source/icon/shopping-cart.svg);
+        background: url(/client/source/icon/shopping-cart.svg);
     }
     .icon-user{
-        background: url(/frontend/source/icon/user.svg);
+        background: url(/client/source/icon/user.svg);
     }
     .icon-user-dark{
-        background: url(/frontend/source/icon/user-dark.svg);
+        background: url(/client/source/icon/user-dark.svg);
     }
     .icon-key{
-        background: url(/frontend/source/icon/key.svg);
+        background: url(/client/source/icon/key.svg);
     }
     .icon-userAdd{
-        background: url(/frontend/source/icon/user-plus.svg);
+        background: url(/client/source/icon/user-plus.svg);
     }
     .icon-star{
-        background: url(/frontend/source/icon/star.svg);
+        background: url(/client/source/icon/star.svg);
     }
     .icon-star-filled{
-        background: url(/frontend/source/icon/star-filled.svg);
+        background: url(/client/source/icon/star-filled.svg);
     }
     .icon-search{
-        background: url(/frontend/source/icon/search.svg);
+        background: url(/client/source/icon/search.svg);
     }
     .icon-login{
-        background: url(/frontend/source/icon/log-in.svg);
+        background: url(/client/source/icon/log-in.svg);
     }
     .icon-logout{
-        background: url(/frontend/source/icon/log-out.svg);
+        background: url(/client/source/icon/log-out.svg);
     }
     .icon-bag{
-        background: url(/frontend/source/icon/bag-outline.svg);
+        background: url(/client/source/icon/bag-outline.svg);
     }
     .icon-settings{
-        background: url(/frontend/source/icon/settings.svg);
+        background: url(/client/source/icon/settings.svg);
     }
 
 /* Staff */

@@ -16,7 +16,7 @@ var IP = process.env.IP || "localhost";
 /* ----------- */
 /* Настройки сервера */
 APP.set("view engine", "ejs");
-APP.use("/frontend/source", express.static(__dirname + '/../client/source'));
+APP.use("/client/", express.static(__dirname + '/../client/'));
 APP.set("views", __dirname + "/../client/views");
 APP.use(cookieParser());
 APP.use(router);

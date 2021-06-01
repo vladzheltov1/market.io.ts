@@ -1,4 +1,4 @@
-{
+export const db_config = {
     "user": "root",
     "password": "root",
     "host": "localhost",
