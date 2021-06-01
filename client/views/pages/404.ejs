@@ -1,0 +1,29 @@
+<%- include('../layouts/header') %>
+
+<style>
+    .wrapper-nf{
+        max-width: 800px;
+        display: flex;
+
+        height: calc(100vh / 2);
+
+        justify-content: center;
+        align-items: center;
+
+        font-size: 36px;
+    }
+    .nf-code{
+        font-weight: 600;
+    }
+    .nf-slash{
+        margin: 0 5px;
+    }
+</style>
+
+<div class="wrapper wrapper-nf">
+    <div class="nf-code">404</div>
+    <div class="nf-slash">|</div>
+    <div class="nf-text">Not Found</div>
+</div>
+
+<%- include("../layouts/bottom") %> 
