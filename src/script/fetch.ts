@@ -1,13 +1,22 @@
 import { RouterServer } from "../helper/create_router";
-import { Category } from "../list/product_categories";
+import { Category, getName } from "../list/product_categories";
 import { fetchData } from "./fetch_script";
 
-RouterServer.get('/data/:type/:query', (req, res) => {
+const bodyParser = require('body-parser');
+const jsonParser = bodyParser.json();
+
+RouterServer.post('/fetch/data/:type/', jsonParser, (req, res) => {
     const type = req.params.type;
-    const query = req.params.query;
+    const query = req.body.query;
 
     fetchData(query, type, (data) => {
-        return res.json(Category[data[0].product_category]);
+        if(data.error){
+            return res.json({error: data.error, status: 400});
+        }
+        if(!data){
+            return;
+        }
+        return res.json({response: getName(Category[data.product_category]), status: 200});
     });
 });
 

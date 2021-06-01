@@ -1,5 +1,5 @@
 export enum Category{
-    shirt,
+    shirts,
     pants,
     hoody,
     boots,
@@ -8,9 +8,9 @@ export enum Category{
 /**
  * @param category // элементы из enum Category
  */
-const getName = (category) => {
+export const getName = (category) => {
     switch(category){
-        case Category.shirt: return ["футболка", "майка"];
+        case Category.shirts: return ["футболка", "майка"];
         case Category.pants: return ["штаны", "спортивные штаны", "брюки", "джинсы"];
         case Category.hoody: return ["худи", "кофта", "толстовка", "свитер"];
         case Category.boots: return ["ботинки", "туфли", "кроссовки"];

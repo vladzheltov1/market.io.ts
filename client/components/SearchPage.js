@@ -3,30 +3,47 @@ class SearchPage extends React.Component{
         super(props);
 
         this.state = {
-            value: "",
-            suggestions: []
+            value: ""
         }
 
-        this.listSuggest = this.state.suggestions.map((listItem) =>
-            <a href={"/search/" + listItem} className="search-reatime-result-link" key={this.state.suggestions.indexOf(listItem)}>{listItem}</a>
-        );
+        this.suggestions = [];
 
         this.handleChange = this.handleChange.bind(this);
         this.handlePress = this.handlePress.bind(this);
+        this.changeList = this.changeList.bind(this);
     }
 
-    componentDidMount(){
-        fetch('/fetch/data/product/'+this.state.value)
-            .then(result => this.setState({ suggestions: result }))
-            .catch(e => {
-              console.log(e);
-            });
+    changeList(){
+        this.listSuggest = this.suggestions.map((listItem) =>
+            <a href={"/search/" + listItem} className="search-reatime-result-link" key={this.suggestions.indexOf(listItem)}>{listItem}</a>
+        );
     }
 
     handleChange(event){
         this.setState({value: event.target.value}, () => {
             if(this.state.value.length > 0){    
                 document.querySelector('.index-search-input').classList.add('input-typing');
+
+                if(this.state.value.length > 2){
+                    const data = JSON.stringify({query: this.state.value});
+        
+                    let request = new XMLHttpRequest();
+        
+                    request.open('POST', '/fetch/data/product', true);
+                    request.setRequestHeader("Content-Type", "application/json");
+        
+                    request.addEventListener('load', function(){
+                        let serverData = JSON.parse(request.response);
+        
+                        if(serverData.status !== 200) document.querySelector('.form-error').innerHTML = serverData.error;
+                        else{  
+                            () => this.suggestions = serverData.response;
+                            () => this.changeList();
+                        }
+                    });
+                    request.send(data);
+                }
+
             }
             else{
                 document.querySelector('.index-search-input').classList.remove('input-typing');
@@ -40,16 +57,7 @@ class SearchPage extends React.Component{
     }
 
     render(){
-
-        // if(this.state.value !== ""){
-        //     const suggest = fetch('/fetch/data/product/'+this.state.value);
-
-        //     if(suggest.ok){
-        //         console.log('suggest ', suggest.json());
-        //     }
-        // }
-
-
+        console.log("render()");
         return (
             <div className="index-search">
                 <div className="h1 index-title">Market.io</div>
@@ -75,6 +83,7 @@ class SearchPage extends React.Component{
                         ''
                     }
                 </div>
+                <div className="form-error"></div>
             </div>
         )
     }

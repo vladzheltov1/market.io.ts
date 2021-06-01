@@ -1,8 +1,8 @@
 import { User } from '../classes/User';
-import { dbErrors } from "../list/db_errors";
-import { formErrors } from '../list/form_errors';
 import { db } from "../database/query";
 import { RouterServer } from "../helper/create_router";
+import { dbErrors } from "../list/db_errors";
+import { formErrors } from '../list/form_errors';
 
 const bodyParser = require('body-parser');
 const hashPass = require('password-hash');

@@ -30,7 +30,7 @@ APP.set("views", __dirname + "/../client/views");
 APP.use(cookieParser());
 APP.use(router);
 APP.use('/api/user/', auth);
-APP.use('/fetch', fetcher);
+APP.use(fetcher);
 /* ----------- */
 
 
