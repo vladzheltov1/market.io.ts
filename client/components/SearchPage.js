@@ -5,7 +5,7 @@ class SearchPage extends React.Component{
      * @param {*} props 
      */
     constructor(props){
-        /* --- */
+        /* ------ */
         super(props);
 
         /* State object */
@@ -18,9 +18,8 @@ class SearchPage extends React.Component{
         this.handleChange = this.handleChange.bind(this);
         this.handlePress = this.handlePress.bind(this);
 
-        /* Creating and setting the autocomplete list */
+        /* Autocomplete list */
         this.listSuggest = [];
-        this.setList(this.state.suggestions);
     }
 
     /**
@@ -34,33 +33,29 @@ class SearchPage extends React.Component{
     }
 
     /**
-     * Works out when the component is rerendered
-     */
-    componentDidUpdate = () => {
-        this.setList(this.state.suggestions);
-    }
-
-    /**
      * Works out when the search input is typed
      * @param {*} event 
      */
     handleChange = (event) => {
         this.setState({value: event.target.value}, () => {
 
-            /* Makeing the autocomplete list visible */
+            /* Making the autocomplete list visible */
             if(this.state.value.length > 0){    
-                document.querySelector('.index-search-input').classList.add('input-typing');
-                return;
-            }
+                $('.index-search-input').addClass('input-typing');
 
-            /* Getting the autocomplete list from the server */
-            if(this.state.value.length > 2){
-                this.getData();
-                return;
+                /* Getting the autocomplete list from the server */
+                if(this.state.value.length > 2){
+                    this.getData();
+                }
+                else{
+                    /* Cleaning the suggestion list */
+                    this.setState({suggestions: []});
+                }
             }
-
-            /* Makeing the autocomplete list invisible */
-            document.querySelector('.index-search-input').classList.remove('input-typing');
+            else{
+                /* Making the autocomplete list invisible */
+                $('.index-search-input').removeClass('input-typing');
+            }
         });
     }
 
@@ -68,22 +63,27 @@ class SearchPage extends React.Component{
      * Get autocomplete list from the server
      */
     getData = () => {
+
+        /* Preparing data for server */
         const data = JSON.stringify({query: this.state.value});
+
+        /* Processing data */
         const load = () => {
             let serverData = JSON.parse(request.response);
 
-            if(serverData.status !== 200){
-                data !== null ? console.log(serverData.error) : "";
+            if(serverData.response == null){
+                this.setState({suggestions: []});
                 return;
             }
-            console.log("data", serverData);
-            
-            // Тут ошибка
-            this.setState({suggestions: serverData.response}, () => {
-                console.log("state is ", this.state.suggestions);
-            }).bind(this);
+
+            if(serverData.error){
+                console.log(serverData.error);
+                return;
+            }
+            this.setState({suggestions: serverData.response});
         }
         
+        /* Sending data to the server */
         let request = new XMLHttpRequest();
 
         request.open('POST', '/fetch/data/product', true);
@@ -108,7 +108,7 @@ class SearchPage extends React.Component{
      */
     render(){
 
-        console.log("render()", this.state.suggestions);
+        this.setList(this.state.suggestions);
 
         return (
             <div className="index-search">

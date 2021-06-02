@@ -1,17 +1,9 @@
 import { db } from "../database/query";
 import { IProduct } from "../interfaces/IProduct";
+import { utils } from "../script/utils";
 
 const setInstance = (serverData: Array<IProduct>) => {
-    // const condition = (x) => x.id && x.product_title
-    //                               && x.product_description
-    //                               && x.product_category
-    //                               && x.product_price
-    //                               && x.product_bought
-    //                               && x.product_available
-    //                               && x.product_photo;
-
-
-    return JSON.parse(JSON.stringify(serverData));
+    return utils.json(serverData);
 }
 
 export const fetchData = (query, type, callback) => {

@@ -67,8 +67,6 @@
     border: solid 1px var(--m-border-active);
     border-bottom-color: var(--m-border);
     border-top: none;
-    
-    transition-duration: .3s;
 }
 
 .search-reatime-result-link:hover{

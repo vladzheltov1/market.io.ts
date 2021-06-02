@@ -6,12 +6,12 @@ const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 
 RouterServer.post('/fetch/data/:type/', jsonParser, (req, res) => {
-    const type = req.params.type;
-    const query = req.body.query;
+    const type = req.params.type.trim();
+    const query = req.body.query.trim();
 
     fetchData(query, type, (data) => {
         if(!data || data == null){
-            return;
+            return res.json({response: null, status: 200});
         }
         if(data.error){
             return res.json({error: data.error, status: 400});
