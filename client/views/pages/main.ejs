@@ -12,10 +12,16 @@
 
 </div>
 
+<script>
+    $(document).on("keydown", () => {
+        $(document.querySelector('input')).focus();
+    });
+</script>
+
 <script type="text/babel" src="/client/components/SearchPage.js"></script>
 
 <script type="text/babel">
-    ReactDOM.render(<SearchPage/>, document.querySelector('.index-wrapper'));
+    ReactDOM.render((<SearchPage/>), document.querySelector('.index-wrapper'));
 </script>
 
 <%- include("../layouts/bottom") %> 

@@ -56,7 +56,6 @@
     width: 100%;
 }
 
-
 .search-reatime-result-link{
     display: block;
     width: 100%;
@@ -72,10 +71,6 @@
 .search-reatime-result-link:hover{
     background: #f0f0f0;
     color: #000;
-}
-
-.search-realtime-result-container:hover{
-    border-color: var(--m-border-active);
 }
 
 .search-reatime-result-link:last-child{

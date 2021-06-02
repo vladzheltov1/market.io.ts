@@ -15,6 +15,7 @@
     <!-- React -->
     <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-router-dom/umd/react-router-dom.min.js"></script>
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
     <!-- Local scripts -->
     <script src="/client/source/js/script_client.js"></script>
@@ -36,11 +37,6 @@
 
     <script>
         $(document).ready(function(){
-            if(active !== "") document.querySelector('.'+active).firstElementChild.classList.add('active-header');
-            $(document.querySelector('input')).focus();
-        });
-
-        $(document).on("keydown", () => {
             $(document.querySelector('input')).focus();
         });
     </script>

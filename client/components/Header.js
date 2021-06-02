@@ -5,6 +5,12 @@ class Header extends React.Component{
         this.state = { }
     }
 
+    componentDidMount(){
+        if(this.props.active){
+            $('.'+this.props.active).children().addClass('active-header');
+        }
+    }
+
     render(){
         return(
             <div>
@@ -18,8 +24,7 @@ class Header extends React.Component{
                             Личный кабинет
                         </a>
                         <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                            {
-                                this.props.userData != undefined &&
+                            {this.props.userData != undefined && (
                                 
                                 <div>
                                     <li>
@@ -32,25 +37,27 @@ class Header extends React.Component{
                                         <hr className="dropdown-divider"/>
                                     </li>
                                 </div>
-                            }
+                            )}
 
-                            {
-                                this.props.userData != undefined && this.props.userData.user_role == 2 && 
+                            {this.props.userData != undefined && this.props.userData.user_role == 2 && (
                                 <li><a className="dropdown-item" href="/admin"><i className="icon icon-settings"></i>Админ панель</a></li>
-                            }
+                            )}
 
-                            {
-                                this.props.userData != undefined
+                            {this.props.userData != undefined
                                 ?
+                                (
                                 <div>
                                     <li><a className="dropdown-item" href="/cart"><i className="icon icon-bag"></i>Корзина</a></li>
                                     <li><a className="dropdown-item" href="/logout"><i className="icon icon-logout"></i>Выход</a></li>
                                 </div>
+                                )
                                 :
+                                (
                                 <div>
                                     <li><a className="dropdown-item" href="/login"><i className="icon icon-login"></i>Вход</a></li>
                                     <li><a className="dropdown-item" href="/signup"><i className="icon icon-userAdd"></i>Регистрация</a></li>
                                 </div>
+                                )
                             }
                         </ul>
                     </div>

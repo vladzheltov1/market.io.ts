@@ -1,142 +1,112 @@
-class SearchPage extends React.Component{
+const SearchPage = () => {
+
+
+    /* Hooks */
+    const [value, setValue] = React.useState('');
+    const [suggestions, setSuggestions] = React.useState([]);
+    const [fetching, setFetching] = React.useState(false);
+    const [classList, setClassList] = React.useState(['form-input', 'index-search-input']);
+
+    /* Make a request to the server */
+    const getData = React.useCallback(() => {
+        if(!fetching && value != ""){
+            const data = JSON.stringify({ query: value });
+
+            const load = () => {
+                let serverData = JSON.parse(request.response);
+
+                if (serverData.error) {
+                    console.error(serverData.error);
+                    return;
+                }
+
+                setSuggestions(serverData.response);
+            }
+
+            
+            setFetching(true);
+            
+            let request = new XMLHttpRequest();
+            request.open('POST', '/fetch/data/product', true);
+            request.setRequestHeader('Content-Type', 'application/json');
+            request.addEventListener('load', load);
+            request.send(data);
+
+            setFetching(false);
+        }
+    }, [setSuggestions, setFetching]);
+
+    React.useEffect(() => {
     
-    /**
-     * Main constructor
-     * @param {*} props 
-     */
-    constructor(props){
-        /* ------ */
-        super(props);
+    }, [value]);
+    
+    
+    /* Works out when the text is typed */
+    const handleChange = React.useCallback((event) => {
+        setValue(event.target.value);
 
-        /* State object */
-        this.state = {
-            value: "",
-            suggestions: []
+        console.log('value 2', value);
+
+        if(value.length > 0){
+            setClassList(['form-input', 'index-search-input', 'input-typing']);
+
+            if (value.length > 2) {
+                getData();
+            }
+
+            return;
         }
 
-        /* Binding functions to THIS */
-        this.handleChange = this.handleChange.bind(this);
-        this.handlePress = this.handlePress.bind(this);
+        setClassList(['form-input', 'index-search-input']);
 
-        /* Autocomplete list */
-        this.listSuggest = [];
-    }
+    }, [getData]);
+    
 
-    /**
-     * Sets the autocomplete list
-     * @param array list 
-     */
-    setList(list){
-        this.listSuggest = list.map((listItem) =>
-            <a href={"/search/" + listItem} className="search-reatime-result-link" key={list.indexOf(listItem)}>{listItem}</a>
-        );
-    }
+    /* Redirection user to the search page when Enter is pressed */
+    const handlePress = React.useCallback((event) => {
+        // Find a way to do it differently
+        return event.key === 'Enter' ? window.location.replace('/search/' + value) : '';
+        // ---------------------------- //
+    }, []);
 
-    /**
-     * Works out when the search input is typed
-     * @param {*} event 
-     */
-    handleChange = (event) => {
-        this.setState({value: event.target.value}, () => {
+    console.log('value 3', value);
 
-            /* Making the autocomplete list visible */
-            if(this.state.value.length > 0){    
-                $('.index-search-input').addClass('input-typing');
-
-                /* Getting the autocomplete list from the server */
-                if(this.state.value.length > 2){
-                    this.getData();
-                }
-                else{
-                    /* Cleaning the suggestion list */
-                    this.setState({suggestions: []});
-                }
-            }
-            else{
-                /* Making the autocomplete list invisible */
-                $('.index-search-input').removeClass('input-typing');
-            }
-        });
-    }
-
-    /**
-     * Get autocomplete list from the server
-     */
-    getData = () => {
-
-        /* Preparing data for server */
-        const data = JSON.stringify({query: this.state.value});
-
-        /* Processing data */
-        const load = () => {
-            let serverData = JSON.parse(request.response);
-
-            if(serverData.response === null){
-                this.setState({suggestions: []});
-                return;
-            }
-
-            if(serverData.error){
-                console.log(serverData.error);
-                return;
-            }
-            this.setState({suggestions: serverData.response});
-        }
-        
-        /* Sending data to the server */
-        let request = new XMLHttpRequest();
-
-        request.open('POST', '/fetch/data/product', true);
-        request.setRequestHeader("Content-Type", "application/json");
-        request.addEventListener('load', load);
-        request.send(data);
-    }
-
-    /**
-     * Redirect to search page when ENTER is pressed
-     * @param {*} event 
-     */
-    handlePress(event){
-        if(event.key === "Enter"){
-            window.location.replace('/search/'+this.state.value);
-        }
-    }
-
-    /**
-     * Render component
-     * @returns JSX
-     */
-    render(){
-
-        this.setList(this.state.suggestions);
-
-        return (
-            <div className="index-search">
-                <div className="h1 index-title">Market.io</div>
-                <div className="index-input-block">
-                    <div className="icon icon-search index-icon"></div>
-                    <input 
-                        type="text" 
-                        className="form-input index-search-input" 
-                        onChange={this.handleChange}
-                        onKeyPress={this.handlePress}
-                        value={this.state.value}
-                    />
-                    {
-                        this.state.value.length > 0 &&
-                        
-                        <div className="search-realtime-result">
-                            <div className="search-realtime-result-container">
-                                <a  href={"/search/" + this.state.value} 
-                                    className="search-reatime-result-link">
-                                    {this.state.value}
+    /* Render component */
+    return (
+        <div className="index-search">
+            <div className="h1 index-title">Market.io</div>
+            <div className="index-input-block">
+                <div className="icon icon-search index-icon"></div>
+                <input
+                    type="text"
+                    className={classList.join(' ')}
+                    onChange={handleChange}
+                    onKeyPress={handlePress}
+                    value={value}
+                />
+                {value.length > 0 && (
+                    <div className="search-realtime-result">
+                        <div className="search-realtime-result-container">
+                        <a
+                            href={'/search/' + value}
+                            className="search-realtime-result-link"
+                        >
+                            {value}
+                        </a>
+                        {suggestions &&
+                            suggestions.map((listItem) => (
+                                <a
+                                    href={'/search/' + listItem}
+                                    className="search-realtime-result-link"
+                                    key={suggestions.indexOf(listItem)}
+                                >
+                                    {listItem}
                                 </a>
-                                {this.listSuggest}
-                            </div>
-                         </div>
-                    }
-                </div>
+                            ))}
+                        </div>
+                    </div>
+                )}
             </div>
-        );
-    }
+        </div>
+    )
 }

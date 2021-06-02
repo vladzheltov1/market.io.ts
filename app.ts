@@ -1,6 +1,7 @@
 /* Модули node */
 const express      = require('express');
 const cookieParser = require("cookie-parser");
+const eslint       = require('eslint');
 /* ----------- */
 
 
