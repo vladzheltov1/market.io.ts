@@ -71,7 +71,7 @@ class SearchPage extends React.Component{
         const load = () => {
             let serverData = JSON.parse(request.response);
 
-            if(serverData.response == null){
+            if(serverData.response === null){
                 this.setState({suggestions: []});
                 return;
             }

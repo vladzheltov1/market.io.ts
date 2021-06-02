@@ -1,5 +1,7 @@
 import { db } from "../database/query";
+import { dbErrors } from "../list/db_errors";
 
+/* ------------------------------------------------------------------ */
 
 export const searchData = (req, res) => {
     const queryStr = req.params.query.trim();
@@ -14,9 +16,9 @@ export const searchData = (req, res) => {
         serverResponse: []
     }
 
-    if(!queryStr) throw new Error("Пустой SQL запрос!");
+    if(!queryStr) throw new Error(dbErrors.EMPTYQUERY);
     if(!db.isConnected){
-        params.error = "Нет подключения к базе данных!";
+        params.error = dbErrors.ECONNREFUSED;
         
         res.render('pages/search-results', params);
         return;

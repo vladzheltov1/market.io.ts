@@ -6,13 +6,13 @@ export enum Category{
 }
 
 /**
- * @param category // элементы из enum Category
+ * @param category
  */
 export const getName = (category) => {
     switch(category){
-        case Category.shirts: return ["футболка", "майка"];
-        case Category.pants: return ["штаны", "спортивные штаны", "брюки", "джинсы"];
-        case Category.hoody: return ["худи", "кофта", "толстовка", "свитер"];
-        case Category.boots: return ["ботинки", "туфли", "кроссовки"];
+        case Category.shirts: return ["футболка", "майка", "блузка"];
+        case Category.pants:  return ["штаны", "спортивные штаны", "брюки", "джинсы"];
+        case Category.hoody:  return ["худи", "кофта", "толстовка", "свитер"];
+        case Category.boots:  return ["ботинки", "туфли", "кроссовки"];
     }
 }

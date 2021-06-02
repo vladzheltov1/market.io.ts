@@ -10,13 +10,28 @@ RouterServer.post('/fetch/data/:type/', jsonParser, (req, res) => {
     const query = req.body.query.trim();
 
     fetchData(query, type, (data) => {
-        if(!data || data == null){
-            return res.json({response: null, status: 200});
+        if(data.response === null){
+            return res.json({response: null, status: 404});
         }
+
         if(data.error){
             return res.json({error: data.error, status: 400});
         }
-        return res.json({response: getName(Category[data.product_category]), status: 200});
+
+        const arr = [];
+        const likely = getName(Category[data[0].product_category]);
+
+        for(let i = 0; i < likely.length; i++){
+            arr.push(likely[i]);
+        }
+
+        for(let i = 0; i < data.length; i++){
+            if(i == 5) break;
+            
+            arr.push(data[i].product_title.toLowerCase());
+        }
+
+        return res.json({ response: arr, status: 200 });
     });
 });
 
