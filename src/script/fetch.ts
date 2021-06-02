@@ -10,11 +10,11 @@ RouterServer.post('/fetch/data/:type/', jsonParser, (req, res) => {
     const query = req.body.query;
 
     fetchData(query, type, (data) => {
+        if(!data || data == null){
+            return;
+        }
         if(data.error){
             return res.json({error: data.error, status: 400});
-        }
-        if(!data){
-            return;
         }
         return res.json({response: getName(Category[data.product_category]), status: 200});
     });
