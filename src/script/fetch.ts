@@ -27,8 +27,11 @@ RouterServer.post('/fetch/data/:type/', jsonParser, (req, res) => {
 
         for(let i = 0; i < data.length; i++){
             if(i == 5) break;
-            
-            arr.push(data[i].product_title.toLowerCase());
+
+            const title = data[i].product_title.toLowerCase();
+            const link = "/product/"+data[i].id;
+
+            arr.push({title, link});
         }
 
         return res.json({ response: arr, status: 200 });

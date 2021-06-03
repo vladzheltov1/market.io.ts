@@ -8,7 +8,7 @@ export const searchData = (req, res) => {
 
     const params = {
         title: "Результаты поиска - Market.io",
-        navActive: "",
+        navActive: "shop",
         cookies: req.cookies,
         notFound: false,
         error: "",

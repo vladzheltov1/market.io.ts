@@ -7,7 +7,7 @@ import { searchData } from "./search";
 // Index page
 RouterServer.get('/', (req, res) => {
     const params = {
-        title: "Главная страница - Market.io",
+        title: "Поиск - Market.io",
         navActive: "index",
         cookies: req.cookies
     }
