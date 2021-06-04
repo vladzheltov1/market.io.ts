@@ -1,10 +1,10 @@
-import { db } from "../database/query";
+import { database } from "../database/query";
 import { utils } from "./utils";
 
 export const fetchData = (query, type, callback) => {
     switch(type){
         case "product":
-            db.getAll("SELECT * FROM products WHERE product_title LIKE '%"+ query +"%'", [], (result) => {
+            database.getAll("SELECT * FROM products WHERE product_title LIKE '%"+ query +"%'", [], (result) => {
                 if(result === null){
                     callback({response: null, status: 404});
                     return

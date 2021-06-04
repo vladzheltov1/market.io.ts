@@ -1,5 +1,5 @@
-import { db } from "../database/query";
-import { dbErrors } from "../list/db_errors";
+import { database } from "../../database/query";
+import { dbErrors } from "../../list/db_errors";
 
 /* ------------------------------------------------------------------ */
 
@@ -17,7 +17,7 @@ export const searchData = (req, res) => {
     }
 
     if(!queryStr) throw new Error(dbErrors.EMPTYQUERY);
-    if(!db.isConnected){
+    if(!database.isConnected){
         params.error = dbErrors.ECONNREFUSED;
         
         res.render('pages/search-results', params);
@@ -26,7 +26,7 @@ export const searchData = (req, res) => {
 
     const query = "SELECT * FROM `products` WHERE product_title LIKE '%"+queryStr+"%' OR product_description LIKE '%"+queryStr+"%'";
     
-    db.getAll(query, [], function(searchFields){
+    database.getAll(query, [], function(searchFields){
 
         if(searchFields === null){
             params.notFound = true;

@@ -1,5 +1,5 @@
-import { pool } from "./connect";
 import { dbErrors } from "../list/db_errors";
+import { pool } from "./connect";
 
 class Database{
     /* 
@@ -67,6 +67,13 @@ class Database{
         });
     };
 
+    insert = (query, params = [], callback) => {
+        /* Пустой запрос */
+        if(!query) throw new Error(dbErrors.EMPTYQUERY);
+
+        pool.query("INSERT INTO `users` (`user_firstname`, `user_lastname`, `user_email`, `user_login`, `user_password`, `user_joined`, `user_role`, `user_block_reason`, `user_sex`) VALUES (NULL, 'Василий', 'Пупкин', 'vasiliy', 'vasia@gmail.com', '12345678', CURRENT_DATE(), '1', NULL, '1', NULL)")
+    }
+
 }
 
-export const db = new Database();
+export const database = new Database();

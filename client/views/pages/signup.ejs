@@ -1,5 +1,7 @@
 <%- include('../layouts/header') %>
 
+<link rel="stylesheet" href="/client/source/css/form.css">
+
 <div class="wrapper form-wrapper">
     <h2>Регистрация</h2>
     <form action="/api/user/signup" method="POST">
@@ -32,5 +34,10 @@
         </p>
     </form>
 </div>
+
+<script type="text/babel" src="/client/components/SignupPage.js"></script>
+<script type="text/babel">
+    ReactDOM.render((<SignupPage/>), document.querySelector('.form-wrapper'));
+</script>
 
 <%- include("../layouts/bottom") %> 

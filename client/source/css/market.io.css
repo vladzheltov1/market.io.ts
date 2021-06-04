@@ -20,6 +20,7 @@
     --m-black: #0A0E13;
 
     --m-border: #ced4da;
+    --m-border-light: #F0F2F4;
     --m-border-active: #798da0;
 
 
@@ -326,8 +327,16 @@
     .icon-settings{
         background: url(/client/source/icon/settings.svg);
     }
+    .icon-lock{
+        background: url(/client/source/icon/lock.svg);
+    }
+    .icon-x{
+        background: url(/client/source/icon/x.svg);
+    }
 
 /* Staff */
+
+    /* Переделать margin!!! */
     .margin-5{
         height: 5px;
     }
