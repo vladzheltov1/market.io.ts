@@ -1,9 +1,6 @@
 import { database } from "../../database/query";
 
 export const getUsers = (req, res) => {
-
-    console.log("api log ", req.query);
-
     if(req.params.id){
         database.getOne("SELECT * FROM users WHERE id = ?", [req.params.id], (user) => {
             if(user == null) return res.json({});
