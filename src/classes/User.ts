@@ -6,6 +6,7 @@ export class User implements IUser{
     user_lastname;
     user_login;
     user_email;
+    user_avatar;
     user_password;
     user_joined;
     user_gender;
@@ -18,6 +19,7 @@ export class User implements IUser{
         this.user_lastname     = userObject.user_lastname;
         this.user_login        = userObject.user_login;
         this.user_email        = userObject.user_email;
+        this.user_avatar       = userObject.user_avatar;
         this.user_password     = userObject.user_password;
         this.user_joined       = userObject.user_joined;
         this.user_gender       = userObject.user_gender;

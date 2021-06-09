@@ -1,4 +1,5 @@
 import { RouterServer } from "../helper/createRouter";
+import { AdminIndex } from "./pages/admin/adminIndexPage";
 import { indexPage } from "./pages/indexPage";
 import { loginPage } from "./pages/loginPage";
 import { logoutPage } from "./pages/logoutPage";
@@ -8,7 +9,6 @@ import { profilePage } from "./pages/profilePage";
 import { searchData } from "./pages/searchPage";
 import { shopPage } from "./pages/shopPage";
 import { signupPage } from "./pages/signupPage";
-
 
 /* ------------------------------------------------------------------ */
 
@@ -20,6 +20,11 @@ RouterServer.get('/login/:error?', loginPage);
 RouterServer.get('/signup', signupPage);
 RouterServer.get('/search/:query?', searchData);
 RouterServer.get('/logout', logoutPage);
+
+/* Admin panel */
+RouterServer.get('/admin', AdminIndex);
+/* ----------- */
+
 RouterServer.get('/*', notFoundPage);
 
 /* ------------------------------------------------------------------ */

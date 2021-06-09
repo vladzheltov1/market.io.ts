@@ -5,9 +5,14 @@ export const utils = {
 }
 
 // Checking if an object is empty
-export const isEmpty = (obj) => {
-    for(let key in obj){
-        if(obj.hasOwnProperty(key)) return false;
+export const isEmpty = (element) => {
+    if(typeof element === 'object'){
+        for(let key in element){
+            if(element.hasOwnProperty(key)) return false;
+        }
+        return true;
     }
-    return true;
+    else{
+        return !!element;
+    }
 }

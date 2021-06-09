@@ -116,7 +116,7 @@
             <%for (let i = 0; i < reviews.length; i++) { %>
                 <div class="review-block">
                     <div class="user-info">
-                        <div class="review-user-logo"></div>
+                        <div class="review-user-logo"><img src="<%= reviews[i].review_author_avatar %>"></div>
                         <div class="review-user-name"><%= reviews[i].review_author_fullname %></div>
                     </div>
                     <div class="margin-10"></div>

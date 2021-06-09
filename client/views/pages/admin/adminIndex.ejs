@@ -1,0 +1,21 @@
+<%- include('../../layouts/header') %>
+
+<link rel="stylesheet" href="/client/source/css/admin.css">
+
+<div class="wrapper wrapper-admin">
+<!-- Code here -->
+</div>
+
+<script type="text/babel" src="/client/components/AdminPanel/Admin.side.js"></script>
+<script type="text/babel" src="/client/components/AdminPanel/Admin.header.js"></script>
+<script type="text/babel" src="/client/components/AdminPanel/Admin.index.js"></script>
+
+<script>
+    const user = JSON.stringify(<%=cookies.user %>);
+</script>
+
+<script type="text/babel">
+    ReactDOM.render((<AdminIndex user={user} />), document.querySelector('.wrapper-admin'));
+</script>
+
+<%- include("../../layouts/bottom") %> 

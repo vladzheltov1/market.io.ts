@@ -6,6 +6,7 @@
     box-sizing: border-box;
     font-weight: 400; /* Regular */
     font-family: var(--m-font-primary);
+    z-index: 1;
 }
 
 a:not(header a){

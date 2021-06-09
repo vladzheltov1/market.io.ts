@@ -40,7 +40,7 @@ export const loginScript = async (req, res) => {
     
 
     // This sends a request to the `api`
-    const resp = await fetch(adress+"/api/users?login="+params.login+"&token="+process.env.TOKEN);
+    const resp = await fetch(adress+"/api/users?login="+params.login+"&token="+process.env.TOKEN, {method: "get"});
     const serverData = await resp.json();
 
 
