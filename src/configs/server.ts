@@ -1,7 +1,1 @@
-export const server = {
-    IP: process.env.IP || "localhost",
-    PORT: process.env.PORT || '5000',
-    PROTOCOL: "http"
-}
-
-export const adress = server.PROTOCOL+"://"+server.IP+":"+server.PORT;
+export const adress = process.env.PROTOCOL+"://"+process.env.IP+":"+process.env.PORT;

@@ -1,9 +1,9 @@
-export const db_config = {
-    "user": "root",
-    "password": "root",
-    "host": "localhost",
-    "database": "market.io",
-    "waitForConnections": "true",
-    "connectionLimit": 10,
-    "queueLimit": 0
+export const dbConfig = {
+    user: process.env.USER,
+    password: process.env.PASS,
+    host: process.env.HOST,
+    database: process.env.DBNAME,
+    waitForConnections: "true",
+    connectionLimit: 10,
+    queueLimit: 0
 }

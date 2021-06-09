@@ -1,6 +1,12 @@
 import { database } from "../../database/query";
+import { access } from "../../script/access";
 
 export const getUsers = (req, res) => {
+
+    if(!access['api'](req.query.token)){
+        return res.status(403).json({error: "No access to API"});
+    }
+
     if(req.params.id){
         database.getOne("SELECT * FROM users WHERE id = ?", [req.params.id], (user) => {
             if(user == null) return res.json({});

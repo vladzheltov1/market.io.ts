@@ -1,4 +1,5 @@
-import { server } from "./src/configs/server";
+
+require('dotenv').config()
 
 /* Модули node */
 const express      = require('express');
@@ -21,8 +22,8 @@ const PRODUCTION: boolean = false; // изменить на true на хости
 
 /* Серверные константы (не трогать) */
 const APP  = express();
-const PORT: string = server.PORT
-const IP: string   = server.IP;
+const PORT: string = process.env.PORT;
+const IP: string   = process.env.IP;
 /* ----------- */
 
 
@@ -41,7 +42,7 @@ APP.use(router);
 /* Запуск сервера */
 try{
     // Если на хостинге IP = "localhost", нужно выкинуть ошибку в консоль
-    if(PRODUCTION && IP === "localhost") throw new Error(`Invalid global host ip: ${IP}`);
+    if(PRODUCTION && IP === "127.0.0.1") throw new Error(`Invalid global host ip: ${IP}`);
 
     APP.listen(PORT, IP, () => console.log(`Server has been started - ${IP}:${PORT}`));
 }

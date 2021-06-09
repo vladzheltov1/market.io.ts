@@ -1,6 +1,12 @@
 import { database } from "../../database/query";
+import { access } from "../../script/access";
 
 export const getProducts = (req, res) => {
+
+    if(!access['api'](req.query.token)){
+        return res.status(403).json({error: "No access to API"});
+    }
+
     if(req.params.id){
         database.getOne("SELECT * FROM products WHERE id = ?", [req.params.id], (product) => {
             if(product == null) return res.json({});
