@@ -4,8 +4,7 @@ export interface IProduct{
     product_description: string,
     product_category: string,
     product_price: number,
-    product_bought?: number,
-    product_available?: number,
-    product_photo?: string
-    
+    product_bought: number,
+    product_available: number,
+    product_photo: string
 }

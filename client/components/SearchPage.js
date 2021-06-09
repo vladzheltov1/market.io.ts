@@ -119,6 +119,10 @@ const SearchPage = () => {
     }, [value]);
 
 
+    const clearField = React.useCallback(() => {
+        setValue("");
+    }, [setValue]);
+
     /* Render component */
     return (
         <div className="index-search">
@@ -133,6 +137,9 @@ const SearchPage = () => {
                     onKeyPress={handlePress}
                     value={value}
                 />
+                {
+                    value.length > 0 && <div className="icon icon-x index-clear-icon" onClick={clearField}></div>
+                }
                 <a href={"/search/" + value} className="btn btn-red btn-search">Найти</a>
                 
                 {value.length > 0 && (

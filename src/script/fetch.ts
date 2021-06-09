@@ -1,6 +1,6 @@
-import { RouterServer } from "../helper/create_router";
-import { Category, getName } from "../list/product_categories";
-import { fetchData } from "./fetch_script";
+import { RouterServer } from "../helper/createRouter";
+import { Category, getName } from "../list/productCategories";
+import { fetchData } from "./fetchScript";
 
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();

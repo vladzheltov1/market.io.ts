@@ -8,22 +8,20 @@ export class User implements IUser{
     user_email;
     user_password;
     user_joined;
-    user_sex;
+    user_gender;
     user_role;
-    user_block_reason?;
-    user_phone?;
+    user_block_reason;
 
-    constructor(id, firstname, lastname, login, email, password, joined, sex, role, blockReason?, phone?){
-        this.id           = id;
-        this.user_firstname    = firstname;
-        this.user_lastname     = lastname;
-        this.user_login        = login;
-        this.user_email        = email;
-        this.user_password     = password;
-        this.user_joined       = joined;
-        this.user_sex          = sex;
-        this.user_role         = role; 
-        this.user_block_reason = blockReason;
-        this.user_phone        = phone;
+    constructor(userObject){
+        this.id                = userObject.id;
+        this.user_firstname    = userObject.user_firstname;
+        this.user_lastname     = userObject.user_lastname;
+        this.user_login        = userObject.user_login;
+        this.user_email        = userObject.user_email;
+        this.user_password     = userObject.user_password;
+        this.user_joined       = userObject.user_joined;
+        this.user_gender       = userObject.user_gender;
+        this.user_role         = userObject.user_role; 
+        this.user_block_reason = userObject.user_block_reason;
     }
 }

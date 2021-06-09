@@ -7,7 +7,6 @@ export interface IUser{
     user_password: string,
     user_joined: string | number,
     user_role: number,
-    user_block_reason?: string,
-    user_sex: number,
-    user_phone?: number | string | null
+    user_block_reason: string | null,
+    user_gender: number
 }

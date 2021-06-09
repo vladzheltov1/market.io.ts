@@ -1,4 +1,4 @@
-import { dbErrors } from "../list/db_errors";
+import { dbErrors } from "../list/dbErrors";
 import { pool } from "./connect";
 
 class Database{

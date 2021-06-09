@@ -1,10 +1,10 @@
 import { database } from "../../database/query";
-import { dbErrors } from "../../list/db_errors";
+import { dbErrors } from "../../list/dbErrors";
 
 /* ------------------------------------------------------------------ */
 
 export const searchData = (req, res) => {
-    const queryStr = req.params.query.trim();
+    const queryStr = req.params.query != undefined ? req.params.query.trim() : null;
 
     const params = {
         title: "Результаты поиска - Market.io",
@@ -14,6 +14,11 @@ export const searchData = (req, res) => {
         error: "",
         query: queryStr,
         serverResponse: []
+    }
+
+    if(queryStr == null){
+        params.error = "Ошибка! Пустой запрос!";
+        res.render('pages/search-results', params);
     }
 
     if(!queryStr) throw new Error(dbErrors.EMPTYQUERY);

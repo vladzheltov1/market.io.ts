@@ -11,16 +11,13 @@ export const shopPage = (req, res) => {
 
     searchParams.uri = "/shop/" + searchParams.category + "/" + searchParams.page + "/" + searchParams.priceMin + "/" + searchParams.priceMax;
 
-    var query = "";
-    var bottomBlockLimit = (searchParams.page - 1) * 15;
-    var topBlockLimit = searchParams.page * 15;
+    const bottomBlockLimit = (searchParams.page - 1) * 15;
+    const topBlockLimit = searchParams.page * 15;
 
-    if(searchParams.category !== "all"){
-        query = "SELECT * FROM products WHERE product_category = "+ searchParams.category +" LIMIT " + bottomBlockLimit + "," + topBlockLimit;
-    }
-    else{
-        query = "SELECT * FROM products LIMIT " + bottomBlockLimit + "," + topBlockLimit;
-    }
+    const query = searchParams.category !== "all" 
+        ? "SELECT * FROM products WHERE product_category = "+ searchParams.category +" LIMIT " + bottomBlockLimit + "," + topBlockLimit
+        : "SELECT * FROM products LIMIT " + bottomBlockLimit + "," + topBlockLimit;
+
 
     database.getAll(query, [], function(products){
         

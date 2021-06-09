@@ -1,14 +1,16 @@
+import { server } from "./src/configs/server";
+
 /* Модули node */
 const express      = require('express');
 const cookieParser = require("cookie-parser");
-const eslint       = require('eslint');
 /* ----------- */
 
 
 /* Мои модули */
-const router  = require('./src/router/router');
-const auth = require('./src/auth/auth');
+const auth    = require('./src/auth/auth');
 const fetcher = require('./src/script/fetch');
+const api     = require('./src/api/api');
+const router  = require('./src/router/router');
 /* ----------- */
 
 
@@ -19,8 +21,8 @@ const PRODUCTION: boolean = false; // изменить на true на хости
 
 /* Серверные константы (не трогать) */
 const APP  = express();
-const PORT: string = process.env.PORT || '3000';
-const IP: string   = process.env.IP   || "localhost";
+const PORT: string = server.PORT
+const IP: string   = server.IP;
 /* ----------- */
 
 
@@ -29,9 +31,10 @@ APP.set("view engine", "ejs");
 APP.use("/client/", express.static(__dirname + '/../client/'));
 APP.set("views", __dirname + "/../client/views");
 APP.use(cookieParser());
-APP.use(router);
-APP.use('/api/user/', auth);
+APP.use('/api/', api);
+APP.use('/server/', auth);
 APP.use(fetcher);
+APP.use(router);
 /* ----------- */
 
 

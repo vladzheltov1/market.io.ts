@@ -1,5 +1,5 @@
 import { db_config } from "../configs/database";
-import { dbErrors } from "../list/db_errors";
+import { dbErrors } from "../list/dbErrors";
 
 const mysql = require('mysql2');
 

@@ -38,14 +38,23 @@
 
 .index-icon{
     position: absolute;
-    top: 13px;
+    top: 14px;
     left: 15px;
+}
+
+.index-clear-icon{
+    position: absolute;
+    right: 105px;
+    top: 14px;
+}
+.index-clear-icon:hover{
+    cursor: pointer;
 }
 
 .index-search-input,
 .index-search-input:hover,
 .index-search-input:active{
-    padding: 10px 20px 10px 45px;
+    padding: 10px 33px 10px 45px;
     font-size: 17px;
     border-width: 3px;
     border-top-right-radius: 0;
@@ -109,6 +118,7 @@
     background: #fff;
     font-weight: 400;
     overflow: hidden;
+    word-wrap: break-word;
 }
 
 .search-realtime-result-link:hover{
@@ -132,4 +142,8 @@
 
 .invisible{
     display: none;
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+    color: red;
 }

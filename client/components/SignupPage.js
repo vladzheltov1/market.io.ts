@@ -116,7 +116,7 @@ const SignupPage = () => {
 
         let request = new XMLHttpRequest();
 
-        request.open('POST', '/api/user/signup', true);
+        request.open('POST', '/server/signup', true);
         request.setRequestHeader("Content-Type", "application/json");
         request.addEventListener('load', load);
         request.send(json);

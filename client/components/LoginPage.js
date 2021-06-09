@@ -10,6 +10,7 @@ const LoginPage = () => {
         setLogin(event.target.value);
 
         if(event.target.value.length == 0) setLoginClassList(['form-block', 'form-after']);
+
     }, [login, setLogin, setLoginClassList]);
 
 
@@ -20,9 +21,11 @@ const LoginPage = () => {
 
     }, [password, setPassword, setPasswordClassList]);
 
+
     const closeError = React.useCallback(() => {
         setError('');
     }, [setError]);
+
 
     const sendRequest = React.useCallback(() => {
         const json = JSON.stringify({ login: login, pass: password });
@@ -56,7 +59,7 @@ const LoginPage = () => {
 
         let request = new XMLHttpRequest();
 
-        request.open('POST', '/api/user/signin', true);
+        request.open('POST', '/server/signin', true);
         request.setRequestHeader("Content-Type", "application/json");
         request.addEventListener('load', load);
         request.send(json);
@@ -77,7 +80,7 @@ const LoginPage = () => {
                 }
                 <div className={loginClassList.join(' ')}>
                     <i className="icon icon-user-dark "></i>
-                    <input 
+                    <input
                         type="text" 
                         id="login" 
                         name="login" 
