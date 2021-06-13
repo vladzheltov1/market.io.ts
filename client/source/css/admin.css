@@ -55,7 +55,10 @@
 }
 
 .admin-side-item-active{
-    border-left: solid 5px var(--admin-blue);
+    border: solid 5px var(--admin-blue);
+    border-width: 1px;
+    border-left-width: 5px;
+    color: var(--admin-blue) !important;
 }
 
 .admin-side-item-secondary{

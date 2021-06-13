@@ -47,30 +47,30 @@ body{
     stroke-width: 10px;
     stroke-dasharray: 2,2;
     stroke-linejoin: round;
-    
+
 }
 
-.form-after::after{
-    position: absolute;
+/*.form-after::after{*/
+/*    position: absolute;*/
 
-    display: flex;
-    flex-direction: column;
-    
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    */
 
-    width: 24px;
-    height: 24px;
+/*    width: 24px;*/
+/*    height: 24px;*/
 
-    top: 24%;
-    right: 15px;
+/*    top: 24%;*/
+/*    right: 15px;*/
 
-    z-index: 5;
-}
+/*    z-index: 5;*/
+/*}*/
 
-.form-input-wrong::after{
-    content: url(/client/source/icon/x.svg);
-    width: 24px;
-    height: 24px;
-}
+/*.form-input-wrong::after{*/
+/*    content: url(/client/source/icon/x.svg);*/
+/*    width: 24px;*/
+/*    height: 24px;*/
+/*}*/
 .form-input-wrong > input,
 .form-input-wrong > input:hover,
 .form-input-wrong > input:focus,
@@ -78,14 +78,14 @@ body{
     border-color: var(--m-red) !important;
 }
 
-.form-input-correct::after{
-    content: url(/client/source/icon/check.svg);
-    width: 24px;
-    height: 24px;
-}
-.form-input-correct > input, 
-.form-input-correct > input:hover, 
-.form-input-correct > input:focus, 
+/*.form-input-correct::after{*/
+/*    content: url(/client/source/icon/check.svg);*/
+/*    width: 24px;*/
+/*    height: 24px;*/
+/*}*/
+.form-input-correct > input,
+.form-input-correct > input:hover,
+.form-input-correct > input:focus,
 .form-input-correct > input:active{
     border-color: green !important;
 }
@@ -111,19 +111,8 @@ body{
     padding-top: 10px;
     padding-bottom: 10px;
     margin: 10px 0;
-    
+
     border-radius: 30px;
-}
-
-.form-remember-me{
-    display: flex;
-    align-items: center;
-}
-
-.form-remember-me > input{
-    margin-right: 5px;
-    width: 14px;
-    height: 14px;
 }
 
 .form-tip{
@@ -150,4 +139,27 @@ body{
 }
 .form-label{
     margin-left: 25px;
+}
+
+.form-gender-block{
+    justify-content: flex-start;
+}
+
+.form-gender-block > .form-check{
+    padding-left: 5px;
+}
+
+.form-gender-block > .form-check-input, .form-check-input{
+    margin-left: 5px !important;
+    padding: 2px;
+}
+
+.form-gender-block > .icon{
+    top: 1.5px !important;
+    left: 0;
+    margin: 0 !important;
+}
+.form-gender-block > label{
+    margin-left: 20px;
+    margin-bottom: 2px;
 }

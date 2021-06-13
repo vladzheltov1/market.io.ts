@@ -1,3 +1,3 @@
 const { Router } = require('express');
 
-export const RouterServer = Router();
+export const router = Router();

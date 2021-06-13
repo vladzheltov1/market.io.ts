@@ -1,4 +1,4 @@
-import { access } from "../../../script/access";
+import { access } from "../../../helper/access";
 
 export const AdminIndex = (req, res) => {
     

@@ -1,7 +1,8 @@
 const AdminSide = (props) => {
 
     const setActive = () => {
-        document.querySelector('.'+props.active).classList.add('admin-side-item-active')
+        console.log(props.active);
+        document.querySelector('#'+props.active).classList.add('admin-side-item-active');
     }
 
     React.useEffect(() => {
@@ -16,7 +17,7 @@ const AdminSide = (props) => {
 
             <hr className="admin-hr" />
             
-            <a href="/admin" className="admin-side-item">
+            <a href="/admin" className="admin-side-item" id="dashboard">
                 Панель управления
             </a>
             {/* href="/admin/products" */}

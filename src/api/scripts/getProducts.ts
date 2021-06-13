@@ -1,5 +1,5 @@
 import { database } from "../../database/query";
-import { access } from "../../script/access";
+import { access } from "../../helper/access";
 
 export const getProducts = (req, res) => {
 

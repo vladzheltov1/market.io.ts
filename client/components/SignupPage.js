@@ -1,13 +1,14 @@
 const SignupPage = () => {
-    
+
     /* States */
     const [firstname, setFirstname] = React.useState('');
     const [lastname, setLastname] = React.useState('');
     const [email, setEmail] = React.useState('');
     const [login, setLogin] = React.useState('');
+    const [gender, setGender] = React.useState('M');
     const [password1, setPassword1] = React.useState('');
     const [password2, setPassword2] = React.useState('');
-    
+
     const [firstnameClassList, setFirstnameClassList] = React.useState(['form-block', 'form-after']);
     const [lastnameClassList, setLastnameClassList] = React.useState(['form-block', 'form-after']);
     const [emailClassList, setEmailClassList] = React.useState(['form-block', 'form-after']);
@@ -20,19 +21,22 @@ const SignupPage = () => {
     /* ------------------------------ */
 
 
-
     // Firstname field input
     const inputFirstname = React.useCallback((event) => {
-        setFirstname(event.target.value); 
-        if(event.target.value.length == 0) setFirstnameClassList(['form-block', 'form-after']);
+        setFirstname(event.target.value);
+        if(event.target.value.length === 0) {
+            setFirstnameClassList(['form-block', 'form-after']);
+        }
     }, [firstname, setFirstname]);
 
 
 
     // Lastname field input
-    const inputLastname = React.useCallback((event) => { 
+    const inputLastname = React.useCallback((event) => {
         setLastname(event.target.value);
-        if(event.target.value.length == 0) setLastnameClassList(['form-block', 'form-after']);
+        if(event.target.value.length === 0) {
+            setLastnameClassList(['form-block', 'form-after']);
+        }
     }, [lastname, setLastname]);
 
 
@@ -41,7 +45,9 @@ const SignupPage = () => {
     const inputEmail = React.useCallback((event) => {
 
         setEmail(event.target.value);
-        if(event.target.value.length == 0) setEmailClassList(['form-block', 'form-after']);
+        if(event.target.value.length === 0) {
+            setEmailClassList(['form-block', 'form-after']);
+        }
 
     }, [email, setEmail, setEmailClassList]);
 
@@ -51,7 +57,9 @@ const SignupPage = () => {
     const inputLogin = React.useCallback((event) => {
 
         setLogin(event.target.value);
-        if(event.target.value.length == 0) setLoginClassList(['form-block', 'form-after']);
+        if(event.target.value.length === 0) {
+            setLoginClassList(['form-block', 'form-after']);
+        }
 
     }, [login, setLogin, setLoginClassList]);
 
@@ -61,7 +69,9 @@ const SignupPage = () => {
     const inputPassword1 = React.useCallback((event) => {
 
         setPassword1(event.target.value);
-        if(event.target.value.length == 0) setPassword1ClassList(['form-block', 'form-after']);
+        if(event.target.value.length === 0) {
+            setPassword1ClassList(['form-block', 'form-after']);
+        }
 
     }, [password1, setPassword1, setPassword1ClassList]);
 
@@ -71,11 +81,15 @@ const SignupPage = () => {
     const inputPassword2 = React.useCallback((event) => {
 
         setPassword2(event.target.value);
-        if(event.target.value.length == 0) setPassword2ClassList(['form-block', 'form-after']);
+        if(event.target.value.length === 0){
+            setPassword2ClassList(['form-block', 'form-after']);
+        }
 
     }, [password2, setPassword2, setPassword2ClassList]);
 
-
+    const getGender = React.useCallback((event) => {
+        setGender(event.target.value);
+    });
 
     // Close error message
     const closeError = React.useCallback(() => {
@@ -86,10 +100,11 @@ const SignupPage = () => {
 
     // Main request to the server
     const sendRequest = React.useCallback(() => {
-        const json = JSON.stringify({ 
+        const json = JSON.stringify({
             firstname: firstname,
             lastname: lastname,
             email: email,
+            gender: gender,
             login: login,
             pass1: password1,
             pass2: password2
@@ -98,21 +113,21 @@ const SignupPage = () => {
         const load = () => {
             let serverData = JSON.parse(request.response);
 
-            if(serverData.error) setError(serverData.error);
+            if(serverData.error){
+                setError(serverData.error);
+            }
 
-            if(serverData.errorDetail == "NOTEXISTS"){
+            if(serverData.errorDetail === "NOTEXISTS"){
                 setLoginClassList(['form-block', 'form-after', 'form-input-wrong']);
                 return;
             }
-            else if(serverData.errorDetail == "WRONGPASSWORD"){
+            else if(serverData.errorDetail === "WRONGPASSWORD"){
                 setPasswordClassList(['form-block', 'form-after', 'form-input-wrong']);
                 return;
             }
 
-            else{
-                window.location.replace('/');
-            }
-        }
+            window.location.replace('/');
+        };
 
         let request = new XMLHttpRequest();
 
@@ -126,8 +141,9 @@ const SignupPage = () => {
         lastname,
         email,
         login,
+        gender,
         password1,
-        password1,
+        password2,
         setEmailClassList,
         setLoginClassList,
         setPassword1ClassList,
@@ -149,11 +165,11 @@ const SignupPage = () => {
                 }
                 <div className={firstnameClassList.join(' ')}>
                     <i className="icon icon-user-dark "></i>
-                    <input 
-                        type="text" 
-                        id="firstname" 
-                        name="firstname" 
-                        className="form-input form-form-input" 
+                    <input
+                        type="text"
+                        id="firstname"
+                        name="firstname"
+                        className="form-input form-form-input"
                         placeholder="Имя"
                         autoComplete="username"
                         onChange={inputFirstname}
@@ -163,11 +179,11 @@ const SignupPage = () => {
                 </div>
                 <div className={lastnameClassList.join(' ')}>
                     <i className="icon icon-user-dark "></i>
-                    <input 
-                        type="text" 
-                        id="lastname" 
-                        name="lastname" 
-                        className="form-input form-form-input" 
+                    <input
+                        type="text"
+                        id="lastname"
+                        name="lastname"
+                        className="form-input form-form-input"
                         placeholder="Фамилия"
                         autoComplete="username"
                         onChange={inputLastname}
@@ -177,11 +193,11 @@ const SignupPage = () => {
                 </div>
                 <div className={emailClassList.join(' ')}>
                     <i className="icon icon-user-dark "></i>
-                    <input 
-                        type="email" 
-                        id="email" 
-                        name="email" 
-                        className="form-input form-form-input" 
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        className="form-input form-form-input"
                         placeholder="Почта"
                         onChange={inputEmail}
                         value={email}
@@ -190,11 +206,11 @@ const SignupPage = () => {
                 </div>
                 <div className={loginClassList.join(' ')}>
                     <i className="icon icon-user-dark "></i>
-                    <input 
-                        type="text" 
-                        id="login" 
-                        name="login" 
-                        className="form-input form-form-input" 
+                    <input
+                        type="text"
+                        id="login"
+                        name="login"
+                        className="form-input form-form-input"
                         placeholder="Логин"
                         autoComplete="username"
                         onChange={inputLogin}
@@ -202,29 +218,29 @@ const SignupPage = () => {
                         required
                     />
                 </div>
-                <div className={loginClassList.join(' ')}>
-                    <i className="icon icon-user-dark "></i>
+                <div className={loginClassList.join(' ') + " form-flex form-gender-block"}>
+                    <i className="icon icon-user-dark"></i>
                     <label className="form-label">Пол</label>
                     <div className="form-check">
-                        <input className="form-check-input" type="radio" name="flexRadioDefault" id="female"/>
-                            <label className="form-check-label" htmlFor="female">
-                                Ж
-                            </label>
-                        </div>
-                        <div className="form-check">
-                            <input className="form-check-input" type="radio" name="flexRadioDefault" id="male" defaultChecked/>
-                            <label className="form-check-label" htmlFor="male">
-                                М
-                            </label>
-                        </div>
+                        <input className="form-check-input" type="radio" onChange={getGender} value="M" name="flexRadioDefault" id="male" defaultChecked/>
+                        <label className="form-check-label" htmlFor="male">
+                            М
+                        </label>
                     </div>
+                    <div className="form-check">
+                        <input className="form-check-input" type="radio" onChange={getGender} value="F" name="flexRadioDefault" id="female"/>
+                        <label className="form-check-label" htmlFor="female">
+                            Ж
+                        </label>
+                    </div>
+                </div>
                 <div className={password1ClassList.join(' ')}>
                     <i className="icon icon-lock "></i>
                     <input
-                        type="text" 
-                        id="gender" 
-                        name="gender" 
-                        className="form-input form-form-input" 
+                        type="password"
+                        id="gender"
+                        name="gender"
+                        className="form-input form-form-input"
                         placeholder="Пароль"
                         autoComplete="current-password"
                         onChange={inputPassword1}
@@ -235,10 +251,10 @@ const SignupPage = () => {
                 <div className={password2ClassList.join(' ')}>
                     <i className="icon icon-lock "></i>
                     <input
-                        type="password" 
-                        id="password2" 
-                        name="password2" 
-                        className="form-input form-form-input" 
+                        type="password"
+                        id="password2"
+                        name="password2"
+                        className="form-input form-form-input"
                         placeholder="Повторите пароль"
                         autoComplete="current-password"
                         onChange={inputPassword2}
@@ -252,7 +268,7 @@ const SignupPage = () => {
                         name="btn"
                         className="btn btn-big btn-green btn-form"
                         id="submit"
-                        value="Войти"
+                        value="Регистрация"
                         onClick={sendRequest}
                     />
                 </div>

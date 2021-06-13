@@ -1,11 +1,11 @@
-import { RouterServer } from "../helper/createRouter";
+import { router } from "../helper/createRouter";
 import { Category, getName } from "../list/productCategories";
 import { fetchData } from "./fetchScript";
 
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 
-RouterServer.post('/fetch/data/:type/', jsonParser, (req, res) => {
+router.post('/fetch/data/:type/', jsonParser, (req, res) => {
     const type = req.params.type.trim();
     const query = req.body.query.trim();
 
@@ -38,4 +38,4 @@ RouterServer.post('/fetch/data/:type/', jsonParser, (req, res) => {
     });
 });
 
-module.exports = RouterServer;
+module.exports = router;

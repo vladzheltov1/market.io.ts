@@ -1,8 +1,6 @@
 class Header extends React.Component{
     constructor(props){
         super(props);
-
-        this.state = { }
     }
 
     componentDidMount(){
@@ -25,10 +23,10 @@ class Header extends React.Component{
                         </a>
                         <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                             {this.props.userData != undefined && (
-                                
+
                                 <div>
                                     <li>
-                                        <a className="dropdown-item" href={"/profile" + this.props.userData.id}>
+                                        <a className="dropdown-item" href={"/profile/" + this.props.userData._id}>
                                             <i className="icon icon-user-dark"></i>
                                             { this.props.userData.user_firstname } { this.props.userData.user_lastname }
                                         </a>

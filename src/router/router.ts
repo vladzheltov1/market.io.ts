@@ -1,4 +1,4 @@
-import { RouterServer } from "../helper/createRouter";
+import { router } from "../helper/createRouter";
 import { AdminIndex } from "./pages/admin/adminIndexPage";
 import { indexPage } from "./pages/indexPage";
 import { loginPage } from "./pages/loginPage";
@@ -12,21 +12,21 @@ import { signupPage } from "./pages/signupPage";
 
 /* ------------------------------------------------------------------ */
 
-RouterServer.get('/', indexPage);
-RouterServer.get('/profile/:id?', profilePage);
-RouterServer.get('/product/:id?', product);
-RouterServer.get('/shop/:category?/:page?/:priceMin?/:priceMax?/', shopPage);
-RouterServer.get('/login/:error?', loginPage);
-RouterServer.get('/signup', signupPage);
-RouterServer.get('/search/:query?', searchData);
-RouterServer.get('/logout', logoutPage);
+router.get('/', indexPage);
+router.get('/profile/:id?', profilePage);
+router.get('/product/:id?', product);
+router.get('/shop/:category?/:page?/:priceMin?/:priceMax?/', shopPage);
+router.get('/login/:error?', loginPage);
+router.get('/signup', signupPage);
+router.get('/search/:query?', searchData);
+router.get('/logout', logoutPage);
 
 /* Admin panel */
-RouterServer.get('/admin', AdminIndex);
+router.get('/admin', AdminIndex);
 /* ----------- */
 
-RouterServer.get('/*', notFoundPage);
+router.get('/*', notFoundPage);
 
 /* ------------------------------------------------------------------ */
 
-module.exports = RouterServer;
+module.exports = router;
