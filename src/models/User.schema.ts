@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+import { model, Schema, Types } from 'mongoose';
 
 const UserSchema = new Schema({
     user_firstname: {type: String, required: true},
@@ -12,7 +12,7 @@ const UserSchema = new Schema({
     user_role: {type: Number, required: true, default: 1},
     user_block_reason: {type: String, required: false, default: null},
 
-    user_purchases: {type: Object, ref: 'Purchase', default: {}}
+    user_purchases: [{type: Types.ObjectId, ref: 'Purchase', default: {}}]
 });
 
 module.exports = model('User', UserSchema);

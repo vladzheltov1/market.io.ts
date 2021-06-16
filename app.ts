@@ -1,19 +1,15 @@
-import {request} from "express";
+/* Мои модули */
+import { connect } from './src/database/connectMongo';
 
 require('dotenv').config()
 
 /* Модули node */
 const express      = require('express');
 const cookieParser = require("cookie-parser");
-/* ----------- */
-
-
-/* Мои модули */
-import { connect } from './src/database/connectMongo';
-const auth    = require('./src/auth/auth');
+// const auth    = require('./src/auth/auth');
 const fetcher = require('./src/helper/fetch');
-const api     = require('./src/api/api');
-const router  = require('./src/router/router');
+const api     = require("./src/router/api.router");
+// const router  = require('./src/router/router');
 /* ----------- */
 
 
@@ -30,14 +26,11 @@ const IP: string   = process.env.IP;
 
 
 /* Настройки сервера */
-APP.set("view engine", "ejs");
-APP.use("/client/", express.static(__dirname + '/../client/'));
-APP.set("views", __dirname + "/../client/views");
 APP.use(cookieParser());
-APP.use('/api/', api);
-APP.use('/server/', auth);
-APP.use(fetcher);
-APP.use(router);
+APP.use(express.json());
+APP.use('/api', api);
+// APP.use(fetcher);
+// APP.use(router);
 /* ----------- */
 
 

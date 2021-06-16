@@ -2,9 +2,11 @@
     "compilerOptions": {
       "esModuleInterop": true,
       "outDir": "build",
-      "baseUrl": "."
+      "baseUrl": ".",
+      "removeComments": true
     },
     "exclude": [
-      "node_modules"
+      "node_modules",
+      "client"
     ]
 }
