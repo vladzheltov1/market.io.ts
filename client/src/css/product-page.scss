@@ -1,0 +1,153 @@
+@import "./general/variables.scss";
+
+.product-info {
+    display: grid;
+    grid-template-columns: 40% 60%;
+}
+
+.product-info-left {
+    width: 100%;
+    padding-right: 30px;
+
+}
+
+.product-hr {
+    height: 2px;
+    background-color: $gray;
+    margin: 5px 0;
+}
+
+.product-photo-wrapper {
+    width: 100%;
+    height: 100%;
+    max-width: 424px;
+    max-height: 500px;
+}
+
+.product-photo-source {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.product-info-right {
+    margin-top: 30px;
+}
+
+.product-rating {
+    display: flex;
+}
+
+.rating-stars {
+    display: flex;
+}
+
+.rating-amount {
+    margin-left: 5px;
+    /* margin-right: 10px; */
+    /* width: 20px; */
+}
+
+.star {
+    height: 20px;
+    width: 20px;
+}
+
+.product-price>* {
+    font-weight: 600;
+    font-size: 30px;
+    /* margin: 5px; */
+}
+
+
+
+@media (max-width: 1000px) {
+    .product-info {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .product-info-left {
+        padding: 0;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 404px) {
+    .product-rating {
+        flex-direction: column;
+    }
+
+    .product-rating>.vertical {
+        display: none;
+    }
+}
+
+
+.btn-chosen {
+    border-color: $red;
+    background-color: $red;
+    color: #fff;
+}
+
+.btn-chosen:hover,
+.btn-chosen:active {
+    color: #fff;
+    border-color: $red;
+}
+
+/* Reviews */
+
+.product-review {
+    /* max-width: 900px; */
+    margin: 80px auto;
+}
+
+.product-review-title {
+    text-align: center;
+}
+
+.reviews-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.review-block {
+    display: block;
+    background: $light;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.review-user-logo {
+    width: 50px;
+    height: 50px;
+    position: relative;
+}
+
+.review-user-logo>img {
+    position: absolute;
+    width: 100%;
+}
+
+.review-user-content {
+    margin-left: 5px;
+}
+
+.review-user-name {
+    font-weight: 500;
+    font-size: 18px;
+    margin-left: 10px;
+}
+
+.user-info {
+    display: flex;
+    width: 100%;
+    align-items: center;
+
+}
+
+.review-block-title {
+    font-weight: 600;
+}

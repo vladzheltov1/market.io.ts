@@ -1,0 +1,81 @@
+@import "./general/variables.scss";
+
+* {
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    -webkit-user-drag: none;
+    box-sizing: border-box;
+    font-weight: 400;
+    font-family: $font-primary !important;
+    z-index: 1;
+}
+
+a {
+    &.no-link {
+        color: #000;
+        text-decoration: none;
+        font-weight: 400;
+    }
+
+    &.no-link:hover {
+        color: #000;
+        text-decoration: none;
+    }
+}
+
+a:not(header a) {
+    color: $violet !important;
+    font-weight: 600;
+    text-decoration: none;
+
+    &:hover,
+    &:focus,
+    &:active {
+        color: $violet-active !important;
+    }
+}
+
+.dropdown-item {
+
+    &,
+    &:hover,
+    &:focus {
+        color: #000 !important;
+    }
+}
+
+.wrapper {
+    max-width: 1170px;
+    margin: 0 auto;
+    padding: 10px 15px;
+}
+
+.form-wrapper {
+    max-width: 800px;
+    padding: 30px;
+}
+
+.error {
+    color: red;
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.shop-block {
+    margin: 10px 0;
+}
+
+.form-error {
+    color: red;
+    font-weight: 600;
+    font-size: 18px;
+
+    width: 100%;
+
+    text-align: center;
+}
+
+.show {
+    display: flex !important;
+}

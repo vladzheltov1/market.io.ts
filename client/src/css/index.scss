@@ -1,0 +1,145 @@
+@import "./general/variables.scss";
+
+.index-wrapper {
+    max-width: 800px;
+    padding: clamp(15px 30px);
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.index-search {
+    width: 100%;
+    height: 70vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.index-title {
+    font-size: calc(2rem + 1.8vw);
+    font-weight: 600;
+    user-select: none;
+    margin-bottom: 20px;
+    display: flex;
+    position: relative;
+
+}
+
+.index-input-block {
+    display: block;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+.index-icon {
+    position: absolute;
+    top: 33%;
+    left: 17px;
+}
+
+.index-clear-icon {
+    position: absolute;
+    right: 105px;
+    top: 14px;
+}
+
+.index-clear-icon:hover {
+    cursor: pointer;
+}
+
+.index-search-input,
+.index-search-input:hover,
+.index-search-input:active {
+    padding: 10px 33px 10px 45px !important;
+    font-size: 17px !important;
+    border-width: 3px !important;
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    border-color: $red !important;
+    transition-duration: 0s !important;
+
+    width: calc(100% - 97px);
+}
+
+.btn-search,
+.btn-search:hover {
+    position: absolute !important;
+    top: 0 !important;
+    right: -5px !important;
+
+    background: $red !important;
+    border-color: $red !important;
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+
+    height: 100% !important;
+    width: 100px !important;
+
+    color: #fff !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.search-link-tip {
+    font-size: 14px;
+    display: block;
+}
+
+.search-links-hr {
+    margin: 0;
+    padding: 0;
+}
+
+.search-realtime-result {
+    position: absolute;
+    top: 47px;
+    width: 100%;
+    z-index: 3;
+    border: solid 1px $border;
+}
+
+.search-realtime-result-link,
+.search-realtime-result-link:hover {
+    display: block;
+    width: 100%;
+    padding: 2px 20px;
+    color: #000 !important;
+    background: #fff;
+    font-weight: 400 !important;
+    overflow: hidden;
+    word-wrap: break-word;
+}
+
+.search-realtime-result-link:hover {
+    background: #f4f4f4;
+    color: #000;
+}
+
+.search-direct-link,
+.search-direct-link:hover {
+    color: $red !important;
+    font-weight: 500 !important;
+}
+
+.spinner {
+    width: 100%;
+    height: 65vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.blick {
+    position: absolute;
+    right: -15px;
+}
+
+.invisible {
+    display: none;
+}
