@@ -1,10 +1,14 @@
 import { formErrors } from "../list/formErrors";
 
 const hashPass = require('password-hash');
-const fetch = require('node-fetch');
 const User = require("../models/User.schema");
 
 // ------------------------------------------------ //
+
+
+/* ----------- DEPRECATED ----------- */
+/* USE SERVICE AND CONTROLLER INSTEAD */
+
 
 export const signupAuth = async (req, res) => {
 

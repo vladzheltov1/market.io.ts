@@ -1,16 +1,20 @@
-// import { User } from "../../models/User";
 import { mongoDB } from "../database/queryMongo";
 import { utils } from "../helper/utils";
 import { formErrors } from "../list/formErrors";
 
 const hashPass = require('password-hash');
-const fetch = require('node-fetch');
-const User = require("../models/User.schema");
 
 // ------------------------------------------------ //
 
+
+/* ----------- DEPRECATED ----------- */
+/* USE SERVICE AND CONTROLLER INSTEAD */
+
+
 export const loginAuth = async (req, res) => {
 
+    console.log("USING DEPRICATED MODULE `src/auth/login.auth.ts`");
+    
     const { login, password } = req.body;
 
     /*

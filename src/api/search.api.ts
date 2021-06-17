@@ -1,5 +1,8 @@
 import { mongoDB } from "../database/queryMongo";
-import { getName } from "../list/productCategories";
+import { getCategory } from "../helper/search";
+
+/* ----------- DEPRECATED ----------- */
+/* USE SERVICE AND CONTROLLER INSTEAD */
 
 export const searchApi = (req, res) => {
     const {query, table} = req.params;
@@ -13,7 +16,7 @@ export const searchApi = (req, res) => {
 
         const searchTips = [];
 
-        searchTips.push(getName(response[0]?.product_category));
+        searchTips.push(getCategory(response[0]?.product_category));
 
        return res.json({response: searchTips, status: 200}); 
     });
