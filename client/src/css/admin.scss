@@ -1,10 +1,9 @@
-:root {
-    --admin-blue: #5DADDC;
-    --admin-gray: #3d4447;
-    --admin-light: #DADADA;
-}
-
 @import "./general/variables.scss";
+
+$admin-blue: #5DADDC;
+$admin-gray: #3d4447;
+$admin-light: #DADADA;
+
 
 .wrapper-admin {
     max-width: 100%;
@@ -27,7 +26,7 @@
 
 .admin-side {
     max-width: 300px;
-    height: calc(100vh - var(--header-height));
+    height: calc(100vh - $header-height);
 
     padding: 10px;
 
@@ -35,7 +34,7 @@
     backdrop-filter: blur(5px);
     /* background-color: rgba(255, 255, 255, 0.1);   */
 
-    border-right: solid 1px var(--admin-light);
+    border-right: solid 1px $admin-light;
 
     height: 100%;
 }
@@ -60,10 +59,10 @@
 }
 
 .admin-side-item-active {
-    border: solid 5px var(--admin-blue);
+    border: solid 5px $admin-blue;
     border-width: 1px;
     border-left-width: 5px;
-    color: var(--admin-blue) !important;
+    color: $admin-blue !important;
 }
 
 .admin-side-item-secondary {
@@ -86,7 +85,7 @@
     justify-content: space-between;
     align-items: center;
 
-    border-bottom: solid 1px var(--admin-light);
+    border-bottom: solid 1px $admin-light;
 }
 
 .admin-sidebar-collapse {
@@ -117,7 +116,7 @@
 /* ADMIN CONTENT */
 
 .admin-right {
-    height: calc(100vh - var(--header-height));
+    height: calc(100vh - $header-height);
     background: #F2F2F2;
     width: 100%;
 }

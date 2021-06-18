@@ -1,28 +1,39 @@
 import { useState } from "react";
-import { CheckPicker, RangeSlider, Rate } from "rsuite";
-import { categories } from "../components/helpers/categories";
+import { Pagination } from "rsuite";
+// import { ShopFilter } from "../components/ShopFilter";
+import { ShopProduct } from "../components/ShopProduct";
 
 export const ShopPage = () => {
 
-    const [rate, setRate] = useState(5);
+    const [activePage, setActivePage] = useState(1);
+
+    const handleSelect = (value) => {
+        setActivePage(value);
+    }
 
     return (
         <div className="wrapper">
-            <div className="shop-filters">
-                <CheckPicker placeholder="Выберите категорию" data={categories} style={{ width: "200px", marginBottom: "40px" }} />
-                <RangeSlider
-                    min={0}
-                    max={5000}
-                    step={500}
-                    defaultValue={[0, 500]}
-                    graduated
-                    progress
-                    renderMark={(mark) => {
-                        return mark;
-                    }}
-                />
+            {/* <ShopFilter /> */}
 
-                <Rate onChange={(value) => setRate(value)} defaultValue={rate} size="sm" />
+            <div className="shop-products">
+                <ShopProduct />
+            </div>
+
+
+            <div style={{ margin: "50px 0", display: "flex", justifyContent: "center" }}>
+                <Pagination
+                    prev
+                    last
+                    next
+                    first
+                    size="sm"
+                    pages={10}
+                    last
+                    ellipsis
+                    boundaryLinks
+                    activePage={activePage}
+                    onSelect={handleSelect}
+                />
             </div>
         </div>
     )
