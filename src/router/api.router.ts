@@ -6,6 +6,7 @@
 // import { loginAuth } from "../auth/login.auth";
 // import { signupAuth } from "../auth/signup.auth";
 /* NEW CODE */
+import { searchController } from "../controllers/search.controller";
 import { userController } from "../controllers/user.controller";
 import { router } from "../helper/createRouter";
 
@@ -37,7 +38,7 @@ import { router } from "../helper/createRouter";
 
 /* --- GET --- */
 router.get("/users/:id?", userController.getUsers);
-// router.get("/search/:table?/:query?", ); // search...
+router.get("/search/:query?", searchController.search);
 
 /* --- POST --- */
 router.post("/users/login", userController.userLogin);

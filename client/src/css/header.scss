@@ -1,6 +1,5 @@
 @import "./general/variables.scss";
 
-
 .header {
     width: 100%;
     display: flex;
@@ -9,19 +8,11 @@
     align-items: center;
     background: $black;
 
-    a {
-
-        &:hover,
-        &:active,
-        &:focus {
-            text-decoration: none !important;
-            color: #fff !important;
-        }
-    }
-
     div {
         display: flex;
         justify-content: center;
+
+        z-index: 2;
     }
 
     div a {
@@ -29,6 +20,16 @@
     }
 
     .header-nav {
+        a {
+
+            &:hover,
+            &:active,
+            &:focus {
+                text-decoration: none !important;
+                color: #fff;
+            }
+        }
+
         .header-item {
             a.active-header {
 
@@ -45,9 +46,10 @@
 
 
 .header-top-title a {
-    font-size: 36px !important;
-    font-weight: 500 !important;
+    font-size: 36px;
+    font-weight: 500;
     color: #fff !important;
+    text-decoration: none;
 }
 
 .header-item {
@@ -144,5 +146,27 @@
 .header.header-collapse:not(.header-show) {
     .header-nav {
         display: none !important;
+    }
+}
+
+.header-dropdown-item {
+    display: block;
+
+    width: 100% !important;
+    padding: 5px 13px !important;
+
+    transition-duration: .4s;
+
+    color: #575757 !important;
+
+    &:hover,
+    &:active,
+    &:focus {
+        background: #f0f0f0 !important;
+        // color: #575757 !important;
+    }
+
+    i {
+        margin-right: 5px;
     }
 }

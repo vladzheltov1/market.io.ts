@@ -2,10 +2,10 @@
 
 .rs-sidenav a {
 
+    &,
     &:hover,
     &:active,
     &:focus {
-        color: inherit !important;
-        font-weight: 400 !important;
+        text-decoration: none;
     }
 }

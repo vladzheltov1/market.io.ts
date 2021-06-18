@@ -1,22 +1,3 @@
-// export const utils = {
-//     json: (json) => {
-//         return(JSON.parse(JSON.stringify(json)))
-//     }
-// }
-
-// Checking if an object is empty
-// export const isEmpty = (element) => {
-//     if(typeof element === 'object'){
-//         for(let key in element){
-//             if(element.hasOwnProperty(key)) return false;
-//         }
-//         return true;
-//     }
-//     else{
-//         return !!element;
-//     }
-// }
-
 class Utils{
     /**
      * Check if an object is empty.
@@ -40,16 +21,6 @@ class Utils{
     public isArrayEmpty(array: Array<any>){
         return array.length === 0 ? true : false;
     }
-
-    // DO I NEED IT? (no modules use it...)
-
-    // /**
-    //  * This function will transform 
-    //  * @param  {object} json
-    //  */
-    // public json(json: object){
-    //     return(JSON.parse(JSON.stringify(json)))
-    // }
 }
 
 export const utils = new Utils();

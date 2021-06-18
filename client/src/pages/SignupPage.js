@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button, Icon, Radio, RadioGroup } from "rsuite";
+import { useHttp } from "../components/hooks/http.hook";
 
 export const SignupPage = () => {
 
@@ -24,60 +25,33 @@ export const SignupPage = () => {
         password2: ['form-block', 'form-after']
     });
 
-    const [error, setError] = React.useState('');
-
     const radioHandler = (value) => {
         setForm({ ...form, gender: value });
     }
 
     /* ------------------------------ */
 
-    // Close error message
-    const closeError = React.useCallback(() => {
-        setError('');
-    }, [setError]);
-
-
 
     // Main request to the server
-    const sendRequest = React.useCallback(() => {
-        const json = JSON.stringify({
-            firstname: form.firstname,
-            lastname: form.lastname,
-            email: form.email,
-            gender: form.gender,
-            login: form.login,
-            pass1: form.password1,
-            pass2: form.password2
-        });
+    const { request, errors, loading, clearError } = useHttp();
+    const signUpHandler = async () => {
+        try {
+            const json = {
+                firstname: form.firstname,
+                lastname: form.lastname,
+                email: form.email,
+                gender: form.gender,
+                login: form.login,
+                pass1: form.password1,
+                pass2: form.password2
+            };
 
-        const load = () => {
-            let serverData = JSON.parse(request.response);
+            const result = await request("/api/users/signup", "POST", JSON.stringify(json));
 
-            if (serverData.error) {
-                setError(serverData.error);
-            }
+            console.log(result);
 
-            // if (serverData.errorDetail === "NOTEXISTS") {
-            //     setClassList(...classList,  ['form-block', 'form-after', 'form-input-wrong']);
-            //     return;
-            // }
-            // else if (serverData.errorDetail === "WRONGPASSWORD") {
-            //     setClassList(...classList, ['form-block', 'form-after', 'form-input-wrong']);
-            //     return;
-            // }
-
-            window.location.replace('/');
-        };
-
-        let request = new XMLHttpRequest();
-
-        request.open('POST', '/server/signup', true);
-        request.setRequestHeader("Content-Type", "application/json");
-        request.addEventListener('load', load);
-        request.send(json);
-
-    }, [form, setError]);
+        } catch (e) { };
+    }
 
     return (
         <div className="container form-wrapper">
@@ -85,16 +59,14 @@ export const SignupPage = () => {
                 <form className="form-form" method="POST">
                     <h3 className="form-title">Регистрация</h3>
                     {
-                        error && (
+                        errors.error && (
                             <div className="form-block error-form">
-                                <b>Ошибка:</b> {error}
-                                {/* <i className="icon icon-x error-form-close" onClick={closeError}></i> */}
-                                <Icon icon="close" size="ls" className="error-form-close" onClick={closeError} />
+                                <b>Ошибка:</b> {errors.error}
+                                <Icon icon="close" size="ls" className="error-form-close" onClick={clearError} />
                             </div>
                         )
                     }
                     <div className={classList.firstname.join(' ')}>
-                        {/* <i className="icon icon-user-dark "></i> */}
                         <Icon icon="user" />
                         <input
                             type="text"
@@ -195,7 +167,8 @@ export const SignupPage = () => {
                             size="lg"
                             name="btn"
                             id="submit"
-                            onClick={sendRequest}
+                            onClick={signUpHandler}
+                            disabled={loading}
                         >
                             Регистрация
 

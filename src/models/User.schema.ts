@@ -12,6 +12,7 @@ const UserSchema = new Schema({
     user_role: {type: Number, required: true, default: 1},
     user_block_reason: {type: String, required: false, default: null},
 
+    user_money: {type: Number, default: 5000},
     user_purchases: [{type: Types.ObjectId, ref: 'Purchase', default: {}}]
 });
 

@@ -1,3 +1,7 @@
+/* --- DEPRECATED --- */
+/*  USE MONGO INSTEAD */
+
+
 import { dbConfig } from "../configs/database";
 import { dbErrors } from "../list/dbErrors";
 

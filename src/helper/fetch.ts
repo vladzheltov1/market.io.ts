@@ -3,12 +3,12 @@
 /* USE SERVICE AND CONTROLLER INSTEAD */
 
 
-import { router } from "../helper/createRouter";
+// import { router } from "../helper/createRouter";
 // import { Category, getName } from "../list/productCategories";
 // import { fetchData } from "./fetchScript";
 
-const bodyParser = require('body-parser');
-const jsonParser = bodyParser.json();
+// const bodyParser = require('body-parser');
+// const jsonParser = bodyParser.json();
 
 // router.post('/fetch/data/:type/', jsonParser, (req, res) => {
 //     const type = req.params.type.trim();
@@ -43,4 +43,4 @@ const jsonParser = bodyParser.json();
 //     });
 // });
 
-module.exports = router;
+// module.exports = router;

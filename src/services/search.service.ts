@@ -1,9 +1,20 @@
-import { getCategory } from "../helper/search";
-
+import { Category } from "../list/productCategories";
 export class SearchServiceClass{
-    public getTips(category){
-        return getCategory(category);
+    protected getTips = (category: string): Array<Object> | null => {
+        const tips = {
+            shirts: ["футболка", "майка", "блузка"],
+            pants:  ["штаны", "спортивные штаны", "брюки", "джинсы"],
+            hoody:  ["худи", "кофта", "толстовка", "свитер"],
+            boots:  ["ботинки", "туфли", "кроссовки"]
+        }
+        return tips[Category[category]] || null;
     }
-}
 
-export const searchService = new SearchServiceClass();
+    // protected getProductTips = (category: string): Array<Object> | null => {
+    //     const candidate = Category[category] || null;
+
+    //     if(candidate){
+    //         mongoDB.getAll()
+    //     }
+    // }
+}

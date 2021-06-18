@@ -7,8 +7,6 @@ import "../css/form.scss";
 
 export const LoginPage = () => {
 
-
-    const { errors, clearError, request } = useHttp();
     const [form, setForm] = useState({ login: "", password: "" });
 
     const [formClass, setFormClass] = useState({
@@ -24,6 +22,8 @@ export const LoginPage = () => {
         setFormClass({ ...formClass, passwordClass: ["form-block", "form-after", "form-input-wrong"] });
     }, [formClass, setFormClass]);
 
+
+    const { errors, clearError, request, loading } = useHttp();
     const loginHandler = async () => {
         try {
 
@@ -34,7 +34,7 @@ export const LoginPage = () => {
 
             const data = await request("/api/users/login", "POST", JSON.stringify(json));
 
-            if (errors) {
+            if (errors.error) {
                 if (errors.errorDetail === "EMPTYFIELD") {
                     if (form.login.length === 0) loginWrong();
                     if (form.password.length === 0) passwordWrong();
@@ -44,6 +44,10 @@ export const LoginPage = () => {
             }
             else {
                 // Authorize here
+
+                // THE SERVER MUST RETURN THE ACCESS TOKEN
+                // AND THE CLIENT SAVES IT TO THE LOCALSTORAGE 
+
                 // window.location.replace("/");
             }
 
@@ -110,6 +114,7 @@ export const LoginPage = () => {
                             name="btn"
                             id="submit"
                             onClick={loginHandler}
+                            disabled={loading}
                         >
                             Войти
                         </Button>

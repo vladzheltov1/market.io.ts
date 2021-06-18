@@ -7,7 +7,6 @@ import { getSchemaByTable } from "../helper/schema";
 
 class MongoDB{
     public getAll = (table: string, condition: object = {}, callback: Function) => {
-
         getSchemaByTable(table)?.find(condition).exec((error, results) => {
             if(error) return callback({status: 400, error});
             if(!results) return callback({status: 200, results: {}});

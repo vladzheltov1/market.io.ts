@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { AdminHeader } from "./Admin.header";
 import { AdminSide } from "./Admin.side";
 
@@ -42,7 +41,7 @@ export const AdminIndex = (props) => {
             <div className="admin-right">
                 <AdminHeader user={props.user} />
                 <div style={adminIndexStyle.adminContent}>
-                    <Link to="/" style={adminIndexStyle.adminIndexBlock}>
+                    {/* <Link to="/" style={adminIndexStyle.adminIndexBlock}>
                         Market.io
                     </Link>
                     <Link to="/" style={adminIndexStyle.adminIndexBlock}>
@@ -50,7 +49,7 @@ export const AdminIndex = (props) => {
                     </Link>
                     <Link to="/" style={adminIndexStyle.adminIndexBlock}>
                         Market.io
-                    </Link>
+                    </Link> */}
                 </div>
             </div>
         </div>
