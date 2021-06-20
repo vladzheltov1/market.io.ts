@@ -14,24 +14,32 @@ export const useRoutes = () => {
     const { getUserData } = useAuth();
     const userData = getUserData();
 
+    if (!userData) {
+        return (
+            <Switch>
+                <Route path="/" exact component={SearchPage} />
+                <Route path="/shop" component={ShopPage} />
+                <Route path="/product/:id" component={SearchPage} />
+                <Route component={NotFoundPage} />
+            </Switch>
+        )
+    }
+
     return (
         <Switch>
             <Route path="/" exact component={SearchPage} />
             <Route path="/shop" component={ShopPage} />
             <Route path="/product/:id" component={SearchPage} />
+            <Route path="/profile" component={ProfilePage} />
 
             {
-                !userData && (
+                !userData ? (
                     <>
                         <Route path="/login" component={LoginPage} />
                         <Route path="/signup" component={SignupPage} />
                     </>
-                )
-            }
-            {
-                userData && (
+                ) : (
                     <>
-                        <Route path="/profile" component={ProfilePage} />
                         {
                             userData.role === 2 && (
                                 <>
@@ -42,6 +50,7 @@ export const useRoutes = () => {
                     </>
                 )
             }
+
             <Route component={NotFoundPage} />
             {/* <Redirect to="/" /> */}
         </Switch>
