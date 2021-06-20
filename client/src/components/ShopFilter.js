@@ -1,27 +1,32 @@
-import { useState } from "react";
-import { CheckPicker, RangeSlider, Rate } from "rsuite";
+import { useContext } from "react";
+import { Button, CheckPicker, Drawer } from "rsuite";
+import { FilterContext } from "./context/shop/shopFilterContext";
 import { categories } from "./helpers/categories";
 
 export const ShopFilter = () => {
 
-    const [rate, setRate] = useState(5);
+    const { visible, hide } = useContext(FilterContext);
 
     return (
-        <div className="shop-filter-block">
-            <CheckPicker placeholder="Выберите категорию" data={categories} style={{ width: "200px", marginBottom: "40px" }} />
-            <RangeSlider
-                min={0}
-                max={5000}
-                step={500}
-                defaultValue={[0, 500]}
-                graduated
-                progress
-                renderMark={(mark) => {
-                    return mark;
-                }}
-            />
+        <Drawer show={visible.show} onHide={hide} size="xs" >
+            <Drawer.Header>
+                <Drawer.Title>Фильтры</Drawer.Title>
+            </Drawer.Header>
+            <Drawer.Body>
+                <div className="paragraph">
+                    <div>Категории</div>
+                    <CheckPicker placeholder="Выберите категорию" data={categories} />
+                </div>
+                <div className="paragraph">
+                    <div>Цена</div>
 
-            <Rate onChange={(value) => setRate(value)} defaultValue={rate} size="sm" />
-        </div>
+                </div>
+            </Drawer.Body>
+            <Drawer.Footer>
+                {/* <div>Тест</div> */}
+                <Button onClick={hide} color="blue">Сохранить</Button>
+                <Button onClick={hide} color="red">Отмена</Button>
+            </Drawer.Footer>
+        </Drawer>
     );
 }

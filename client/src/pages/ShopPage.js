@@ -1,40 +1,23 @@
-import { useState } from "react";
-import { Pagination } from "rsuite";
-// import { ShopFilter } from "../components/ShopFilter";
+import { Container, Content, Footer } from "rsuite";
+import { ShopFilterState } from "../components/context/shop/ShopFilterState";
+import { ShopBottomNav } from "../components/ShopBottomNav";
+import { ShopFilter } from "../components/ShopFilter";
+import { ShopFilterButton } from "../components/ShopFilterButton";
 import { ShopProduct } from "../components/ShopProduct";
 
 export const ShopPage = () => {
-
-    const [activePage, setActivePage] = useState(1);
-
-    const handleSelect = (value) => {
-        setActivePage(value);
-    }
-
     return (
-        <div className="wrapper">
-            {/* <ShopFilter /> */}
-
-            <div className="shop-products">
-                <ShopProduct />
+        <ShopFilterState>
+            <div className="wrapper shop-page-wrapper">
+                <Container>
+                    <Container>
+                        <ShopFilterButton />
+                        <Content><ShopProduct /></Content>
+                        <Footer><ShopBottomNav /></Footer>
+                    </Container>
+                    <ShopFilter />
+                </Container>
             </div>
-
-
-            <div style={{ margin: "50px 0", display: "flex", justifyContent: "center" }}>
-                <Pagination
-                    prev
-                    last
-                    next
-                    first
-                    size="sm"
-                    pages={10}
-                    last
-                    ellipsis
-                    boundaryLinks
-                    activePage={activePage}
-                    onSelect={handleSelect}
-                />
-            </div>
-        </div>
-    )
+        </ShopFilterState>
+    );
 }

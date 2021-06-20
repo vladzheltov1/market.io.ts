@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 import { Dropdown, Icon, Nav, Sidenav } from "rsuite";
-import { useAdmin } from "../../components/hooks/adminSidebar.hook";
-import "../../css/admin.scss";
-import "../../css/sideBarReset.scss";
+// import { useAdmin } from "../../components/hooks/adminSidebar.hook";
 
 const style = {
     icon: {
@@ -13,12 +11,12 @@ const style = {
 
 export const AdminSide = () => {
 
-    const { sidebar } = useAdmin();
+    // const { sidebar } = useAdmin();
 
-    console.log(sidebar);
+    // console.log(sidebar);
 
     return (
-        <Sidenav defaultOpenKeys={['3', '4']} activeKey="1" style={{ display: sidebar ? "block" : "none" }}>
+        <Sidenav expanded={true} defaultOpenKeys={['3', '4']} activeKey="1" style={{ display: "block" }}>
             <Sidenav.Body>
                 <Nav>
                     <Nav.Item href="/" icon={<Icon icon="home" style={style.icon} />}>

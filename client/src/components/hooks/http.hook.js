@@ -1,49 +1,26 @@
-import { useCallback, useState } from "react";
+import { useState } from "react";
 
 export const useHttp = () => {
-    const [loading, setLoading] = useState(false);
-    const [errors, setErrors] = useState({
-        error: null,
-        errorDetail: null
-    });
+    const [fetching, setFetching] = useState(false);
+    const [message, setMessage] = useState(null);
 
-    const request = useCallback(async (url, method = "GET", body = null, headers = { "Content-Type": "application/json" }) => {
-        /**
-         * Avoiding the case, when a new request is sent
-         * before the response to the previous one comes.
-        */
-        if (!loading) {
-            try {
-                setLoading(true);
+    const clearMessage = () => setMessage(null);
 
-                const response = await fetch(url, { method, body, headers });
-                const data = await response.json();
+    const request = async (url, method = "GET", body = null, headers = { "Content-Type": "application/json" }) => {
 
-                if (!response.ok || data.error) {
-                    if (data.errorDetail) {
-                        setErrors({ ...errors, errorDetail: data.errorDetail });
-                    }
-                    setErrors({ ...errors, error: data.error });
-                    setLoading(false);
+        if (fetching) return;
 
-                    return;
-                }
+        setFetching(true);
 
-                setLoading(false);
-                return data;
+        const response = await fetch(url, { method, body, headers });
+        const data = await response.json();
 
-            } catch (e) {
-                console.error(e);
-            }
-        }
-    }, [loading, errors, setErrors]);
+        if (data.message && data.status !== 200) setMessage(data.message);
 
-    const clearError = useCallback(() => {
-        setErrors({
-            error: null,
-            errorDetail: null
-        });
-    }, [setErrors]);
+        setFetching(false);
 
-    return { loading, errors, clearError, request };
+        return data;
+    }
+
+    return { fetching, message, request, clearMessage };
 }

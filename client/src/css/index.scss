@@ -92,11 +92,6 @@
     display: block;
 }
 
-// .search-links-hr {
-//     margin: 0;
-//     padding: 0;
-// }
-
 .search-realtime-result {
     position: absolute;
     top: 47px;
@@ -115,6 +110,7 @@
     font-weight: 400 !important;
     overflow: hidden;
     word-wrap: break-word;
+    text-decoration: none;
 }
 
 .search-realtime-result-link:hover {

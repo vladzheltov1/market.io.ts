@@ -1,52 +1,37 @@
-import { mongoDB } from "../database/queryMongo";
-import { utils } from "../helper/utils";
+import { mongoDB } from "../database/mongoDB";
 import { formErrors } from "../list/formErrors";
 import { UserServiceClass } from "../services/user.service";
 
 const User = require("../models/User.schema");
 const hashPass = require('password-hash');
 
-
 class UserControllerClass extends UserServiceClass{
-
-    /* ---------------------------- */
-    /* -------- Auth block -------- */
-    /* ---------------------------- */
     
     public async userLogin(req, res){
         const { login, password } = req.body;
 
-        /*
-         * We don't need to send a request to the server if any
-         * field is empty, so we gotta check it here.
-        */
         if((login || password) === undefined || login.trim().length === 0 || password.trim().length === 0){
-            return res.json({status: 400, error: formErrors.EMPTYFIELD, errorDetail: "EMPTYFIELD"});
+            return res.json({status: 400, message: formErrors.EMPTYFIELD});
         }
 
-    
-        /*
-         * Trying to find a user with the same login as entered.
-         * If there's no user found, some errors will be sent.
-        */
-        mongoDB.getOne('users', {user_login: login}, (user) => {    
-            if(user.error){
-                return res.json({status: 400, error: user.error});
-            }
-            else if(utils.isObjectEmpty(user.result)){
-                return res.json({status: 400, error: formErrors.NOTEXISTS, errorDetail: 'NOTEXISTS'});
-            }
-            else if(!hashPass.verify(password, user.result.user_password)){
-                return res.json({status: 400, error: formErrors.WRONGPASSWORD, errorDetail: 'WRONGPASSWORD'});
-            }
+        const candidate: object = await mongoDB.getOne("users", {user_login: login});
 
-            // Login here
-            // res.cookie("user", user);
+        if(candidate["status"] === 404){
+            return res.json({status: 404, message: formErrors.NOTEXISTS});
+        }
+        if(!hashPass.verify(password, candidate["data"].user_password)){
+            return res.json({status: 400, message: formErrors.WRONGPASSWORD});
+        }
 
-            // HERE WE MUST GENERATE TOKENS 
+        const data = {
+            _id: candidate["data"]._id,
+            firstname: candidate["data"].user_firstname,
+            lastname: candidate["data"].user_lastname,
+            role: candidate["data"].user_role,
+            avatar: candidate["data"].user_avatar
+        }
 
-            return res.json({status: 200});
-        });
+        return res.json({status: 200, data});
     };
 
     public async userSignUp(req, res){
@@ -73,19 +58,19 @@ class UserControllerClass extends UserServiceClass{
         }
 
 
-        mongoDB.getOne("users", {user_login: login}, (result) => {
-            if(result.error) return res.status(400).json({status: 400, error: result.error});
-            else if(!utils.isObjectEmpty(result.result)){
-                return res.json({status: 400, error: formErrors.ALREADYEXISTS, errorDetail: 'ALREADYEXISTS'});
-            }
-        })
+        // mongoDB.getOne("users", {user_login: login}, (result) => {
+        //     if(result.error) return res.status(400).json({status: 400, error: result.error});
+        //     else if(!utils.isObjectEmpty(result.result)){
+        //         return res.json({status: 400, error: formErrors.ALREADYEXISTS, errorDetail: 'ALREADYEXISTS'});
+        //     }
+        // })
 
-        mongoDB.getOne("users", {user_email: email}, (result) => {
-            if(result.error) return res.status(400).json({status: 400, error: result.error});
-            else if(!utils.isObjectEmpty(result.result)){
-                return res.json({status: 400, error: formErrors.ALREADYEXISTS, errorDetail: 'ALREADYEXISTS'});
-            }
-        })
+        // mongoDB.getOne("users", {user_email: email}, (result) => {
+        //     if(result.error) return res.status(400).json({status: 400, error: result.error});
+        //     else if(!utils.isObjectEmpty(result.result)){
+        //         return res.json({status: 400, error: formErrors.ALREADYEXISTS, errorDetail: 'ALREADYEXISTS'});
+        //     }
+        // })
 
         const hashedPassword = hashPass.generate(pass1);
 
@@ -109,22 +94,15 @@ class UserControllerClass extends UserServiceClass{
 
     };
 
-    /* --------------------------------- */
-    /* -------- OTHER FUNCTIONS -------- */
-    /* --------------------------------- */
 
-    public getUsers(req, res){
+    public async getUsers(req, res){
         const { id } = req.params;
 
-        if(id){
-            mongoDB.getOne("users", {_id: id}, (result) => {
-                if(result.error){
-                    return res.status(result.status).json({status: result.status, error: result.error});
-                }
-                
-                return res.status(result.status).json({status: result.status, result});
-            });
-        }
+        const response = id 
+            ? await mongoDB.getOne("users", {_id: id})
+            : await mongoDB.getAll("users");
+
+        return res.json(response);
     }
 
     /* -------------------------------------- */

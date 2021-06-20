@@ -1,15 +1,15 @@
 import React from 'react';
 import { Avatar, Icon } from "rsuite";
-import { useAdmin } from "../../components/hooks/adminSidebar.hook";
+// import { useAdmin } from "../../components/hooks/adminSidebar.hook";
 
 
 export const AdminHeader = (props) => {
 
-    const { toggle } = useAdmin();
+    // const { toggle } = useAdmin();
 
     return (
         <div className="admin-header">
-            <div className="admin-header-item admin-sidebar-collapse" onClick={toggle}>
+            <div className="admin-header-item admin-sidebar-collapse" onClick={() => console.log("d")}>
                 <Icon icon="bars" size="lg" />
             </div>
 

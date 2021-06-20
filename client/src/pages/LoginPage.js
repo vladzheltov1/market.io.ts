@@ -1,57 +1,67 @@
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button, Icon } from "rsuite";
 import { useHttp } from "../components/hooks/http.hook";
-import "../css/form.scss";
-
 
 export const LoginPage = () => {
 
     const [form, setForm] = useState({ login: "", password: "" });
+
+    // const { loginHandler } = useAuth(form);
+    // const { errors, clearError, loading } = useHttp();
 
     const [formClass, setFormClass] = useState({
         loginClass: ["form-block", "form-after"],
         passwordClass: ["form-block", "form-after"]
     })
 
-    const loginWrong = useCallback(() => {
-        setFormClass({ ...formClass, loginClass: ["form-block", "form-after", "form-input-wrong"] });
-    }, [formClass, setFormClass]);
+    // const loginWrong = useCallback(() => {
+    //     setFormClass({ ...formClass, loginClass: ["form-block", "form-after", "form-input-wrong"] });
+    // }, [formClass, setFormClass]);
 
-    const passwordWrong = useCallback(() => {
-        setFormClass({ ...formClass, passwordClass: ["form-block", "form-after", "form-input-wrong"] });
-    }, [formClass, setFormClass]);
+    // const passwordWrong = useCallback(() => {
+    //     setFormClass({ ...formClass, passwordClass: ["form-block", "form-after", "form-input-wrong"] });
+    // }, [formClass, setFormClass]);
 
-
-    const { errors, clearError, request, loading } = useHttp();
+    const { request, fetching, message, clearMessage } = useHttp();
     const loginHandler = async () => {
+
+        if (fetching) return;
+
         try {
+            const body = JSON.stringify({ login: form.login, password: form.password });
+            const data = await request("/api/users/login", "POST", body);
 
-            const json = {
-                login: form.login,
-                password: form.password,
-            };
+            if (data.status === 200) {
+                localStorage.setItem("userData", JSON.stringify(data.data));
 
-            const data = await request("/api/users/login", "POST", JSON.stringify(json));
-
-            if (errors.error) {
-                if (errors.errorDetail === "EMPTYFIELD") {
-                    if (form.login.length === 0) loginWrong();
-                    if (form.password.length === 0) passwordWrong();
-                }
-                else if (errors.errorDetail === "NOTEXISTS") loginWrong();
-                else if (errors.errorDetail === "WRONGPASSWORD") passwordWrong();
+                // Find a better way to do it...
+                window.location.replace("/");
             }
-            else {
-                // Authorize here
+        } catch (error) {
+            console.log(error);
+        }
 
-                // THE SERVER MUST RETURN THE ACCESS TOKEN
-                // AND THE CLIENT SAVES IT TO THE LOCALSTORAGE 
+        // try {
+        //     setLoading(true);
 
-                // window.location.replace("/");
-            }
+        //     const json = { login: form.login, password: form.password };
 
-        } catch (e) { /* Errors have already been caught */ };
+        //     const data = await request("/api/users/login", "POST", JSON.stringify(json));
+
+        //     if (!message) {
+        //         // Authorize here
+
+        //         // THE SERVER MUST RETURN THE ACCESS TOKEN
+        //         // AND THE CLIENT SAVES IT TO THE LOCALSTORAGE 
+
+        //         // window.location.replace("/");
+        //     }
+
+        //     setLoading(false);
+        // } catch (e) {
+        //     // setLoading(false);
+        // };
     }
 
     return (
@@ -59,14 +69,14 @@ export const LoginPage = () => {
             <div className="form">
                 <form className="form-form" method="POST">
                     <h3 className="form-title"> Вход </h3>{" "}
-                    {errors.error && (
+                    {message && (
                         <div className="form-block error-form">
-                            <b> Ошибка: </b> {errors.error}{" "}
-                            {/* <i
-                                className="icon icon-x error-form-close"
-                                onClick={clearError}
-                            ></i> */}
-                            <Icon icon="close" onClick={clearError} />
+                            <div>
+                                <b> Ошибка: </b> {message}
+                            </div>
+                            <span className="error-form-close">
+                                <Icon icon="close" onClick={clearMessage} />
+                            </span>
                         </div>
                     )}
                     <div className={formClass.loginClass.join(" ")}>
@@ -114,16 +124,16 @@ export const LoginPage = () => {
                             name="btn"
                             id="submit"
                             onClick={loginHandler}
-                            disabled={loading}
+                            disabled={fetching}
                         >
                             Войти
                         </Button>
                         <br />
-                        <a href="/user/reset"> Забыл пароль? </a>
+                        <a href="/user/reset"> Забыли пароль? </a>
                     </div>
                     <hr />
                     <div className="form-tip form-flex">
-                        <span className="me-1"> Нет аккаунта? </span>
+                        Нет аккаунта?&nbsp;
                         <Link to="/signup"> Регистрируйся! </Link>
                     </div>
                 </form>

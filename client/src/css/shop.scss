@@ -1,28 +1,20 @@
 @import "./general/variables.scss";
 
-// .shop-wrapper {
-//     display: flex;
-//     flex-grow: 0;
-//     flex-shrink: 0;
-//     flex-wrap: wrap;
-//     justify-content: center;
-//     align-items: flex-start;
-// }
-
-// .card {
-//     margin: 10px;
-// }
-
-// .card-price {
-//     font-size: 18px;
-//     font-weight: 600;
-// }
+.shop-page-wrapper {
+    max-width: 1170px;
+    // display: grid;
+    // grid-template-columns: 400px auto;
+    // gap: 20px;
+}
 
 .shop-products {
     display: flex;
     justify-content: center;
     gap: 20px;
     flex-wrap: wrap;
+
+    margin-bottom: 100px;
+
 }
 
 .shop-product-block {
@@ -37,5 +29,7 @@
     }
 }
 
-// .shop-product-block:hover {
-// }
+.shop-filter-block {
+    padding: 10px;
+    margin-right: 10px;
+}

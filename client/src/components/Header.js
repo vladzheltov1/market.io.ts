@@ -1,14 +1,13 @@
 import * as $ from "jquery";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Icon } from "rsuite";
 import 'rsuite/dist/styles/rsuite-default.css';
-import "../css/header.scss";
 import { HeaderDropDown } from "./HeaderDropdown";
-
 
 export const Header = (props) => {
     const [headerClassList, setHeaderClassList] = useState(['header']);
+
 
     useEffect(() => {
         window.addEventListener("resize", windowResize);

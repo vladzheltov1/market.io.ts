@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Icon } from "rsuite";
 import { useHttp } from "../components/hooks/http.hook";
@@ -15,23 +15,10 @@ export const SearchPage = () => {
 
     const { request, errors } = useHttp();
 
-    /* Send a request to the server */
-    /*
-     * This function checks if the fetching
-     * is in process and tries to send another
-     * request.
-    */
-    const getData = useCallback(() => {
-        /*
-         * Conditions are:
-         *  - !fetching (checking if there's no unresponded queries)
-         *  - value.trim().length != 0 (checking if the value field is not empty)
-         *  - !value.includes(prevValue) (checking if the new value of input
-         *                                is the same as the old one)
-        */
+    const getData = (() => {
         if (!fetching && value.trim().length !== 0 && !value.includes(prevValue)) {
             /*
-             * Parsing the data server sent.
+             * Parsing the data server has sent.
              * 
              * The result might contain:
              *  - error (we should print it)
@@ -39,23 +26,6 @@ export const SearchPage = () => {
              *  - response (might be an array or null (not found)) 
             */
             // const data = JSON.stringify({ query: value });
-
-
-            /*
-             * Basic function which is called when the response comes.
-             * It parses the response, checks if the response 
-             * has an `error` field and sets a new state for `suggestions` (array)
-            */
-            // const load = () => {
-            //     let serverData = JSON.parse(request.response);
-
-            //     if (serverData.error) {
-            //         console.error(serverData.error);
-            //         return;
-            //     }
-
-            //     setSuggestions(serverData.response);
-            // }
 
 
             /*
@@ -87,8 +57,6 @@ export const SearchPage = () => {
              * to get the autocomplete list based on 
              * user's input
             */
-
-
             const url = '/api/search/products/' + JSON.stringify(value);
 
             request(url, "GET").then((response) => {
@@ -101,50 +69,30 @@ export const SearchPage = () => {
                 setSuggestions(response);
             });
 
-            // let request = new XMLHttpRequest();
-            // request.open('POST', '/fetch/data/product', true);
-            // request.open('GET', url, true);
-            // request.setRequestHeader('Content-Type', 'application/json');
-            // request.addEventListener('load', load);
-            // request.send(data);
-
-
-            /*
-             * Setting `fetching` to false to let the system
-             * know that the server has sent the response and
-             * the new one can be sent
-            */
             setFetching(false);
         }
-    }, [value, prevValue, errors, request, fetching, setSuggestions, setFetching]);
+    });
 
 
     /* Works out when the text is typed */
-    const handleChange = useCallback((event) => {
+    const handleChange = ((event) => {
         setValue(event.target.value);
 
-        if (value.length > 2) {
-            getData();
-        }
+        value.length >= 2 && getData();
 
-        if (value.length < 2) {
+        if (value.length <= 2) {
             setSuggestions([]);
-            setPrevValue('start')
+            setPrevValue('start');
         }
 
-    }, [value, setSuggestions, setPrevValue, getData]);
+    });
 
 
     /* Redirection user to the search page when Enter is pressed */
     // Find a way to do it differently //
-    const handlePress = useCallback((event) => {
-        return event.key === 'Enter' ? window.location.replace('/search/' + value) : '';
-    }, [value]);
+    const handlePress = (event => event.key === 'Enter' && window.location.replace('/search/' + value));
 
-
-    const clearField = useCallback(() => {
-        setValue("");
-    }, [setValue]);
+    const clearField = () => setValue("");
 
     /* Render component */
     return (

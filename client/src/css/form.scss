@@ -131,13 +131,12 @@
 
     box-shadow: 0 0 2px $border;
     font-size: 16px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .error-form-close {
-    position: absolute !important;
-    right: 10px !important;
-    /* top: 10px !important; */
-    display: block;
+    color: $red;
 }
 
 .error-form-close:hover {
@@ -148,7 +147,6 @@
     margin-left: 25px;
     margin-bottom: 0 !important;
 }
-
 .form-gender-block>.form-check {
     padding-left: 5px;
 }

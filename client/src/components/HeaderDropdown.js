@@ -1,57 +1,60 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import { Dropdown, Icon } from "rsuite";
+import { useAuth } from "./hooks/auth.hook";
 
-// USE CONTEXT INSTEAD OF PROPS //
 
-export const HeaderDropDown = (props) => {
+export const HeaderDropDown = () => {
+
+    const { getUserData, clearUserData } = useAuth();
+    const userData = getUserData();
+
+    const logout = () => {
+        clearUserData();
+        window.location.reload()
+    }
+
     return (
         <Dropdown
-            className="dropdownHeader"
+            className="dropdownHeader header-item header-dropdown"
             title="Личный кабинет"
             icon={<Icon icon="profile" />}
-            className="header-item header-dropdown">
-            {props.userData !== undefined && (
+        >
+            {userData ? (
                 <>
-                    {/* If any errors with DOM nesting, solution is below */}
-                    <Link to={"/profile/" + props.userData._id}>
-                        <Dropdown.Item>
-                            <Icon icon="user" />
-                            Мой профиль
-                        </Dropdown.Item>
+                    <Link to={"/profile/" + userData._id} className="header-dropdown-item">
+                        <Icon icon="user" />
+                        Мой профиль
                     </Link>
-                    <Link to="/cart">
-                        <Dropdown.Item>
-                            <Icon icon="shopping-cart" />
-                            Корзина
-                        </Dropdown.Item>
+                    <Link to="/cart" className="header-dropdown-item">
+                        <Icon icon="shopping-cart" />
+                        Корзина
                     </Link>
-                    {props.userData !== undefined && props.userData.user_role === 2 && (
-                        <Link to="/admin">
-                            <Dropdown.Item>
-                                <Icon icon="cog" />
-                                Админ панель
-                            </Dropdown.Item>
+                    {userData && userData.role === 2 && (
+                        <Link to="/admin" className="header-dropdown-item">
+                            <Icon icon="cog" />
+                            Админ панель
                         </Link>
                     )}
                     <Dropdown.Item divider />
-                    <Link to="/logout">
-                        <Dropdown.Item>
-                            <Icon icon="sign-out" />
-                            Выход
-                        </Dropdown.Item>
+                    <Link to="#" onClick={logout} className="header-dropdown-item">
+                        <Icon icon="sign-out" />
+                        Выход
+                    </Link>
+                </>
+            ) : (
+                <>
+                    <Link to="/login" className="header-dropdown-item">
+                        <Icon icon="sign-in" />
+                        Вход
+                    </Link>
+
+                    <Link to="/signup" className="header-dropdown-item">
+                        <Icon icon="user-plus" />
+                        Регистрация
                     </Link>
                 </>
             )}
-            {/* Solution */}
-            <Link to="/login" className="header-dropdown-item">
-                <Icon icon="sign-in" />
-                Вход
-            </Link>
-
-            <Link to="/signup" className="header-dropdown-item">
-                <Icon icon="user-plus" />
-                Регистрация
-            </Link>
         </Dropdown>
     );
 }

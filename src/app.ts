@@ -1,5 +1,5 @@
 /* my modules */
-import { connect } from './database/connectMongo';
+import { mongoDB } from './database/mongoDB';
 
 require('dotenv').config()
 
@@ -7,9 +7,6 @@ require('dotenv').config()
 const express      = require('express');
 const cookieParser = require("cookie-parser");
 const api          = require("./router/api.router");
-// const auth    = require('./src/auth/auth');
-// const fetcher = require('./src/helper/fetch');
-// const router  = require('./src/router/router');
 /* ----------- */
 
 
@@ -41,9 +38,8 @@ try{
     if(PRODUCTION && IP === "127.0.0.1") throw new Error(`Invalid global host ip: ${IP}`);
 
     /* Connecting to MongoDB */
-    connect();
+    mongoDB.connect();
 
-    /* Listening... */
     APP.listen(PORT, IP, () => console.log(`Server has been started - ${IP}:${PORT}`));
 }
 catch(error){
