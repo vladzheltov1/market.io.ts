@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 @import "./general/variables.scss";
 
 * {
@@ -8,10 +10,22 @@
     box-sizing: border-box;
     font-weight: 400;
     font-family: $font-primary !important;
+    // font-family: 'Inter', sans-serif !important;
 }
 
+/* Scrollbar */
+body::-webkit-scrollbar {
+    width: 8px;
+    background: rgb(219, 219, 219);
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #9e9e9e;
+    border-radius: 20px;
+}
+
+
 .wrapper {
-    // position: relative;
     max-width: 1170px;
     margin: 0 auto;
     padding: 10px 15px;

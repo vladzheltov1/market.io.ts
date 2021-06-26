@@ -14,16 +14,16 @@ export const useRoutes = () => {
     const { getUserData } = useAuth();
     const userData = getUserData();
 
-    if (!userData) {
-        return (
-            <Switch>
-                <Route path="/" exact component={SearchPage} />
-                <Route path="/shop" component={ShopPage} />
-                <Route path="/product/:id" component={SearchPage} />
-                <Route component={NotFoundPage} />
-            </Switch>
-        )
-    }
+    // if (!userData) {
+    //     return (
+    //         <Switch>
+    //             <Route path="/" exact component={SearchPage} />
+    //             <Route path="/shop" component={ShopPage} />
+    //             <Route path="/product/:id" component={SearchPage} />
+    //             <Route component={NotFoundPage} />
+    //         </Switch>
+    //     )
+    // }
 
     return (
         <Switch>

@@ -1,5 +1,5 @@
-import { AdminHeader } from "./Admin.header";
-import { AdminSide } from "./Admin.side";
+import { AdminHeader } from "../../components/Admin.header";
+import { AdminSide } from "../../components/Admin.side";
 
 // const colors = [
 //     "#A23D36",
@@ -50,6 +50,7 @@ export const AdminIndex = (props) => {
                     <Link to="/" style={adminIndexStyle.adminIndexBlock}>
                         Market.io
                     </Link> */}
+                    ТЕКСТ
                 </div>
             </div>
         </div>

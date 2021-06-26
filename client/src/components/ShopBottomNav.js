@@ -7,9 +7,8 @@ export const ShopBottomNav = () => {
 
     const handleSelect = value => setActivePage(value);
 
-
     const style = {
-        margin: "50px 0",
+        marginTop: "50px",
         width: "100%",
         display: "flex",
         justifyContent: "center"
@@ -24,7 +23,6 @@ export const ShopBottomNav = () => {
                 first
                 size="sm"
                 pages={10}
-                last
                 ellipsis
                 boundaryLinks
                 activePage={activePage}
