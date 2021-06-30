@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+      "esModuleInterop": true,
+      "outDir": "build",
+      "baseUrl": ".",
+      "removeComments": true
+    },
+    "exclude": [
+      "node_modules",
+      "client"
+    ]
+}
