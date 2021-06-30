@@ -1,0 +1,129 @@
+@import "./general/vars.scss";
+
+.index-wrapper {
+    max-width: 800px;
+    padding: clamp(15px 30px);
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.index-search {
+    width: 100%;
+    height: 70vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.index-title {
+    // font-size: calc(2rem + 3vw);
+    // font-size: clamp(calc(2rem + 4vw), 36px, calc(2rem + 1.5vw)) !important;
+    font-size: max(calc(2rem + 2.3vw), 56px);
+    font-weight: 600;
+    user-select: none;
+    margin-bottom: 20px;
+    display: flex;
+    position: relative;
+
+}
+
+.index-input-block {
+    display: block;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+.index-icon {
+    position: absolute;
+    top: 37%;
+    left: 17px;
+}
+
+.index-clear-icon {
+    position: absolute;
+    right: 105px;
+    top: 14px;
+}
+
+.index-clear-icon:hover {
+    cursor: pointer;
+}
+
+.index-search-input,
+.index-search-input:hover,
+.index-search-input:active {
+    padding: 10px 33px 10px 45px !important;
+    font-size: 17px !important;
+    border-width: 3px !important;
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    border-color: $red !important;
+    transition-duration: 0s !important;
+
+    width: calc(100% - 97px);
+}
+
+.btn-search,
+.btn-search:hover {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 5px 20px;
+    margin: 5px 0;
+
+    background-color: $red;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+
+    width: 100px;
+
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.search-link-tip {
+    font-size: 14px;
+    display: block;
+}
+
+.search-realtime-result {
+    position: absolute;
+    top: 50px;
+    width: 100%;
+    z-index: 3;
+    border: solid 1px $border;
+}
+
+.search-realtime-result-link,
+.search-realtime-result-link:hover {
+    display: block;
+    width: 100%;
+    padding: 2px 20px;
+    color: #000 !important;
+    background: #fff;
+    font-weight: 400 !important;
+    overflow: hidden;
+    word-wrap: break-word;
+    text-decoration: none;
+}
+
+.search-realtime-result-link:hover {
+    background: #f4f4f4;
+    color: #000;
+}
+
+.search-direct-link,
+.search-direct-link:hover {
+    color: $red !important;
+    font-weight: 500 !important;
+}

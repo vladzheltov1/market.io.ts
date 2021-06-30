@@ -1,17 +1,16 @@
-import { BrowserRouter as Router } from "react-router-dom";
-import { Header } from "./components/Header";
-import { useRoutes } from "./components/helpers/routes";
+import React from "react";
+import { BrowserRouter } from "react-router-dom";
+import { Header } from "./components/Header/Header";
+import { Router } from "./scripts/Router";
 
-function App() {
+export default function App() {
 
-  const routes = useRoutes(false);
+    const routes = Router();
 
-  return (
-    <Router>
-      <Header />
-      {routes}
-    </Router>
-  );
+    return (
+        <BrowserRouter>
+            <Header />
+            {routes}
+        </BrowserRouter>
+    )
 }
-
-export default App;
