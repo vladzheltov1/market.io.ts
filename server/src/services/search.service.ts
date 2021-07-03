@@ -9,12 +9,4 @@ export class SearchServiceClass{
         }
         return tips[Category[category]] || null;
     }
-
-    // protected getProductTips = (category: string): Array<Object> | null => {
-    //     const candidate = Category[category] || null;
-
-    //     if(candidate){
-    //         mongoDB.getAll()
-    //     }
-    // }
 }

@@ -1,4 +1,3 @@
-import { status } from "../list/httpStatus";
 import { databaseService } from "../services/database.service";
 const mongoose = require('mongoose');
 
@@ -35,29 +34,12 @@ class MongoDB{
     }
 
     // ------------ //
-    private get = ({single, table, condition, field = {}, limit = null}): object => {
-        const amount = single ? "findOne" : "find";
-
-        return new Promise((resolve, reject) => {
-            databaseService.getSchemaByTable(table)?.[amount](condition, field).limit(limit).exec((error, data) => {
-                if(error) reject({status: 500});
-                if(!data) reject({status: 404});
-    
-                resolve ({status: 200, data});
-            });
-        }).catch((error) => {
-            // --- FOR DEBUGGING --- //
-            // console.log({status: error.status, message: status[error.status]});
-            return {status: error.status, message: status[error.status]};
-        });
-    }
-
     public getAll = (table: string = null, condition: object = {}, field?: object, limit?: number): object => {
-        return this.get({ single: false, table, condition, field, limit }); 
+        return databaseService.get({ single: false, table, condition, field, limit }); 
     }
 
     public getOne = (table: string = null, condition: object = {}, field?: object): object => {
-        return this.get({ single: true, table, condition, field });
+        return databaseService.get({ single: true, table, condition, field });
     }
 }
 
