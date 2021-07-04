@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Icon } from "rsuite";
 import { Suggestions } from "../components/Index/Suggestions";
+import { Alert } from "../components/Market.io/Alert";
 import { useHttp } from "../hooks/useHttp";
 
 export const Index = () => {
@@ -54,6 +55,7 @@ export const Index = () => {
 
     return (
         <div className="wrapper index-wrapper">
+            <Alert type="danger" />
             <div className="index-search">
                 <div className="index-title">Market.io</div>
                 <div className="index-input-block">

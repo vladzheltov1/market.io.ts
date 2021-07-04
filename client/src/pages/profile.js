@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Loader } from "rsuite";
+// import { Alert } from "../components/Market.io/Alert";
 import { useAuth } from "../hooks/useAuth";
 import { useHttp } from "../hooks/useHttp";
 import { utils } from "../scripts/Utils";
@@ -8,17 +9,16 @@ import { utils } from "../scripts/Utils";
 export const Profile = (props) => {
     const [user, setUser] = useState({});
     const [joined, setJoined] = useState("");
-    const { message, fetching, request } = useHttp();
-    const { getUserData } = useAuth();
 
+    const { message, fetching, request } = useHttp();
+
+    const { getUserData } = useAuth();
     const loggedUserData = getUserData();
 
     useEffect(() => {
-        const ID = props.match.params.id;
-
         try {
             const fetchData = async () => {
-                const response = await request("/api/users/" + ID, "GET");
+                const response = await request("/api/users/" + props.match.params.id, "GET");
 
                 if (utils.isObjectEmpty(response.data) || message) {
                     props.history.push("/");
@@ -38,13 +38,14 @@ export const Profile = (props) => {
 
     return (
         <div className="wrapper">
+            {/* <Alert /> */}
             {fetching ? (
                 <Loader size="md" center content="Загрузка..." vertical />
             ) : (
                 <div className="profile__flex">
                     <div className="profile__left-info">
                         <div className="profile__photo-wrapper">
-                            <img src="../images/uploads/users/admin.jpg" alt="" />
+                            <img src={require("../images/uploads/users/admin.jpg")} alt="" />
                         </div>
                     </div>
                     <div className="profile__right-info">
