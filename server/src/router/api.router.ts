@@ -1,7 +1,8 @@
+import { Router } from "express";
 import { searchController } from "../controllers/search.controller";
 import { userController } from "../controllers/user.controller";
-import { router } from "../helper/createRouter";
 
+const router = Router();
 
 /* --- GET --- */
 router.get("/users/:id?", userController.getUsers);

@@ -1,5 +1,5 @@
 import { mongoDB } from "../database/mongoDB";
-import { formErrors } from "../list/formErrors";
+import { formErrors } from "../errors/lists/formErrors";
 import { userService } from "../services/user.service";
 
 const User = require("../models/User.schema");

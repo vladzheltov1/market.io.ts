@@ -18,9 +18,7 @@
 }
 
 .index-title {
-    // font-size: calc(2rem + 3vw);
-    // font-size: clamp(calc(2rem + 4vw), 36px, calc(2rem + 1.5vw)) !important;
-    font-size: max(calc(2rem + 2.3vw), 56px);
+    font-size: calc(2rem + 2vw);
     font-weight: 600;
     user-select: none;
     margin-bottom: 20px;

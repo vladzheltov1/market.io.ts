@@ -1,13 +1,6 @@
 import { databaseService } from "../services/database.service";
+
 const mongoose = require('mongoose');
-
-/* 
-   This module extends the default module for using
-   mongodb - `mongoose`. These functions are mostly used
-   in api scripts, so we need it to make the code shorter
-   and get the better debugging experience.
-*/
-
 class MongoDB{
 
     // Connecting

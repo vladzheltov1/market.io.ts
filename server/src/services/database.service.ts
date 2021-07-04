@@ -1,4 +1,4 @@
-import { status } from "../list/httpStatus";
+import { status } from "../errors/lists/httpStatus";
 /* Getting database schemas */
 const User = require("../models/User.schema");
 const Product = require('../models/Product.schema');

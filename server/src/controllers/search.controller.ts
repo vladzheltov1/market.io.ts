@@ -1,7 +1,9 @@
 import { mongoDB } from "../database/mongoDB";
 import { SearchServiceClass } from "../services/search.service";
 
-class SearchControllerClass extends SearchServiceClass{    
+const searchServiceClass = new SearchServiceClass();
+
+class SearchControllerClass{    
     public async search(req, res){
         const {query} = req.params;
         
@@ -14,16 +16,6 @@ class SearchControllerClass extends SearchServiceClass{
         const response = await mongoDB.getAll("products", {product_title: {$regex: query.trim()}});
 
         return res.json(response);
-    }
-
-    public async getSuggestions(query){
-        // const serverResponse = this.search(query);
-        // const possibleCategory = this.getProducts(serverResponse);
-
-        const response = await mongoDB.getOne("products", {product_title: {$regex: query}}, {product_title: 1});
-
-        // const tips = [];
-        // const keyWords = this.getTips(query);
     }
 }
 

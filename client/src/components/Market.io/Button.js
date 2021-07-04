@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export const Button = ({ children, link, color, view, action }) => {
+export const Button = ({ children, link, color, view, action, icon }) => {
 
-    const classList = [];
+    const classList = ['m-btn'];
 
     if (view) classList.push(view);
     else if (color) classList.push(color);
