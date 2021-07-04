@@ -6,7 +6,7 @@ export const NotFound = () => {
         wrapperNf: {
             maxWidth: "800px",
             display: "flex",
-            height: "70vh",
+            height: "80vh",
             justifyContent: "center",
             alignItems: "center",
             fontSize: "36px"

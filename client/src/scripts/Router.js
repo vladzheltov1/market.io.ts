@@ -1,5 +1,6 @@
 import React from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
+import { useAuth } from "../hooks/useAuth";
 import { Index } from "../pages";
 import { NotFound } from "../pages/404";
 import { Cart } from "../pages/cart";
@@ -8,7 +9,11 @@ import { Profile } from "../pages/profile";
 import { ResetPassword } from "../pages/resetPassword";
 import { Signup } from "../pages/signup";
 
-export const Router = (props) => {
+export const Router = () => {
+
+    const { getUserData } = useAuth();
+    const loggedUser = getUserData();
+
     return (
         <Switch>
             <Route path="/" exact component={Index} />
@@ -18,7 +23,7 @@ export const Router = (props) => {
             <Route path="/cart" component={Cart} />
             <Route path="/profile/:id" component={Profile} />
             <Route path="/profile" >
-                <Redirect to="/" />
+                <Redirect to={"/profile/" + loggedUser._id} />
             </Route>
             <Route component={NotFound} />
         </Switch>

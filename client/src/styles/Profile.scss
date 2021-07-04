@@ -1,4 +1,126 @@
+$grayProfile: #EFEFEF;
+
 .profile__flex {
+    max-width: 900px;
+    margin: 0 auto;
     display: flex;
+    align-items: flex-start;
+    position: relative;
     gap: 20px;
+    margin-top: 30px;
+}
+
+.profile__left-info {
+    .profile__photo-wrapper {
+        width: 200px;
+        height: 200px;
+        position: relative;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+}
+
+.profile__right-info {
+
+    width: 100%;
+
+    .profile__name {
+        font-size: 22px;
+        font-weight: 500;
+        color: $black;
+    }
+
+    .profile__role {
+        font-size: 15px;
+        color: $blue;
+    }
+
+    .profile__tabs {
+        border-bottom: 1px solid $border;
+        width: 100%;
+        display: flex;
+        gap: 10px;
+
+        margin: 50px 0 20px;
+
+        .profile__tab {
+            padding: 7px;
+            font-size: 16px;
+            position: relative;
+
+            &::after {
+                content: "";
+                position: absolute;
+                bottom: -1px;
+                left: 0;
+                height: 2px;
+                background-color: $blue-active;
+                width: 0;
+                transition: width .2s ease-in-out;
+            }
+
+            &.active::after {
+                width: 100%;
+            }
+
+            &:hover::after {
+                width: 100%;
+            }
+
+            // &:hover {
+            //     cursor: pointer;
+
+            //     border-bottom: 2px solid $blue-active;
+            // }
+
+            // &.active {
+            //     border-bottom: 2px solid $blue-active;
+            // }
+        }
+    }
+
+    .profile__data-block {
+        display: flex;
+        justify-content: space-between;
+        font-size: 15px;
+        padding: 5px;
+
+        &:hover {
+            background: $border-light;
+        }
+
+        .profile__data-name {
+            font-weight: 500;
+        }
+
+        .profile__data-value {
+            color: $blue;
+        }
+    }
+}
+
+.profile__edit-button {
+    color: $border-active;
+    background-color: $grayProfile;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 15px;
+    position: absolute;
+    right: 0;
+
+
+    &:hover,
+    &:active,
+    &:focus {
+        color: currentColor;
+        text-decoration: none;
+    }
+
+    // &:active {
+    //     box-shadow: 0 0 2px 2px $border-active;
+    // }
 }
