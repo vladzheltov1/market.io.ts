@@ -55,7 +55,7 @@ export const Index = () => {
 
     return (
         <div className="wrapper index-wrapper">
-            <Alert type="danger" />
+            <Alert type="success" />
             <div className="index-search">
                 <div className="index-title">Market.io</div>
                 <div className="index-input-block">

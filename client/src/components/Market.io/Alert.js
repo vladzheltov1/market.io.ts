@@ -12,15 +12,17 @@ export const Alert = (
             {
                 value: "Ок",
                 color: "green",
+                action: "close"
             },
             {
                 value: "Отмена",
                 color: "red",
+                action: "close"
             }
         ]
     }) => {
 
-    const [visible, setVisible] = useState(true);
+    const [visible, setVisible] = useState(false);
 
     const showAlert = () => {
         document.querySelector('body').classList.add("alert-open");
@@ -37,6 +39,7 @@ export const Alert = (
                 <div className="alert-wrapper">
                     <div className="alert-blinder"></div>
                     <div className={"alert-window " + "alert__type-" + type}>
+                        <div onClick={hideAlert} className="alert__close"><Icon icon="close" /></div>
                         <div className="alert-window__icon">
                             {type === "info" && (<Icon className="alert__icon" icon="info" />)}
                             {type === "warning" && (<Icon className="alert__icon" icon="exclamation-triangle" />)}

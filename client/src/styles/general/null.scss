@@ -70,3 +70,17 @@ button {
     border-radius: 5px;
 
 }
+
+/**
+ * This class is used for making a picture out of a div
+ * because default paths DON'T work for some reason.
+ * Maybe this is because we have a 404 fallback?
+ */
+.image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}

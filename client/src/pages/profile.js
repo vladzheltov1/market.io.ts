@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Loader } from "rsuite";
-// import { Alert } from "../components/Market.io/Alert";
 import { useAuth } from "../hooks/useAuth";
 import { useHttp } from "../hooks/useHttp";
 import { utils } from "../scripts/Utils";
@@ -38,19 +37,24 @@ export const Profile = (props) => {
 
     return (
         <div className="wrapper">
-            {/* <Alert /> */}
             {fetching ? (
                 <Loader size="md" center content="Загрузка..." vertical />
             ) : (
                 <div className="profile__flex">
-                    <div className="profile__left-info">
+                    <div className="profile-block profile__left-info">
                         <div className="profile__photo-wrapper">
-                            <img src={require("../images/uploads/users/admin.jpg")} alt="" />
+                            <img src={"/uploads/users/" + user.user_avatar} alt="" />
                         </div>
                     </div>
-                    <div className="profile__right-info">
+                    <div className="profile-block profile__right-info">
                         <div className="profile__name">{user.user_firstname} {user.user_lastname}</div>
-                        <div className="profile__role">{user.user_role === 2 ? "Администратор" : "Пользователь"}</div>
+                        {
+                            user.user_role === 2 ? (
+                                <div className="profile__role" style={{ color: "red" }}>Администратор</div>
+                            ) : (
+                                <div className="profile__role">Пользователь</div>
+                            )
+                        }
                         <div className="profile__tabs">
                             <div className="profile__tab active">Информация</div>
                             <div className="profile__tab">Другое</div>
@@ -63,7 +67,7 @@ export const Profile = (props) => {
                             <div className="profile__data-name">Дата регистрации</div>
                             <div className="profile__data-value">{joined}</div>
                         </div>
-                        {user._id === loggedUserData._id && (
+                        {loggedUserData && user._id === loggedUserData._id && (
                             <>
                                 <hr />
                                 <div className="profile__data-block">
@@ -77,7 +81,7 @@ export const Profile = (props) => {
                             </>
                         )}
                     </div>
-                    {user._id === loggedUserData._id && (
+                    {loggedUserData && user._id === loggedUserData._id && (
                         <Link className="profile__edit-button" to="#">Редактировать</Link>
                     )}
                 </div>
