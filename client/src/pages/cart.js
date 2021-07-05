@@ -32,7 +32,7 @@ export const Cart = () => {
         },
         listItem: {
             display: "flex",
-            justifyContent: "space-around",
+            justifyContent: "space-between",
             alignItems: "center",
             padding: "10px 20px",
             border: "1px solid #fafafa"
@@ -76,7 +76,7 @@ export const Cart = () => {
                     <div style={style.itemColumn}>
                         <div style={style.textWithTitle}>
                             <div style={style.textTitle}>Итог</div>
-                            <div style={style.textValue}>{total}</div>
+                            <div style={style.textValue}>{total} руб.</div>
                         </div>
                     </div>
                     <div style={style.itemColumn}>

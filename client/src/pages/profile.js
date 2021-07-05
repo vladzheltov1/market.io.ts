@@ -29,9 +29,7 @@ export const Profile = (props) => {
             }
 
             fetchData();
-        } catch (error) {
-            console.log(error);
-        }
+        } catch (error) { console.log(error) }
         // If we don't use this comment, eslint shows warnings 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
@@ -83,7 +81,7 @@ export const Profile = (props) => {
                         )}
                     </div>
                     {loggedUserData && user._id === loggedUserData._id && (
-                        <Link className="profile__edit-button" to="#">Редактировать</Link>
+                        <Link className="profile__edit-button" to="/user/edit">Редактировать</Link>
                     )}
                 </div>
             )}

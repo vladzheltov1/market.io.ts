@@ -10,9 +10,9 @@ class Error{
         // Here we must send this error to the client
         // and the client must show it.
     }
-
+    
     public getHTTP(status){
-        return httpStatus[status]
+        return httpStatus[status] || "Неизвестная ошибка!";
     }
 
     public getForm(){

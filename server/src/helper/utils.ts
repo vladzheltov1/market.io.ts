@@ -1,10 +1,9 @@
 class Utils{
     /**
-     * Check if an object is empty.
-     * It will return boolean with the value, based 
-     * on the object keys.
+     * This method will check if the given `object` is empty.
+     * If it is, return `true`, else - return `false`
      * @param {object} obj 
-     * @returns {boolean}
+     * @returns {boolean} true/false
      */
     public isObjectEmpty(obj: object){
         for(let key in obj){
@@ -14,12 +13,23 @@ class Utils{
     }
 
     /**
-     * Same as the above function, but this one works with arrays.
+     * This method will check if the given `array` is empty.
+     * If it is, return `true`, else - return `false`
      * @param {array} array
-     * @returns {boolean}
+     * @returns {boolean} true/false
      */
     public isArrayEmpty(array: Array<any>){
         return array.length === 0 ? true : false;
+    }
+
+    /**
+     * This method will check if the given paramert is NOT `undefined`
+     * and it's trimmed length is NOT equal to 0. In this case we'll get `true`. 
+     * @param {string} str 
+     * @returns {boolean} true/false
+     */
+    public isStringValid(str: string): boolean{
+        return (str !== undefined && str.trim().length !== 0);
     }
 }
 

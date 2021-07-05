@@ -14,4 +14,14 @@ export class SearchServiceClass{
         // const tips = this.getTips(response);
         // const keyWords = this.getTips(query);
     }
+
+    public async searchByQuery(query){
+        if(query === undefined || !query.trim()){
+            return {
+                status: 400, message: "Пустой запрос!"
+            }
+        }
+
+        return await mongoDB.getAll("products", {product_title: {$regex: query.trim()}});
+    }
 }

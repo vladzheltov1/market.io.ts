@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Icon } from "rsuite";
 import { Suggestions } from "../components/Index/Suggestions";
-import { Alert } from "../components/Market.io/Alert";
 import { useHttp } from "../hooks/useHttp";
 
-export const Index = () => {
+export const Index = (props) => {
 
     const [value, setValue] = useState('');
     const [prevValue, setPrevValue] = useState('start');
@@ -14,6 +13,15 @@ export const Index = () => {
     const { fetching, request } = useHttp();
 
     const getData = (() => {
+        // NEW
+        // if (!fetching && value.trim().length !== 0 && !value.includes(prevValue)) {
+        //     setPrevValue(value);
+
+        //     const response = request("/api/search")
+        // }
+
+
+        // OLD
         // REMAKE!!!
         // if (!fetching && value.trim().length !== 0 && !value.includes(prevValue)) {
         //     setPrevValue(value);
@@ -46,16 +54,13 @@ export const Index = () => {
             setSuggestions([]);
             setPrevValue('start');
         }
-
     });
 
     /* Redirection user to the search page when Enter is pressed */
-    // Find a way to do it differently //
-    const handlePress = (event => event.key === 'Enter' && window.location.replace('/search/' + value));
+    const handlePress = (event => event.key === 'Enter' && props.history.push('/search/' + value));
 
     return (
         <div className="wrapper index-wrapper">
-            <Alert type="success" />
             <div className="index-search">
                 <div className="index-title">Market.io</div>
                 <div className="index-input-block">
@@ -68,9 +73,8 @@ export const Index = () => {
                         onKeyPress={handlePress}
                         value={value}
                     />
-                    {
-                        value.length > 0 && <div className="icon icon-x index-clear-icon" onClick={() => setValue("")}></div>
-                    }
+
+                    {value.length > 0 && <div className="icon icon-x index-clear-icon" onClick={() => setValue("")}></div>}
                     <Link to={"/search/" + value} className="btn-search">Найти</Link>
 
                     {value.length > 0 && (
@@ -82,9 +86,7 @@ export const Index = () => {
                                     {value}
                                     <span className="text-muted search-link-tip">Введите запрос</span>
                                 </Link>
-
                                 <Suggestions suggestions={suggestions} />
-
                             </div>
                         </div>
                     )}

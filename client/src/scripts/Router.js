@@ -6,6 +6,7 @@ import { Cart } from "../pages/cart";
 import { Login } from "../pages/login";
 import { Profile } from "../pages/profile";
 import { ResetPassword } from "../pages/resetPassword";
+import { Shop } from "../pages/shop";
 import { Signup } from "../pages/signup";
 
 export const Router = () => {
@@ -17,6 +18,7 @@ export const Router = () => {
             <Route path="/user/reset" component={ResetPassword} />
             <Route path="/cart" component={Cart} />
             <Route path="/profile/:id" component={Profile} />
+            <Route path="/shop" component={Shop} />
             <Route path="/profile" >
                 <Redirect to={"/"} />
             </Route>
