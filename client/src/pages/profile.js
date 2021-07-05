@@ -32,7 +32,8 @@ export const Profile = (props) => {
         } catch (error) {
             console.log(error);
         }
-
+        // If we don't use this comment, eslint shows warnings 
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
