@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Icon } from "rsuite";
 
-export const Button = ({ children, link, color, view, action, icon }) => {
+export const Button = ({ children, link, color, view, onClick, icon, disabled }) => {
 
     const classList = ['m-btn'];
 
@@ -19,7 +19,7 @@ export const Button = ({ children, link, color, view, action, icon }) => {
         )
     }
     return (
-        <button onClick={action && (() => action())} className={classList.join(' ')}>
+        <button onClick={() => onClick()} disabled={disabled} className={classList.join(' ')}>
             {icon && <Icon icon={icon} />}
             {children || ""}
         </button>

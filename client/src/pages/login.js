@@ -1,22 +1,15 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Button, Icon } from "rsuite";
+import { Icon } from "rsuite";
+import { Button } from "../components/Market.io/Button";
 import { useHttp } from "../hooks/useHttp";
 
 export const Login = () => {
 
     const [form, setForm] = useState({ login: "", password: "" });
 
-    const [formClass, setFormClass] = useState({
-        loginClass: ["form-block", "form-after"],
-        passwordClass: ["form-block", "form-after"]
-    })
-
     const { request, fetching, message, clearMessage } = useHttp();
     const loginHandler = async () => {
-
-        if (fetching) return;
-
         try {
             const body = JSON.stringify({ login: form.login, password: form.password });
             const data = await request("/api/users/login", "POST", body);
@@ -24,8 +17,11 @@ export const Login = () => {
             if (data.status === 200) {
                 localStorage.setItem("userData", JSON.stringify(data.data));
 
-                // Find a better way to do it...
-                window.location.replace("/");
+                // We HAVE TO reload the page to update the data,
+                // so DON'T change this thing with props.history.push('/')
+                // because it doesn't reload the page, so the data gets outdated.
+                window.location.replace('/');
+
             }
         } catch (error) {
             console.log(error);
@@ -47,7 +43,7 @@ export const Login = () => {
                             </span>
                         </div>
                     )}
-                    <div className={formClass.loginClass.join(" ")}>
+                    <div className="form-block form-after">
                         <Icon icon="user" />
                         <input
                             type="text"
@@ -58,15 +54,12 @@ export const Login = () => {
                             autoComplete="username"
                             onChange={event => {
                                 setForm({ ...form, login: event.target.value });
-                                if (event.target.value === "") {
-                                    setFormClass({ ...formClass, loginClass: ["form-block", "form-after"] });
-                                }
                             }}
                             value={form.login}
                             required
                         />
                     </div>
-                    <div className={formClass.passwordClass.join(" ")}>
+                    <div className="form-block form-after">
                         <Icon icon="lock" />
                         <input
                             type="password"
@@ -77,9 +70,6 @@ export const Login = () => {
                             autoComplete="current-password"
                             onChange={event => {
                                 setForm({ ...form, password: event.target.value });
-                                if (event.target.value === "") {
-                                    setFormClass({ ...formClass, passwordClass: ["form-block", "form-after"] });
-                                }
                             }}
                             value={form.password}
                             required
@@ -88,9 +78,6 @@ export const Login = () => {
                     <div className="form-block form-flex">
                         <Button
                             color="green"
-                            size="lg"
-                            name="btn"
-                            id="submit"
                             onClick={loginHandler}
                             disabled={fetching}
                         >

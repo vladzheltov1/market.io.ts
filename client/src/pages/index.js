@@ -10,11 +10,11 @@ export const Index = (props) => {
     const [prevValue, setPrevValue] = useState('start');
     const [suggestions, setSuggestions] = useState([]);
 
-    const { fetching, request } = useHttp();
+    const { request } = useHttp();
 
     const getData = (() => {
         // NEW
-        // if (!fetching && value.trim().length !== 0 && !value.includes(prevValue)) {
+        // if (value.trim().length !== 0 && !value.includes(prevValue)) {
         //     setPrevValue(value);
 
         //     const response = request("/api/search")
