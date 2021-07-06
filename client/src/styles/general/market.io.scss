@@ -8,9 +8,14 @@
     border-radius: 5px;
     font-size: 16px;
     color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+    &:hover,
+    &:active,
+    &:focus,
+    &:hover:active {
+        color: #fff;
+        text-decoration: none;
+    }
 
 
     &.primary,

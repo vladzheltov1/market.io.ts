@@ -65,7 +65,10 @@
 }
 
 .btn-search,
-.btn-search:hover {
+.btn-search:hover,
+.btn-search:active,
+.btn-search:hover:active,
+.btn-search:focus {
     position: absolute;
     top: 0;
     bottom: 0;

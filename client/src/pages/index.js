@@ -56,7 +56,7 @@ export const Index = (props) => {
         }
     });
 
-    /* Redirection user to the search page when Enter is pressed */
+    /* This function redirects the user to the search page when Enter is pressed */
     const handlePress = (event => event.key === 'Enter' && props.history.push('/search/' + value));
 
     return (

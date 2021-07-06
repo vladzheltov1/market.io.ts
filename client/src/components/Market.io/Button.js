@@ -19,7 +19,7 @@ export const Button = ({ children, link, color, view, onClick, icon, disabled })
         )
     }
     return (
-        <button onClick={() => onClick()} disabled={disabled} className={classList.join(' ')}>
+        <button onClick={typeof onClick === "function" && (() => onClick())} disabled={disabled} className={classList.join(' ')}>
             {icon && <Icon icon={icon} />}
             {children || ""}
         </button>

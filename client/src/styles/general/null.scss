@@ -12,8 +12,11 @@
     // font-family: 'Inter', sans-serif !important;
 }
 
-/* Scrollbar */
 body {
+
+    overflow-x: hidden;
+
+    /* Scrollbar */
     &::-webkit-scrollbar {
         width: 8px;
         background: rgb(219, 219, 219);
@@ -41,14 +44,15 @@ body {
     font-size: 24px;
 }
 
-input {
+input,
+textarea {
     padding: 5px 8px;
     margin: 5px 0;
     outline: none;
 
     display: block;
     width: 100%;
-    font-size: 16px;
+    font-size: 14px;
 
     border: 1px solid $border;
     border-radius: 5px;
@@ -68,20 +72,6 @@ button {
     padding: 8px 12px;
     border-radius: 5px;
 
-}
-
-/**
- * This class is used for making a picture out of a div
- * because default paths DON'T work for some reason.
- * Maybe this is because we have a 404 fallback?
- */
-.image {
-    display: block;
-    width: 100%;
-    height: 100%;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
 }
 
 .center {
