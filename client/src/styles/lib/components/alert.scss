@@ -1,53 +1,4 @@
-@import "./vars.scss";
-
-// BUTTON
-
-.m-btn {
-    padding: 8px 20px;
-    transition-duration: .2s;
-    border-radius: 5px;
-    font-size: 16px;
-    color: #fff;
-
-    &:hover,
-    &:active,
-    &:focus,
-    &:hover:active {
-        color: #fff;
-        text-decoration: none;
-    }
-
-
-    &.primary,
-    &.blue {
-        background-color: $blue;
-
-        &:hover {
-            background-color: $blue-active;
-        }
-    }
-
-
-
-    &.red {
-        background-color: $red;
-
-        &:hover {
-            background-color: $red-active;
-        }
-    }
-
-    &.green {
-        background-color: $green;
-
-        &:hover {
-            background-color: $green-active;
-        }
-    }
-}
-
-
-// ALERT
+@import "../../general/vars.scss";
 
 .alert-wrapper {
     z-index: 900;
@@ -182,32 +133,5 @@
         .alert-window__description {
             font-size: 14px;
         }
-    }
-}
-
-// NOTIFICATION
-
-.notification__window {
-    position: fixed;
-    right: 20px;
-    bottom: 20px;
-    padding: 10px;
-    box-shadow: 0 0 1px 1px $border;
-    border-radius: 10px;
-}
-
-.notification__title {
-    font-size: 18px;
-    font-weight: 500;
-}
-
-// .notification__description {}
-
-.notification__close {
-    position: fixed;
-    right: 25px;
-
-    &:hover {
-        cursor: pointer;
     }
 }

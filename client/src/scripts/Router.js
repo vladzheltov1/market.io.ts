@@ -4,6 +4,7 @@ import { Index } from "../pages";
 import { NotFound } from "../pages/404";
 import { AddProduct } from "../pages/addProduct";
 import { Cart } from "../pages/cart";
+import { Components } from "../pages/components";
 import { Login } from "../pages/login";
 import { Profile } from "../pages/profile";
 import { ResetPassword } from "../pages/resetPassword";
@@ -23,6 +24,7 @@ export const Router = () => {
             <Route path="/shop" component={Shop} />
             <Route path="/search/:query?" component={Search} />
             <Route path="/add/product" component={AddProduct} />
+            <Route path="/components" component={Components} />
             <Route path="/profile" >
                 <Redirect to={"/"} />
             </Route>

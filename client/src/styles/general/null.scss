@@ -9,7 +9,6 @@
     box-sizing: border-box;
     font-weight: 400;
     font-family: $font-primary !important;
-    // font-family: 'Inter', sans-serif !important;
 }
 
 body {
@@ -52,9 +51,9 @@ textarea {
 
     display: block;
     width: 100%;
-    font-size: 14px;
+    font-size: 15px;
 
-    border: 1px solid $border;
+    border: 2px solid $border;
     border-radius: 5px;
 
     transition-duration: .2s;
@@ -62,7 +61,7 @@ textarea {
     &:hover,
     &:active,
     &:focus {
-        border-color: $border-active;
+        border-color: $blue;
     }
 }
 
@@ -72,6 +71,10 @@ button {
     padding: 8px 12px;
     border-radius: 5px;
 
+}
+
+section {
+    margin: 5px 0;
 }
 
 .center {

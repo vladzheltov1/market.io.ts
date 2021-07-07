@@ -1,0 +1,78 @@
+@import "../../general/vars.scss";
+
+.m-btn {
+    padding: 8px 20px;
+    transition-duration: .2s;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #fff;
+
+    &:hover,
+    &:active,
+    &:focus,
+    &:hover:active {
+        color: #fff;
+        text-decoration: none;
+    }
+
+
+    &.primary,
+    &.blue {
+        background-color: $blue;
+
+        &:hover {
+            background-color: $blue-active;
+        }
+    }
+
+    &.secondary {
+        background-color: $border-active;
+
+        &:hover {
+            background-color: $border-active-dark;
+        }
+    }
+
+
+
+    &.red {
+        background-color: $red;
+
+        &:hover {
+            background-color: $red-active;
+        }
+    }
+
+    &.green {
+        background-color: $green;
+
+        &:hover {
+            background-color: $green-active;
+        }
+    }
+
+    &.orange {
+        background-color: $orange;
+
+        &:hover {
+            background-color: $orange-active;
+        }
+    }
+
+    &.yellow {
+        background-color: $yellow;
+
+        &:hover {
+            background-color: $yellow-active;
+        }
+    }
+
+    &.violet {
+        background-color: $violet;
+
+        &:hover {
+            background-color: $violet-active;
+        }
+    }
+
+}

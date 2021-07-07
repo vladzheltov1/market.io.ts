@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Icon } from "rsuite";
-import { Button } from "../components/Market.io/Button";
+import { Button } from "../components/Market.io/market.io";
 import { useHttp } from "../hooks/useHttp";
 
 export const Login = () => {
