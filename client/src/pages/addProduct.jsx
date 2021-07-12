@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Input, InputGroup, InputPicker } from "rsuite";
+import { DropList } from "../components/Market.io/market.io";
 
 export const AddProduct = () => {
 
@@ -24,7 +24,7 @@ export const AddProduct = () => {
     }
 
     return (
-        <div className="wrapper">
+        <div className="wrapper" style={{ maxWidth: 800 }}>
             <h2>Добавить продукт</h2>
             <div>
                 <input
@@ -35,11 +35,16 @@ export const AddProduct = () => {
                     placeholder="Описание продукта"
                     onChange={(event) => setForm({ ...form, description: event.target.value })}
                 ></textarea>
-                <InputPicker onChange={event => setForm({ ...form, category: event.target.value })} data={categories} style={{ width: "100%" }} />
-                <InputGroup>
+                {/* <InputPicker onChange={event => setForm({ ...form, category: event.target.value })} data={categories} style={{ width: "100%" }} /> */}
+
+                <DropList placeholder="Выберите..." />
+
+                {/* <InputGroup>
                     <Input type="number" onChange={event => setForm({ ...form, price: event.target.value })} />
                     <InputGroup.Addon>руб.</InputGroup.Addon>
-                </InputGroup>
+                </InputGroup> */}
+
+                <input type="number" placeholder="Цена (руб)" />
 
                 <input type="file" onChange={loadPicture} accept=".jpg, .jpeg, .png" />
 

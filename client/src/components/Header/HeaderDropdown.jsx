@@ -25,10 +25,20 @@ export const HeaderDropdown = () => {
                         Корзина
                     </Link>
                     {userData && userData.role === 2 && (
-                        <Link to="/admin" className="header-dropdown-item">
-                            <Icon icon="cog" />
-                            Админ панель
-                        </Link>
+                        <>
+                            <Link to="/admin" className="header-dropdown-item">
+                                <Icon icon="cog" />
+                                Админ панель
+                            </Link>
+                            <Link to="/add/product" className="header-dropdown-item">
+                                <Icon icon="plus" />
+                                Добавить продукт
+                            </Link>
+                            <Link to="/components" className="header-dropdown-item">
+                                <Icon icon="frame" />
+                                Все компоненты
+                            </Link>
+                        </>
                     )}
                     <Dropdown.Item divider />
                     <Link to="#" onClick={() => {
