@@ -1,4 +1,4 @@
-@import './general/vars.scss';
+@import "./general/vars.scss";
 
 .form-wrapper {
     max-width: 600px !important;
@@ -24,7 +24,7 @@
     display: inline-block;
 }
 
-.form-block>.rs-icon {
+.form-block > .rs-icon {
     position: absolute;
     bottom: 37%;
     left: 7px;
@@ -44,7 +44,7 @@
     border-radius: 0 !important;
 }
 
-.form-block>.rs-icon {
+.form-block > .rs-icon {
     position: absolute;
     top: 14px;
     left: 4px;
@@ -74,10 +74,10 @@
 /*    width: 24px;*/
 /*    height: 24px;*/
 /*}*/
-.form-input-wrong>input,
-.form-input-wrong>input:hover,
-.form-input-wrong>input:focus,
-.form-input-wrong>input:active {
+.form-input-wrong > input,
+.form-input-wrong > input:hover,
+.form-input-wrong > input:focus,
+.form-input-wrong > input:active {
     border-color: $red !important;
 }
 
@@ -86,10 +86,10 @@
 /*    width: 24px;*/
 /*    height: 24px;*/
 /*}*/
-.form-input-correct>input,
-.form-input-correct>input:hover,
-.form-input-correct>input:focus,
-.form-input-correct>input:active {
+.form-input-correct > input,
+.form-input-correct > input:hover,
+.form-input-correct > input:focus,
+.form-input-correct > input:active {
     border-color: green !important;
 }
 
@@ -148,10 +148,9 @@
     margin-bottom: 0 !important;
 }
 
-.form-gender-block>.form-check {
+.form-gender-block > .form-check {
     padding-left: 5px;
 }
-
 
 .form-gender-block {
     display: flex !important;
@@ -159,6 +158,6 @@
     font-size: 16px;
 }
 
-.form-gender-block>* {
+.form-gender-block > * {
     display: flex;
 }

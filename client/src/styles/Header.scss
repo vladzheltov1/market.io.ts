@@ -26,7 +26,6 @@ $lightGray: #f0f0f0;
 
     .header-nav {
         a {
-
             &:hover,
             &:active,
             &:focus {
@@ -37,7 +36,6 @@ $lightGray: #f0f0f0;
 
         .header-item {
             a.active-header {
-
                 &,
                 &:active,
                 &:focus,
@@ -48,7 +46,6 @@ $lightGray: #f0f0f0;
         }
     }
 }
-
 
 .header-top-title a {
     font-size: 36px;
@@ -87,7 +84,6 @@ $lightGray: #f0f0f0;
 }
 
 .rs-dropdown-item-content {
-
     &:hover,
     &:active,
     &:focus {
@@ -101,7 +97,6 @@ $lightGray: #f0f0f0;
 }
 
 .rs-dropdown-item a {
-
     &,
     &:hover,
     &:active,
@@ -151,7 +146,7 @@ $lightGray: #f0f0f0;
     width: 100% !important;
     padding: 5px 13px !important;
 
-    transition-duration: .4s;
+    transition-duration: 0.4s;
 
     color: #575757 !important;
 
@@ -179,7 +174,6 @@ $lightGray: #f0f0f0;
     a {
         font-size: 15px;
     }
-
 }
 
 .menuButton {

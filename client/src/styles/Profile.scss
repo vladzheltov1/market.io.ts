@@ -1,10 +1,10 @@
-$grayProfile: #EFEFEF;
+$grayProfile: #efefef;
 
 // .profile-block {
-    //     background-color: #f7f7f7;
-    //     padding: 15px;
-    //     border-radius: 10px;
-    // }
+//     background-color: #f7f7f7;
+//     padding: 15px;
+//     border-radius: 10px;
+// }
 .profile__flex {
     max-width: 900px;
     margin: 0 auto;
@@ -30,7 +30,6 @@ $grayProfile: #EFEFEF;
 }
 
 .profile__right-info {
-
     width: 100%;
 
     .profile__name {
@@ -69,7 +68,7 @@ $grayProfile: #EFEFEF;
                 height: 2px;
                 background-color: $blue-active;
                 width: 0;
-                transition: width .2s ease-in-out;
+                transition: width 0.2s ease-in-out;
             }
 
             &.active::after {
@@ -110,7 +109,6 @@ $grayProfile: #EFEFEF;
     font-size: 15px;
     position: absolute;
     right: 0;
-
 
     &:hover,
     &:active,

@@ -2,77 +2,74 @@ const jwt = require('jsonwebtoken');
 const uuid = require('uuid');
 import { mongoDB } from "../database/mongoDB";
 import { utils } from "../helper/utils";
+const hashPass = require('password-hash');
 
-class UserService
-{
-    // General //
+class UserService {
     /**
-     * This function is used in controller to check
-     * if any necessary fields sent by client are NOT empty.
-     * @param {Array<string>} array
-     * @returns {boolean}
+     * Returns hashed password that can be saved to database.
+     * @param {string} password 
+     * @returns hashed password
      */
-    public hasEmptyFields(array: Array<string>): boolean{
-        array.forEach(field => {
-            if(field.trim() === "") return true;
-        });
-        return false;
+    public async hashPassword(password: string) {
+        return await hashPass.generate(password);
     }
 
-    // Database //
     /**
-     * This function is used in the controller.
-     * It returns ALL the users in database. 
-     * // probably i don't need it?
+     * Matched password from user and the hashed password in database.
+     * @param {string} givenPassword 
+     * @param {string} hashedPassword 
+     * @returns `true/false`
+     */
+    public verifyPassword(givenPassword: string, hashedPassword: string) {
+        return hashPass.verify(givenPassword, hashedPassword);
+    }
+
+    /**
+     * Returns ALL the users from database. 
      * @returns {Array<object>}
      */
-    public async getUsers(){
+    public async getUsers() {
         return await mongoDB.getAll('users');
     }
-    
+
     /**
-     * Same as the function above, but this one
-     * return ONE user with the id same as given.
+     * Returns ONE user with the given id.
      * @param {string} id 
      * @returns {object}
      */
-     public getUserById(id: string){
-        return mongoDB.getOne("users", {_id: id});
+    public getUserById(id: string) {
+        return mongoDB.getOne("users", { _id: id });
     }
 
-    // Signup //
     /**
-     * Check if 2 given passwords match after trim().
-     * Return TRUE if they do, and FALSE if they don't.
+     * Check if 2 given passwords match.
      * @param {string} password1 
      * @param {string} password2 
-     * @returns {boolean}
+     * @returns `true/false`
      */
-    public passwordsMatch(password1: string, password2: string): boolean{
-        if(typeof password1 !== "string" || typeof password2 !== "string") return null;
+    public passwordsMatch(password1: string, password2: string): boolean {
+        if (typeof password1 !== "string" || typeof password2 !== "string") return null;
         return password1.trim() === password2.trim();
     }
 
     // --- TESTS DON'T WORK HERE --- //
     /**
-     * Check if user with such login already exists in the
-     * database. If login was found, return TRUE, else return FALSE.
+     * Checks if user with such a login does already exist in the database.
      * @param {string} login 
-     * @returns {boolean}
+     * @returns `true/false`
      */
-    public async doesLoginExist(login: string){
-        const response = await mongoDB.getOne("users", {user_login: login});
+    public async doesLoginExist(login: string) {
+        const response = await mongoDB.getOne("users", { user_login: login });
         return !utils.isObjectEmpty(response);
     }
-    
+
     /**
-     * Same as the function above, but this one checks 
-     * if email exists in database. 
+     * Checks if user with such an email does exist in the database. 
      * @param {string} email 
-     * @returns {boolean}
+     * @returns `true/false`
      */
-    public async doesEmailExist(email: string){
-        const response = await mongoDB.getOne("users", {user_email: email});
+    public async doesEmailExist(email: string) {
+        const response = await mongoDB.getOne("users", { user_email: email });
         return !utils.isObjectEmpty(response);
     }
 }

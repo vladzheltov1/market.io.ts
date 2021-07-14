@@ -1,3 +1,3 @@
-export class ProductService{
-    
+export class ProductService {
+
 }
