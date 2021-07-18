@@ -8,7 +8,7 @@
     padding: 50px 30px;
     margin-top: 20px;
     border-radius: 20px;
-    box-shadow: 0 0 1px 1px $border;
+    box-shadow: 0 0 1px 1px $gray-2;
     background: #fff;
 }
 
@@ -40,7 +40,7 @@
 .form-form-input:focus {
     padding: 10px 40px 10px 25px !important;
     border: none !important;
-    border-bottom: 1px solid $border !important;
+    border-bottom: 1px solid $gray-2 !important;
     border-radius: 0 !important;
 }
 
@@ -51,46 +51,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-/*.form-after::after{*/
-/*    position: absolute;*/
-
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    */
-
-/*    width: 24px;*/
-/*    height: 24px;*/
-
-/*    top: 24%;*/
-/*    right: 15px;*/
-
-/*    z-index: 5;*/
-/*}*/
-
-/*.form-input-wrong::after{*/
-/*    content: url(/client/source/icon/x.svg);*/
-/*    width: 24px;*/
-/*    height: 24px;*/
-/*}*/
-.form-input-wrong > input,
-.form-input-wrong > input:hover,
-.form-input-wrong > input:focus,
-.form-input-wrong > input:active {
-    border-color: $red !important;
-}
-
-/*.form-input-correct::after{*/
-/*    content: url(/client/source/icon/check.svg);*/
-/*    width: 24px;*/
-/*    height: 24px;*/
-/*}*/
-.form-input-correct > input,
-.form-input-correct > input:hover,
-.form-input-correct > input:focus,
-.form-input-correct > input:active {
-    border-color: green !important;
 }
 
 .form-flex {
@@ -129,14 +89,14 @@
 
     border-left: 5px solid red;
 
-    box-shadow: 0 0 2px $border;
+    box-shadow: 0 0 2px $gray-2;
     font-size: 16px;
     display: flex;
     justify-content: space-between;
 }
 
 .error-form-close {
-    color: $red;
+    color: $red-1;
 }
 
 .error-form-close:hover {

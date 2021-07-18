@@ -35,16 +35,16 @@ $grayProfile: #efefef;
     .profile__name {
         font-size: 22px;
         font-weight: 500;
-        color: $black;
+        color: $black-2;
     }
 
     .profile__role {
         font-size: 15px;
-        color: $blue;
+        color: $blue-1;
     }
 
     .profile__tabs {
-        border-bottom: 1px solid $border;
+        border-bottom: 1px solid $gray-2;
         width: 100%;
         display: flex;
         gap: 10px;
@@ -66,7 +66,7 @@ $grayProfile: #efefef;
                 bottom: -1px;
                 left: 0;
                 height: 2px;
-                background-color: $blue-active;
+                background-color: $blue-2;
                 width: 0;
                 transition: width 0.2s ease-in-out;
             }
@@ -88,7 +88,7 @@ $grayProfile: #efefef;
         padding: 5px 10px;
 
         &:hover {
-            background: $border-light;
+            background: $gray-1;
         }
 
         .profile__data-name {
@@ -96,13 +96,13 @@ $grayProfile: #efefef;
         }
 
         .profile__data-value {
-            color: $blue;
+            color: $blue-1;
         }
     }
 }
 
 .profile__edit-button {
-    color: $border-active;
+    color: $gray-3;
     background-color: $grayProfile;
     padding: 5px 10px;
     border-radius: 20px;

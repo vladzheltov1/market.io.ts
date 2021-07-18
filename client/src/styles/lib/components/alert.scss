@@ -22,8 +22,8 @@
     right: 0;
     width: 100%;
     height: 100vh;
-    background-color: $black;
-    opacity: .5;
+    background-color: $black-2;
+    opacity: 0.5;
     z-index: 995;
 }
 
@@ -41,50 +41,50 @@
     background-color: #fff;
 
     &.alert__type-info {
-        box-shadow: 0 0 4px 2px $blue;
+        box-shadow: 0 0 4px 2px $blue-1;
 
         .alert-window__title {
-            color: $blue-active;
+            color: $blue-2;
         }
 
         .alert__icon {
-            color: $blue;
+            color: $blue-1;
         }
     }
 
     &.alert__type-success {
-        box-shadow: 0 0 4px 2px $green;
+        box-shadow: 0 0 4px 2px $green-1;
 
         .alert-window__title {
-            color: $green-active;
+            color: $green-2;
         }
 
         .alert__icon {
-            color: $green;
+            color: $green-1;
         }
     }
 
     &.alert__type-warning {
-        box-shadow: 0 0 4px 2px $yellow;
+        box-shadow: 0 0 4px 2px $yellow-1;
 
         .alert-window__title {
-            color: $yellow-active;
+            color: $yellow-2;
         }
 
         .alert__icon {
-            color: $yellow;
+            color: $yellow-1;
         }
     }
 
     &.alert__type-danger {
-        box-shadow: 0 0 4px 2px $red;
+        box-shadow: 0 0 4px 2px $red-1;
 
         .alert-window__title {
-            color: $red-active;
+            color: $red-2;
         }
 
         .alert__icon {
-            color: $red;
+            color: $red-1;
         }
     }
 }

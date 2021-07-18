@@ -10,6 +10,7 @@
     box-sizing: border-box;
     font-weight: 400;
     font-family: $font-primary !important;
+    font-size: $font-size-primary;
 }
 
 body {
@@ -34,7 +35,7 @@ body {
 }
 
 .text-muted {
-    color: $border-active;
+    color: $gray-3;
 }
 
 .error {
@@ -52,9 +53,8 @@ textarea {
     display: block;
     width: 100%;
     min-width: 100%;
-    font-size: 15px;
 
-    border: 2px solid $border;
+    border: 2px solid $gray-2;
     border-radius: 5px;
 
     transition-duration: 0.2s;
@@ -62,7 +62,7 @@ textarea {
     &:hover,
     &:active,
     &:focus {
-        border-color: $blue;
+        border-color: $blue-1;
     }
 }
 

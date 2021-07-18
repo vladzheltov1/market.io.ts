@@ -1,7 +1,7 @@
 // Setting up a local .env config
 require('dotenv').config();
 
-import { mongoDB } from './database/mongoDB';
+import { database } from './database/mongo/MongoDB';
 
 const express = require('express');
 const cookieParser = require("cookie-parser");
@@ -12,11 +12,14 @@ const IP: string = process.env.IP;
 
 APP.use(cookieParser());
 APP.use(express.json());
-APP.use('/api', require("./router/api.router"));
+
+APP.get("/", (_, res) => res.send("Server works!"));
+APP.use('/api', require('./router/APIRouter'));
 
 try {
-    mongoDB.connect();
-
+    database.connect();
     APP.listen(PORT, IP, () => console.log(`Server has been started - ${IP}:${PORT}`));
 }
-catch (error) { console.error(error) }
+catch (error) {
+    console.error(error);
+}

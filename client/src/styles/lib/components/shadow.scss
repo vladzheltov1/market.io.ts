@@ -1,25 +1,25 @@
 @import "../../general/vars.scss";
 
 .shadow-1 {
-    box-shadow: 0 0 1px 1px $border;
+    box-shadow: 0 0 1px 1px $gray-2;
 }
 
 .shadow-2 {
-    box-shadow: 0 0 1px 2px $border;
+    box-shadow: 0 0 1px 2px $gray-2;
 }
 
 .shadow-left-1 {
-    box-shadow: -1px 1px 1px 1px $border;
+    box-shadow: -1px 1px 1px 1px $gray-2;
 }
 
 .shadow-left-2 {
-    box-shadow: -2px 2px 2px 1px $border;
+    box-shadow: -2px 2px 2px 1px $gray-2;
 }
 
 .shadow-right-1 {
-    box-shadow: 1px 1px 1px 1px $border;
+    box-shadow: 1px 1px 1px 1px $gray-2;
 }
 
 .shadow-right-2 {
-    box-shadow: 2px 2px 2px 1px $border;
+    box-shadow: 2px 2px 2px 1px $gray-2;
 }

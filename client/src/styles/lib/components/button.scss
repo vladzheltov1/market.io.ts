@@ -2,7 +2,7 @@
 
 .m-btn {
     padding: 8px 20px;
-    transition-duration: .2s;
+    transition-duration: 0.2s;
     border-radius: 5px;
     font-size: 16px;
     color: #fff;
@@ -15,64 +15,60 @@
         text-decoration: none;
     }
 
-
     &.primary,
     &.blue {
-        background-color: $blue;
+        background-color: $blue-1;
 
         &:hover {
-            background-color: $blue-active;
+            background-color: $blue-2;
         }
     }
 
     &.secondary {
-        background-color: $border-active;
+        background-color: $gray-3;
 
         &:hover {
-            background-color: $border-active-dark;
+            background-color: $gray-4;
         }
     }
 
-
-
     &.red {
-        background-color: $red;
+        background-color: $red-1;
 
         &:hover {
-            background-color: $red-active;
+            background-color: $red-2;
         }
     }
 
     &.green {
-        background-color: $green;
+        background-color: $green-1;
 
         &:hover {
-            background-color: $green-active;
+            background-color: $green-2;
         }
     }
 
     &.orange {
-        background-color: $orange;
+        background-color: $orange-1;
 
         &:hover {
-            background-color: $orange-active;
+            background-color: $orange-2;
         }
     }
 
     &.yellow {
-        background-color: $yellow;
+        background-color: $yellow-1;
 
         &:hover {
-            background-color: $yellow-active;
+            background-color: $yellow-2;
         }
     }
 
     &.violet {
-        background-color: $violet;
+        background-color: $violet-1;
 
         &:hover {
-            background-color: $violet-active;
+            background-color: $violet-2;
         }
     }
-
 }
