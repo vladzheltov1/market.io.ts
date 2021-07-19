@@ -9,3 +9,7 @@ export const models = {
     users: User,
     products: Product
 }
+
+export const tableExists = (table: string) => {
+    return models[table];
+}

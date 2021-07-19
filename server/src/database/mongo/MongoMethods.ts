@@ -1,4 +1,4 @@
-import { models } from "./MongoHelper";
+import { models, tableExists } from "./MongoHelper";
 
 export class MongoMethods {
 
@@ -14,12 +14,26 @@ export class MongoMethods {
         // 1) Add the functionality to set the return limit
         // 2) Find a way to add the fields to return (SELECT _id, name ...)
 
-        if (!models[table]) {
+        if (!tableExists(table)) {
             throw new Error(`No table with name ${table} found!`);
         }
 
-        return await models[table]?.find(
-            where /* condition (ex. WHERE id = 5) */,
+        return await models[table].find(
+            where /* (eg. {_id: 5} -> WHERE id = 5) */,
         ).exec();
+    }
+
+    public async delete({ table = null, id = {} }) {
+        if (!tableExists(table)) {
+            throw new Error(`No table with name ${table} found!`);
+        }
+
+        try {
+            await models[table].deleteOne({ _id: id });
+        } catch (error) {
+            return { ok: false };
+        }
+
+        return { ok: true };
     }
 }
