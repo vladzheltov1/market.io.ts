@@ -1,10 +1,15 @@
-import { isIdValid } from "src/helpers/DBHelper";
 import { checkAccess } from "../../auth/AuthCheck";
 import { methods } from "../../database/mongo/MongoDB";
 import { ClientErrors } from "../../errors/ClientErrors";
 import { FormErrors } from "../../errors/FormErrors";
 import * as dataValidator from "../../helpers/DataHelper";
-import { createUserModel, matchPasswords, matchStrings, notFound } from "./UsersHepler";
+import { isIdValid } from "../../helpers/DBHelper";
+import {
+    createUserModel,
+    matchPasswords,
+    matchStrings,
+    notFound
+} from "./UsersHepler";
 
 /**
  * Users authentication endpoints 

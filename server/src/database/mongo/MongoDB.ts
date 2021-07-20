@@ -12,7 +12,7 @@ class MongoDB extends Database {
                 useCreateIndex: true
             });
 
-            // We need to notify the client in case if we get a database error.
+            // We should notify the client in case if we get a database error.
             // Maybe use websockets?
 
             const mongodb = mongoose.connection;
@@ -26,5 +26,8 @@ class MongoDB extends Database {
     }
 }
 
-export const methods = new MongoMethods();
+// General settings for all databases
 export const database = new MongoDB("Mongo");
+
+// All methods for using the database
+export const methods = new MongoMethods();

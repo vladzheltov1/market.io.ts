@@ -23,6 +23,7 @@ export class MongoMethods {
         ).exec();
     }
 
+    // Test it!
     public async delete({ table = null, id = {} }) {
         if (!tableExists(table)) {
             throw new Error(`No table with name ${table} found!`);

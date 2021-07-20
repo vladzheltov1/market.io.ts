@@ -11,7 +11,12 @@ export const notFound = (res, message: string) => {
     return res.status(404).json({ status: 404, message: message });
 }
 
-export const createHasedPassword = (password: string) => {
+/**
+ * Create hased password for saving to database
+ * @param {string} password 
+ * @returns {string} hashed password
+ */
+export const createHasedPassword = (password: string): string => {
     return hash.generate(password);
 }
 
@@ -33,20 +38,23 @@ export const matchPasswords = (givenPassword: string, databasePassword: string):
  * @param {string} string2 
  * @returns `true/false`
  */
-export const matchStrings = (string1: string, string2: string) => {
+export const matchStrings = (string1: string, string2: string): boolean => {
     return string1.trim() === string2.trim();
 }
 
+/**
+ * Create a new user object with all the required fields, and ready to be saved to the database
+ * @returns An object based on the User model in database.
+ */
 export const createUserModel = ({ firstname, lastname, email, login, gender, password1 }) => {
-    // Creating hased password for saving to database
     const hashedPassword = createHasedPassword(password1);
 
     return User({
-        user_firstname: firstname,
-        user_lastname: lastname,
-        user_email: email,
-        user_login: login,
-        user_gender: gender,
-        user_password: hashedPassword
+        firstname: firstname,
+        lastname: lastname,
+        email: email,
+        login: login,
+        gender: gender,
+        password: hashedPassword
     });
 }

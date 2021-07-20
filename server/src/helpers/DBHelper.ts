@@ -1,3 +1,4 @@
+// Mongo
 const isIdValid = (id: string) => {
     if (id.trim().length !== 24) {
         return false;
@@ -8,3 +9,4 @@ const isIdValid = (id: string) => {
 export {
     isIdValid
 };
+
