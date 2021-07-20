@@ -1,4 +1,4 @@
-import { model, Schema } from 'mongoose';
+import { model, Schema, Types } from 'mongoose';
 
 const ProductSchema = new Schema({
     title: { type: String, required: true },
@@ -7,7 +7,8 @@ const ProductSchema = new Schema({
     price: { type: Number, required: true },
     sold: { type: Number, default: 0 },
     available: { type: Number, default: 0 },
-    photo: { type: String, required: true }
+    photo: { type: String, required: true },
+    keywords: { type: Types.Array, required: true }
 });
 
 module.exports = model('Product', ProductSchema);
