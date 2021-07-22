@@ -1,7 +1,11 @@
 const mongoose = require('mongoose');
 
+import { DeveloperNotification } from "../../notifications/DeveloperNotification";
 import { Database } from "../Database";
 import { MongoMethods } from "./MongoMethods";
+
+
+const notification = new DeveloperNotification("MongoDB");
 
 class MongoDB extends Database {
     public connect = async () => {
@@ -12,7 +16,7 @@ class MongoDB extends Database {
                 useCreateIndex: true
             });
 
-            // We should notify the client in case if we get a database error.
+            // Should we notify the client in case if we get a database error.
             // Maybe use websockets?
 
             const mongodb = mongoose.connection;
@@ -21,7 +25,8 @@ class MongoDB extends Database {
             mongodb.on('error', console.error.bind(console, 'MongoDB connection error:'));
         }
         catch (error) {
-            console.error(`Ошибка подключения к базе данных - ${error.message}`);
+            notification.set({ message: `${error.message}` });
+            notification.send();
         }
     }
 }

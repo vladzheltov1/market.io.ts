@@ -2,9 +2,8 @@
  * This type describes the types of the arguments that the setter can take. 
  */
 type SetterData = {
-    status: number,
-    message: string,
-    sender: string
+    status?: number,
+    message?: string
 }
 
 /**
@@ -16,14 +15,18 @@ export abstract class Notification {
     protected status = 500;
     protected message = null;
 
-    public set({
-        sender = this.sender,
-        message = this.message,
-        status = this.status,
-    }: SetterData) {
-        this.sender = sender;
-        this.status = status;
-        this.message = message;
+    constructor(sender?: string) {
+        this.sender = sender || this.sender;
+    }
+
+    /**
+     * Set the data of notification.
+     * Default message - `null`, default status - `500`,
+     * default sender name - `Server`
+     */
+    public set({ message, status }: SetterData) {
+        this.message = message || this.message;
+        this.status = status || this.status;
     }
 
     // As this class is an abstract layer for all kinds of notifications,

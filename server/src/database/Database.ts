@@ -4,7 +4,6 @@
  * extend the new database class from it.
  */
 export class Database {
-
     /**
      * Name of the database
      */
