@@ -8,7 +8,7 @@ export const Button = ({ children, link, color, view, onClick, icon, disabled })
 
     if (view) classList.push(view);
     else if (color) classList.push(color);
-    else classList.push("primary")
+    else classList.push("primary");
 
     if (link) {
         return (

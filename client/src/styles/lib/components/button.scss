@@ -15,20 +15,26 @@
         text-decoration: none;
     }
 
-    &.primary,
+    &.primary {
+        background-color: $primary;
+        &:hover {
+            background-color: $primary-active;
+        }
+    }
+
+    &.secondary {
+        background-color: $secondary;
+
+        &:hover {
+            background-color: $secondary-active;
+        }
+    }
+
     &.blue {
         background-color: $blue-1;
 
         &:hover {
             background-color: $blue-2;
-        }
-    }
-
-    &.secondary {
-        background-color: $gray-3;
-
-        &:hover {
-            background-color: $gray-4;
         }
     }
 
