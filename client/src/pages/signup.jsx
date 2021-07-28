@@ -45,14 +45,16 @@ export const Signup = () => {
             <div className="form">
                 <form className="form-form" method="POST">
                     <h3 className="form-title">Регистрация</h3>
-                    {
-                        message && (
-                            <div className="form-block error-form">
-                                <b>Ошибка:</b> {message}
-                                <Icon icon="close" size="ls" className="error-form-close" onClick={clearMessage} />
+                    {message && (
+                        <div className="form-block error-form">
+                            <div>
+                                <b> Ошибка: </b> {message}
                             </div>
-                        )
-                    }
+                            <span className="error-form-close">
+                                <Icon icon="close" onClick={clearMessage} />
+                            </span>
+                        </div>
+                    )}
                     <div className="form-block form-after">
                         <Icon icon="user" />
                         <input
