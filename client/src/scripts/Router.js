@@ -6,6 +6,7 @@ import { AddProduct } from "../pages/addProduct";
 import { Cart } from "../pages/cart";
 import { Components } from "../pages/components";
 import { Login } from "../pages/login";
+import { Product } from "../pages/product";
 import { Profile } from "../pages/profile";
 import { ResetPassword } from "../pages/resetPassword";
 import { Search } from "../pages/search";
@@ -16,17 +17,18 @@ export const Router = () => {
     return (
         <Switch>
             <Route path="/" exact component={Index} />
+            <Route path="/search/:query?" component={Search} />
+            <Route path="/cart" component={Cart} />
+            <Route path="/shop" component={Shop} />
+            <Route path="/product" component={Product} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <Route path="/user/reset" component={ResetPassword} />
-            <Route path="/cart" component={Cart} />
-            <Route path="/profile/:id" component={Profile} />
-            <Route path="/shop" component={Shop} />
-            <Route path="/search/:query?" component={Search} />
             <Route path="/add/product" component={AddProduct} />
             <Route path="/components" component={Components} />
+            <Route path="/profile/:id" component={Profile} />
             <Route path="/profile" >
-                <Redirect to={"/"} />
+                <Redirect to="/" />
             </Route>
             <Route component={NotFound} />
         </Switch>

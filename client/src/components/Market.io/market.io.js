@@ -1,8 +1,8 @@
 import { AlertComponent } from "./components/Alert";
 import { Button } from "./components/Button";
 import { ButtonGroup } from "./components/ButtonGroup";
-import { DropList } from "./components/DropList";
 import { NotificationComponent } from "./components/Notification";
+import { Rate } from "./components/Rate";
 import { ScrollButton } from "./components/ScrollButton";
 
 // This is a general component that can export ALL the other components,
@@ -13,8 +13,8 @@ export {
     AlertComponent,
     Button,
     ButtonGroup,
-    DropList,
     NotificationComponent,
+    Rate,
     ScrollButton
 };
 
