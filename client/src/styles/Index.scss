@@ -13,62 +13,15 @@ $color4: #fcf4f0;
     gap: 20px;
 }
 
-// Left sidebar
+// Category sidebar
 .index__left-bar {
     margin-top: $indexHeaderHeight;
     min-width: 150px;
-
-    .index__left-bar__title {
-        font-size: 24px;
-        font-weight: 600;
-        margin: 0 0 10px 0;
-    }
-    .index__category-list {
-        .index__category-list__item {
-            list-style-type: none;
-            margin: 5px 0;
-        }
-    }
 }
 
 .index__main-content {
     display: block;
     width: 100%;
-
-    .index__header {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 10px;
-    }
-
-    .index__header-group {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-
-        .index__header__element {
-            border-radius: 30px;
-            background-color: $gray-1;
-            color: $black-2;
-            display: flex;
-            align-items: center;
-            text-align: center;
-            height: 40px;
-            padding: 0 12px;
-            font-size: 16px;
-
-            &:hover {
-                text-decoration: none;
-            }
-
-            &.index__search-field {
-                border: none;
-                padding: 0 20px;
-                max-width: 500px;
-                text-align: start;
-            }
-        }
-    }
 
     .index__block {
         border-radius: 30px;

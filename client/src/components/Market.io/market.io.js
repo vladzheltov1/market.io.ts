@@ -3,7 +3,7 @@ import { Button } from "./components/Button";
 import { ButtonGroup } from "./components/ButtonGroup";
 import { DropList } from "./components/DropList";
 import { NotificationComponent } from "./components/Notification";
-
+import { ScrollButton } from "./components/ScrollButton";
 
 // This is a general component that can export ALL the other components,
 // so there's no need to look for each component separately. You can
@@ -14,6 +14,7 @@ export {
     Button,
     ButtonGroup,
     DropList,
-    NotificationComponent
+    NotificationComponent,
+    ScrollButton
 };
 

@@ -7,6 +7,10 @@
     font-size: 16px;
     color: #fff;
 
+    &:disabled {
+        opacity: 0.85;
+    }
+
     &:hover,
     &:active,
     &:focus,

@@ -1,135 +1,98 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { Button, ScrollButton } from "../components/Market.io/market.io";
 
 export const Cart = () => {
-    let total = 0;
 
-    const data = [
+    const [data, setData] = useState([
         {
-            id: 1,
             title: 'Футболка белая',
+            description: "Описание для белой футболки",
             image: 'https://media.wired.com/photos/598e35994ab8482c0d6946e0/master/w_2560%2Cc_limit/phonepicutres-TA.jpg',
-            price: "1500",
-            quantity: 4
+            price: 1500,
+            amount: 4
         },
         {
-            id: 2,
             title: 'Штаны',
+            description: "Описание для штанов",
             image: 'https://media.wired.com/photos/598e35994ab8482c0d6946e0/master/w_2560%2Cc_limit/phonepicutres-TA.jpg',
-            price: "1800",
-            quantity: 1
+            price: 1800,
+            amount: 1
         }
-    ];
+    ]);
 
-    data.forEach((product) => {
-        total += (product.price * product.quantity);
-    })
-
-    const style = {
-        list: {
-            display: "flex",
-            flexDirection: "column"
-        },
-        listItem: {
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            padding: "10px 20px",
-            border: "1px solid #fafafa"
-        },
-        itemImageWrapper: {
-            width: 200,
-            position: "relative",
-            borderRadius: 10,
-            overflow: "hidden"
-        },
-        itemImage: {
-            width: "100%",
-            height: "100%",
-            objectFit: "cover"
-        },
-        textWithTitle: {
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center"
-        },
-        textTitle: {
-            color: "#bababa"
-        },
-        textValue: {
-            fontSize: "16px"
-        },
-        divider: {
-            height: 14,
-            width: 1,
-            background: "#333",
-            display: "inline-block",
-            margin: "-2px 5px"
-        }
+    // We need to update the data on the server, but just on client 
+    const deleteItem = (title) => {
+        setData(data.filter((item) => item.title !== title));
     }
 
+    // Calculating the total price of the items in the cart
+    const totalPrice = data.reduce((total, current) => total + (current.price * current.amount), 0)
+    const totalAmount = data.reduce((total, item) => total + item.amount, 0);
 
     return (
         <div className="wrapper">
-            <div style={style.list} >
-                <div style={style.listItem}>
-                    <div style={style.itemColumn}>
-                        <div style={style.textWithTitle}>
-                            <div style={style.textTitle}>Итог</div>
-                            <div style={style.textValue}>{total} руб.</div>
+            <ScrollButton />
+            <div className="cart-grid-row">
+                <div className="cart-list-wrapper">
+                    {data.length > 0 ? (
+                        <table className="cart-list-table" border="1">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Картинка</th>
+                                    <th>Название</th>
+                                    <th>Описание</th>
+                                    <th>Цена</th>
+                                    <th>Количество</th>
+                                    <th>Итого</th>
+                                    <th>Удалить</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {data.map((item, index) => (
+                                    <tr className="cart-list-item" key={item.title}>
+                                        <td>{index += 1}</td>
+                                        <td>
+                                            <div className="cart-list-item-image-wrapper">
+                                                <img src={item.image} alt="" />
+                                            </div>
+                                        </td>
+                                        <td>{item.title}</td>
+                                        <td>{item.description}</td>
+                                        <td>{item.price} руб.</td>
+                                        <td>{item.amount} шт.</td>
+                                        <td>{item.amount * item.price} руб.</td>
+                                        <td onClick={() => deleteItem(item.title)} className="link-view">Удалить</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    ) : (
+                        <div className="empty-cart-message">
+                            <div>Корзина пуста!</div>
+                            <div><Link to="/shop">В магазин!</Link></div>
                         </div>
-                    </div>
-                    <div style={style.itemColumn}>
-                        <div style={style.textWithTitle}>
-                            <div style={style.textTitle}>Действия</div>
-                            <div style={style.textValue}>
-                                <Link to="#">Оформить покупку</Link>
-                            </div>
+                    )}
+                </div>
+                <div className="cart-total-wrapper">
+                    <div className="cart-total-inner">
+                        <h4>Оформить покупку</h4>
+                        <hr className="cart-divider" />
+                        <div className="cart-row">
+                            Предметов в корзине&nbsp;
+                            <span className="cart-value">{totalAmount} шт.</span>
                         </div>
+                        <hr className="cart-divider" />
+                        <div className="cart-row">
+                            Итого&nbsp;
+                            <span className="cart-value">{totalPrice} руб.</span>
+                        </div>
+                        <hr className="cart-divider" />
+                        <Button className="cart-pay-button" disabled={data.length === 0}>Оплатить</Button>
                     </div>
                 </div>
             </div>
-            {data.map((item) => {
-                return (
-                    <div style={style.list} key={item.id} >
-                        <div style={style.listItem}>
-                            <div style={style.itemColumn}>
-                                <div style={style.itemImageWrapper}>
-                                    <img src={item.image} style={style.itemImage} alt="_" />
-                                </div>
-                            </div>
-                            <div style={style.itemColumn}>
-                                <div style={style.textWithTitle}>
-                                    <div style={style.textTitle}>Название</div>
-                                    <div style={style.textValue}>{item.title}</div>
-                                </div>
-                            </div>
-                            <div style={style.itemColumn}>
-                                <div style={style.textWithTitle}>
-                                    <div style={style.textTitle}>Цена</div>
-                                    <div style={style.textValue}>{item.price} руб.</div>
-                                </div>
-                            </div>
-                            <div style={style.itemColumn}>
-                                <div style={style.textWithTitle}>
-                                    <div style={style.textTitle}>Количество</div>
-                                    <div style={style.textValue}>{item.quantity}</div>
-                                </div>
-                            </div>
-                            <div style={style.itemColumn}>
-                                <div style={style.textWithTitle}>
-                                    <div style={style.textTitle}>Действия</div>
-                                    <div style={style.textValue}>
-                                        <Link to="#">Купить</Link>
-                                        <span style={style.divider}></span>
-                                        <Link to="#">Удалить</Link>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                )
-            })}
         </div>
     );
 }

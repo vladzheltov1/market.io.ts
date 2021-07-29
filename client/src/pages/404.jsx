@@ -4,12 +4,12 @@ export const NotFound = () => {
 
     const styles = {
         wrapperNf: {
-            maxWidth: "800px",
+            maxWidth: 800,
             display: "flex",
             height: "80vh",
             justifyContent: "center",
             alignItems: "center",
-            fontSize: "36px"
+            fontSize: 36
         },
         nfCode: {
             fontWeight: "600"

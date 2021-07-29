@@ -2,13 +2,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Icon } from "rsuite";
 
-export const Button = ({ children, link, color, view, onClick, icon, disabled }) => {
+export const Button = ({ children, link, color, view, onClick, icon, disabled, className = {} }) => {
 
     const classList = ['m-btn'];
 
     if (view) classList.push(view);
     else if (color) classList.push(color);
     else classList.push("primary");
+
+    if (className) classList.push(className);
 
     if (link) {
         return (
