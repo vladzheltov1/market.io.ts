@@ -1,0 +1,62 @@
+@import "../../../../styles/general/vars.scss";
+
+input {
+    outline: none;
+}
+
+.input-wrapper {
+    display: block;
+    position: relative;
+}
+
+.input,
+.textarea,
+.select {
+    padding: 10px 15px;
+    outline: none;
+
+    display: block;
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    font-size: 15px;
+
+    border: 1px solid $blue-1;
+    border-radius: 3px;
+
+    transition-duration: 0.2s;
+
+    &.with-icon {
+        padding-left: 30px;
+    }
+
+    &.default {
+        border-color: $gray-3;
+    }
+    &.info {
+        border-color: $blue-1;
+    }
+    &.success {
+        border-color: $green-1;
+    }
+    &.danger {
+        border-color: $red-1;
+    }
+}
+
+.input-label {
+    position: absolute;
+    text-align: center;
+    top: -20%;
+    left: 10px;
+    padding: 0 3px;
+    background-color: $white-1;
+    font-size: 14px;
+    color: $gray-3;
+}
+
+.input-icon {
+    position: absolute;
+    left: 13px;
+    bottom: 36%;
+}

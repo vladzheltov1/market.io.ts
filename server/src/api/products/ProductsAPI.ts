@@ -14,6 +14,8 @@ export const ProductsAPI = {
     async addProduct(req, res) {
         const { data } = req.body;
 
+        console.log(data);
+
         if (!data) {
             return res.status(400).json({ status: 400, message: "Пустой запрос!" });
         }

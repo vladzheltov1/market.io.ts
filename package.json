@@ -1,17 +1,12 @@
 {
   "name": "market.io",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "buildServer": "npm run build --prefix server",
-    "buildClient": "npm run build --prefix client",
-    "serverProd": "npm run start --prefix server",
-    "clientProd": "npm run start --prefix server",
     "client": "npm run start --prefix client",
     "server": "npm run dev --prefix server",
-    "dev": "concurrently \"npm run client\" \"npm run server\"",
-    "start": "concurrently \"npm run buildServer\" \"npm run buildClient\" \"npm run serverProd\" \"npm run clientProd\""
+    "dev": "concurrently \"npm run client\" \"npm run server\""
   },
   "repository": {
     "type": "git",

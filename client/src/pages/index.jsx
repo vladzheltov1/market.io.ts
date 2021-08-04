@@ -81,7 +81,7 @@ export const Index = (props) => {
                         <div className="index__trending__container">
                             {
                                 trendingData.map((item) => (
-                                    <Link to={item.link} className="index__block block-vertical" style={{ background: getRandomColor() }}>
+                                    <Link to={item.link} key={item.title} className="index__block block-vertical" style={{ background: getRandomColor() }}>
                                         <div className="index__block-content">
                                             <div className="index__block__text">{item.title}</div>
                                         </div>

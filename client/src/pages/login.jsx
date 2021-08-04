@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Icon } from "rsuite";
-import { Button } from "../components/Market.io/market.io";
+import { Button, ErrorBlock, Input, Space, Text } from "../components/lib/sck";
 import { useHttp } from "../hooks/useHttp";
 
 export const Login = () => {
@@ -32,63 +31,47 @@ export const Login = () => {
         <div className="wrapper form-wrapper">
             <div className="form">
                 <form className="form-form" method="POST">
-                    <h3 className="form-title"> Вход </h3>{" "}
+                    <Text mode="h3">Вход</Text>
+                    <Space height={20} />
                     {message && (
-                        <div className="form-block error-form">
-                            <div>
-                                <b> Ошибка: </b> {message}
-                            </div>
-                            <span className="error-form-close">
-                                <Icon icon="close" onClick={clearMessage} />
-                            </span>
-                        </div>
+                        <>
+                            <ErrorBlock message={message} clearMessage={clearMessage} />
+                            <Space height={15} />
+                        </>
                     )}
-                    <div className="form-block form-after">
-                        <Icon icon="user" />
-                        <input
-                            type="text"
-                            id="login"
-                            name="login"
-                            className="form-input form-form-input"
-                            placeholder="Логин"
-                            autoComplete="username"
-                            onChange={event => {
-                                setForm({ ...form, login: event.target.value });
-                            }}
-                            value={form.login}
-                            required
-                        />
-                    </div>
-                    <div className="form-block form-after">
-                        <Icon icon="lock" />
-                        <input
-                            type="password"
-                            id="password"
-                            name="password"
-                            className="form-input form-form-input"
-                            placeholder="Пароль"
-                            autoComplete="current-password"
-                            onChange={event => {
-                                setForm({ ...form, password: event.target.value });
-                            }}
-                            value={form.password}
-                            required
-                        />
-                    </div>
-                    <div className="form-block form-flex">
-                        <Button
-                            color="green"
-                            onClick={loginHandler}
-                            disabled={fetching}
-                        >
-                            Войти
-                        </Button>
-                        <br />
-                        <Link to="/user/reset"> Забыли пароль? </Link>
-                    </div>
+                    <Input
+                        type="text"
+                        label="Логин"
+                        icon="user"
+                        onChange={event => {
+                            setForm({ ...form, login: event.target.value });
+                        }}
+                        value={form.login}
+                    />
+                    <Space height={20} />
+                    <Input
+                        type="password"
+                        label="Пароль"
+                        icon="unlock-alt"
+                        onChange={event => {
+                            setForm({ ...form, password: event.target.value });
+                        }}
+                        value={form.password}
+                    />
+                    <Space height={10} />
+                    <Link to="/user/reset"> Забыл пароль? </Link>
+                    <Space height={10} />
+                    <Button
+                        color="green"
+                        onClick={loginHandler}
+                        disabled={fetching}
+                        primary
+                    >
+                        Войти
+                    </Button>
                     <hr />
-                    <div className="form-tip form-flex">
-                        Нет аккаунта?&nbsp;
+                    <div className="flex jfy-center">
+                        <Text icon="home">Нет аккаунта?&nbsp;</Text>
                         <Link to="/signup"> Регистрируйся! </Link>
                     </div>
                 </form>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Button, Icon, Radio, RadioGroup } from "rsuite";
+import { Icon, Radio, RadioGroup } from "rsuite";
+import { Button, ErrorBlock, Input, Space, Text } from "../components/lib/sck";
 import { useHttp } from "../hooks/useHttp";
 
 export const Signup = () => {
@@ -44,73 +45,43 @@ export const Signup = () => {
         <div className="wrapper form-wrapper">
             <div className="form">
                 <form className="form-form" method="POST">
-                    <h3 className="form-title">Регистрация</h3>
+                    <Text mode="h3">Регистрация</Text>
+                    <Space height={20} />
                     {message && (
-                        <div className="form-block error-form">
-                            <div>
-                                <b> Ошибка: </b> {message}
-                            </div>
-                            <span className="error-form-close">
-                                <Icon icon="close" onClick={clearMessage} />
-                            </span>
-                        </div>
+                        <>
+                            <ErrorBlock message={message} clearMessage={clearMessage} />
+                            <Space height={15} />
+                        </>
                     )}
-                    <div className="form-block form-after">
-                        <Icon icon="user" />
-                        <input
-                            type="text"
-                            id="firstname"
-                            name="firstname"
-                            className="form-input form-form-input"
-                            placeholder="Имя"
-                            autoComplete="username"
-                            onChange={event => setForm({ ...form, firstname: event.target.value })}
-                            value={form.firstname}
-                            required
-                        />
-                    </div>
-                    <div className="form-block form-after">
-                        <Icon icon="user" />
-                        <input
-                            type="text"
-                            id="lastname"
-                            name="lastname"
-                            className="form-input form-form-input"
-                            placeholder="Фамилия"
-                            autoComplete="username"
-                            onChange={event => setForm({ ...form, lastname: event.target.value })}
-                            value={form.lastname}
-                            required
-                        />
-                    </div>
-                    <div className="form-block form-after">
-                        <Icon icon="envelope" />
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            className="form-input form-form-input"
-                            placeholder="Почта"
-                            onChange={event => setForm({ ...form, email: event.target.value })}
-                            value={form.email}
-                            required
-                        />
-                    </div>
-                    <div className="form-block form-after">
-                        <Icon icon="user" />
-                        <input
-                            type="text"
-                            id="login"
-                            name="login"
-                            className="form-input form-form-input"
-                            placeholder="Логин"
-                            autoComplete="username"
-                            onChange={event => setForm({ ...form, login: event.target.value })}
-                            value={form.login}
-                            required
-                        />
-                    </div>
-                    <div className="form-block form-after form-gender-block">
+                    <Input
+                        icon="user"
+                        label="Имя"
+                        onChange={event => setForm({ ...form, firstname: event.target.value })}
+                        value={form.firstname}
+                    />
+                    <Space height={20} />
+                    <Input
+                        icon="user"
+                        label="Фамилия"
+                        onChange={event => setForm({ ...form, lastname: event.target.value })}
+                        value={form.lastname}
+                    />
+                    <Space height={20} />
+                    <Input
+                        type="email"
+                        icon="envelope"
+                        label="Почта"
+                        onChange={event => setForm({ ...form, email: event.target.value })}
+                        value={form.email}
+                    />
+                    <Space height={20} />
+                    <Input
+                        icon="id-card"
+                        label="Логин"
+                        onChange={event => setForm({ ...form, login: event.target.value })}
+                        value={form.login}
+                    />
+                    <div className="form-block form-gender-block">
                         <Icon icon="intersex" />
                         <label className="form-label">Пол</label>
 
@@ -120,52 +91,36 @@ export const Signup = () => {
                             <Radio value="M" onClick={radioHandler}>Мужской</Radio>
                             <Radio value="F" onClick={radioHandler}>Женский</Radio>
                         </RadioGroup>
+                    </div>
 
-                    </div>
-                    <div className="form-block form-after">
-                        <Icon icon="lock" />
-                        <input
-                            type="password"
-                            id="gender"
-                            name="gender"
-                            className="form-input form-form-input"
-                            placeholder="Пароль"
-                            autoComplete="current-password"
-                            onChange={event => setForm({ ...form, password1: event.target.value })}
-                            value={form.password1}
-                            required
-                        />
-                    </div>
-                    <div className="form-block form-after">
-                        <Icon icon="lock" />
-                        <input
-                            type="password"
-                            id="password2"
-                            name="password2"
-                            className="form-input form-form-input"
-                            placeholder="Повторите пароль"
-                            autoComplete="current-password"
-                            onChange={event => setForm({ ...form, password2: event.target.value })}
-                            value={form.password2}
-                            required
-                        />
-                    </div>
-                    <div className="form-block form-flex">
-                        <Button
-                            color="green"
-                            size="lg"
-                            name="btn"
-                            id="submit"
-                            onClick={signUpHandler}
-                            disabled={fetching}
-                        >
-                            Регистрация
+                    <Input
+                        type="password"
+                        icon="lock"
+                        label="Пароль"
+                        onChange={event => setForm({ ...form, password1: event.target.value })}
+                        value={form.password1}
+                    />
+                    <Space height={20} />
+                    <Input
+                        type="password"
+                        icon="lock"
+                        label="Повторите пароль"
+                        onChange={event => setForm({ ...form, password2: event.target.value })}
+                        value={form.password2}
+                    />
+                    <Space height={20} />
+                    <Button
+                        color="green"
+                        onClick={signUpHandler}
+                        disabled={fetching}
+                    >
+                        Регистрация
+                    </Button>
 
-                        </Button>
-                    </div>
                     <hr />
-                    <div className="form-tip form-flex">
-                        Уже есть аккаунт?&nbsp; <Link to="/login">Входи!</Link>
+                    <div className="flex jfy-center">
+                        <Text>Уже есть аккаунт?&nbsp;</Text>
+                        <Link to="/login">Входи!</Link>
                     </div>
                 </form>
             </div>

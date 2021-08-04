@@ -1,23 +1,25 @@
-@import "../../general/vars.scss";
+@import "../../../../styles/general/vars.scss";
 
-.m-btn {
+.button {
     padding: 8px 20px;
     transition-duration: 0.2s;
     border-radius: 5px;
     font-size: 16px;
     color: #fff;
+    text-align: center;
+
+    &:hover,
+    &:active,
+    &:focus {
+        color: #fff;
+        text-decoration: none;
+    }
 
     &:disabled {
         opacity: 0.85;
     }
 
-    &:hover,
-    &:active,
-    &:focus,
-    &:hover:active {
-        color: #fff;
-        text-decoration: none;
-    }
+    /* Colors */
 
     &.primary {
         background-color: $primary;
@@ -25,58 +27,44 @@
             background-color: $primary-active;
         }
     }
-
     &.secondary {
         background-color: $secondary;
-
         &:hover {
             background-color: $secondary-active;
         }
     }
-
-    &.blue {
-        background-color: $blue-1;
-
-        &:hover {
-            background-color: $blue-2;
-        }
-    }
-
     &.red {
         background-color: $red-1;
-
         &:hover {
             background-color: $red-2;
         }
     }
-
-    &.green {
-        background-color: $green-1;
-
-        &:hover {
-            background-color: $green-2;
-        }
-    }
-
     &.orange {
         background-color: $orange-1;
-
         &:hover {
             background-color: $orange-2;
         }
     }
-
     &.yellow {
         background-color: $yellow-1;
-
         &:hover {
             background-color: $yellow-2;
         }
     }
-
+    &.green {
+        background-color: $green-1;
+        &:hover {
+            background-color: $green-2;
+        }
+    }
+    &.blue {
+        background-color: $blue-1;
+        &:hover {
+            background-color: $blue-2;
+        }
+    }
     &.violet {
         background-color: $violet-1;
-
         &:hover {
             background-color: $violet-2;
         }

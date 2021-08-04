@@ -7,17 +7,18 @@ import { _CATEROGIES } from "../scripts/Category";
 export const AddProduct = () => {
     const input = useRef();
 
-    const setFocus = () => {
-        input.current.focus();
-    }
+    // const setFocus = () => {
+    //     input.current.focus();
+    // }
 
-    const [typing, setTyping] = useState(false, setFocus);
+    const [typing, setTyping] = useState(false);
     const [inputValue, setInputValue] = useState("");
     const [tags, setTags] = useState([]);
 
 
     const handleButtonClick = () => {
         setTyping(true);
+        // input.current.focus();
     }
 
     const handleInputConfirm = (event) => {
@@ -42,9 +43,9 @@ export const AddProduct = () => {
     const [form, setForm] = useState({
         title: "",
         description: "",
-        category: "",
+        category: _CATEROGIES[0].value,
         price: 0,
-        picture: ""
+        // picture: ""
     });
 
     const loadPicture = event => {
@@ -52,6 +53,9 @@ export const AddProduct = () => {
     }
 
     const send = async () => {
+
+        console.log({ form, tags });
+
         for (let key in form) {
             if (!form[key]) {
                 setLocalError("Одно из полей пустое!");
@@ -64,18 +68,18 @@ export const AddProduct = () => {
             description: form.description,
             category: form.category,
             price: form.price,
-            photo: form.photo,
+            // photo: form.photo,
             keywords: tags
         }
 
-        const response = await request("/products/add", "POST", JSON.stringify(data));
+        const response = await request("/api/products/add", "POST", JSON.stringify(data));
 
-        if (response.status > 300) {
-            setLocalError(response.message);
+        if (message) {
+            setLocalError(message);
             return;
         }
 
-        console.log("SUCCESS");
+        console.log("SUCCESS", response);
     }
 
     return (
@@ -112,15 +116,17 @@ export const AddProduct = () => {
                         ))}
                         {
                             typing ? (
-                                <input
-                                    ref={input}
-                                    size="xs"
-                                    style={{ width: 70 }}
-                                    value={inputValue}
-                                    onChange={(event) => setInputValue(event.target.value)}
-                                    onBlur={handleInputConfirm}
-                                    onKeyPress={handleInputConfirm}
-                                />
+                                <Tag>
+                                    <input
+                                        ref={input}
+                                        size="xs"
+                                        style={{ width: 70 }}
+                                        value={inputValue}
+                                        onChange={(event) => setInputValue(event.target.value)}
+                                        onBlur={handleInputConfirm}
+                                        onKeyPress={handleInputConfirm}
+                                    />
+                                </Tag>
                             ) : (
                                 <div>
                                     <Icon icon="plus-circle" onClick={handleButtonClick} size="2x" />
@@ -130,9 +136,9 @@ export const AddProduct = () => {
                     </TagGroup>
                 </section>
 
-                <input type="number" placeholder="Цена (руб)" />
+                <input type="number" placeholder="Цена (руб)" value={form.price} onChange={(event) => setForm({ ...form, price: event.target.value })} />
 
-                <input type="file" onChange={loadPicture} accept=".jpg, .jpeg, .png" />
+                {/* <input type="file" onChange={loadPicture} accept=".jpg, .jpeg, .png" /> */}
 
                 {localError && (
                     <div className="error-form" style={{ marginBottom: 10 }}>
@@ -143,7 +149,7 @@ export const AddProduct = () => {
                     </div>
                 )}
 
-                <Button onClick={send}>Отправить</Button>
+                <Button onClick={send} disabled={fetching}>Отправить</Button>
             </div>
         </div>
     )

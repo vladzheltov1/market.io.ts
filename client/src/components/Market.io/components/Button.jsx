@@ -2,6 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Icon } from "rsuite";
 
+/**
+ * @deprecated 
+ * @see "/components/lib" instead
+ */
+
 export const Button = ({ children, link, color, view, onClick, icon, disabled, className = {} }) => {
 
     const classList = ['m-btn'];
