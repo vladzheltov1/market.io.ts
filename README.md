@@ -22,11 +22,6 @@ npm run buildServer
 
 ## Скрипты npm run
 
-- buildServer (компиляция ts в js для работы сервера)
-- buildClient (сборка клиента с помощью Webpack)
-- serverProd (запуск только сервера в режиме production)
-- clientProd (запуск только клиента в режиме production)
-- client (запуск только клиента в режиме development)
-- server (запуск только сервера в режиме development)
+- client (запуск клиента в режиме development)
+- server (запуск сервера в режиме development)
 - dev (запуск всего проекта в режиме development)
-- start (запуск всего проекта в режиме production)
