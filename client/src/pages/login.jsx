@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Button, ErrorBlock, Input, Space, Text } from "../components/lib/sck";
+import { Button, ErrorBlock, Flex, Input, Space, Text } from "../components/lib/sck";
 import { useHttp } from "../hooks/useHttp";
 
 export const Login = () => {
@@ -65,15 +65,14 @@ export const Login = () => {
                         color="green"
                         onClick={loginHandler}
                         disabled={fetching}
-                        primary
                     >
                         Войти
                     </Button>
                     <hr />
-                    <div className="flex jfy-center">
+                    <Flex justify="center">
                         <Text icon="home">Нет аккаунта?&nbsp;</Text>
                         <Link to="/signup"> Регистрируйся! </Link>
-                    </div>
+                    </Flex>
                 </form>
             </div>
         </div>

@@ -16,7 +16,7 @@ export const Button = ({
 
     const btnClasses = [
         "button",
-        color,
+        (color && !primary && !secondary) ? color : "",
         primary ? "primary" : "",
         secondary ? "secondary" : ""
     ]

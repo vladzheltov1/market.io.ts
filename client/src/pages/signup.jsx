@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Icon, Radio, RadioGroup } from "rsuite";
-import { Button, ErrorBlock, Input, Space, Text } from "../components/lib/sck";
+import { Button, ErrorBlock, Flex, Input, Space, Text } from "../components/lib/sck";
 import { useHttp } from "../hooks/useHttp";
 
 export const Signup = () => {
@@ -116,12 +116,11 @@ export const Signup = () => {
                     >
                         Регистрация
                     </Button>
-
                     <hr />
-                    <div className="flex jfy-center">
+                    <Flex justify="center">
                         <Text>Уже есть аккаунт?&nbsp;</Text>
                         <Link to="/login">Входи!</Link>
-                    </div>
+                    </Flex>
                 </form>
             </div>
         </div>

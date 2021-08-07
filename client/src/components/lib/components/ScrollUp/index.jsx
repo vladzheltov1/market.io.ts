@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Icon } from "rsuite";
 
-export const ScrollButton = () => {
+export const ScrollUp = () => {
 
     const [visible, setVisible] = useState(false);
 

@@ -19,6 +19,7 @@ export const Text = ({
     mode = "span",
     bold = false,
     italic = false,
+    muted = false,
     icon
 }) => {
     /**
@@ -28,7 +29,8 @@ export const Text = ({
 
     const classList = [
         bold ? "text-bold" : "",
-        italic ? "text-italic" : ""
+        italic ? "text-italic" : "",
+        muted ? "text-muted" : ""
     ]
 
     const elementProperties = {

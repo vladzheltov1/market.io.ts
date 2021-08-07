@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Button, ScrollButton } from "../components/Market.io/market.io";
+import { Button, ScrollUp } from "../components/lib/sck";
 
 export const Cart = () => {
 
@@ -32,7 +32,7 @@ export const Cart = () => {
 
     return (
         <div className="wrapper">
-            <ScrollButton />
+            <ScrollUp />
             <div className="cart-grid-row">
                 <div className="cart-list-wrapper">
                     {data.length > 0 ? (

@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, ButtonGroup } from "../components/Market.io/market.io";
+import { Button, ButtonGroup } from "../components/lib/sck";
 
 export const Components = () => {
     return (
@@ -14,10 +14,10 @@ export const Components = () => {
                 <br />
                 <h4>По значимости</h4>
                 <ButtonGroup justify="start" >
-                    <Button view="primary">
+                    <Button primary>
                         Primary
                     </Button>
-                    <Button view="secondary">
+                    <Button secondary>
                         Secondary
                     </Button>
                 </ButtonGroup>

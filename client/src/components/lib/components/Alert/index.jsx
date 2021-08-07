@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Icon } from "rsuite";
-import { Button, ButtonGroup } from "../market.io";
+import { Button, ButtonGroup } from "../../sck";
+import "./style.scss";
 
 export const AlertComponent = () => {
     const [visible, setVisible] = useState(false);

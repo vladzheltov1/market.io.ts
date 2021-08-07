@@ -1,7 +1,13 @@
+@import "../../../../styles/general/vars.scss";
+
 .text-bold {
     font-weight: 600;
 }
 
 .text-italic {
     font-style: italic;
+}
+
+.text-muted {
+    color: $gray-3;
 }
