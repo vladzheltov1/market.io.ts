@@ -17,8 +17,8 @@ create-react-app
 Перед запуском проекта код необходимо скомпилировать:
 
 ```
-cd ./server/
-npm run build
+$ cd ./server/
+$ npm run build
 ```
 
 ## Скрипты npm run
