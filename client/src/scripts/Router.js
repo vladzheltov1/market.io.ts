@@ -1,10 +1,10 @@
 import React from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
-import { Index } from "../pages";
 import { NotFound } from "../pages/404";
 import { AddProduct } from "../pages/addProduct";
 import { Cart } from "../pages/cart";
 import { Components } from "../pages/components";
+import { Index } from "../pages/index";
 import { Login } from "../pages/login";
 import { Product } from "../pages/product";
 import { Profile } from "../pages/profile";

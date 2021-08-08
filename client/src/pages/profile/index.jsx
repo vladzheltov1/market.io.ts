@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Loader } from "rsuite";
-import { useAuth } from "../hooks/useAuth";
-import { useHttp } from "../hooks/useHttp";
-import { utils } from "../scripts/Utils";
+import { useAuth } from "../../hooks/useAuth";
+import { useHttp } from "../../hooks/useHttp";
+import { utils } from "../../scripts/Utils";
+import "./style.scss";
 
 export const Profile = (props) => {
     const [user, setUser] = useState({});

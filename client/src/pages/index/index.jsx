@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Categories } from "../components/Shop/Categories";
-import { Header } from "../components/Shop/Header";
-import { getRandomColor } from "../scripts/Colorizer";
+import { Categories } from "../../components/Shop/Categories";
+import { Header } from "../../components/Shop/Header";
+import { getRandomColor } from "../../scripts/Colorizer";
+import "./style.scss";
 
 export const Index = (props) => {
     const trendingData = [

@@ -17,6 +17,7 @@ const validMode = [
 export const Text = ({
     children,
     mode = "span",
+    size,
     bold = false,
     italic = false,
     muted = false,
@@ -34,7 +35,8 @@ export const Text = ({
     ]
 
     const elementProperties = {
-        className: classList.join(" ")
+        className: classList.join(" "),
+        style: { fontSize: size }
     }
 
     let elementChildren = [children];

@@ -1,3 +1,5 @@
+@import "../../styles/general/vars.scss";
+
 .product-page__wrapper {
     display: grid;
     grid-template-columns: 300px auto 350px;
@@ -63,7 +65,7 @@
         .product-button {
             padding: 10px 20px;
             border-radius: 30px;
-            background-color: $white;
+            background-color: $white-1;
             color: $black-2;
             border: 2px solid $black-2;
             font-weight: 600;
@@ -74,7 +76,7 @@
 
                 &:hover {
                     background-color: $red-1;
-                    color: $white;
+                    color: $white-1;
                 }
             }
 
@@ -83,7 +85,7 @@
 
                 &:hover {
                     background-color: $green-1;
-                    color: $white;
+                    color: $white-1;
                 }
             }
         }

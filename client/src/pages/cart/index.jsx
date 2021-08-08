@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Button, ScrollUp } from "../components/lib/sck";
+import { Button, ScrollUp } from "../../components/lib/sck";
+import "./style.scss";
 
 export const Cart = () => {
 

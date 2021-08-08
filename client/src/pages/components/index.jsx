@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, ButtonGroup } from "../components/lib/sck";
+import { Button, ButtonGroup } from "../../components/lib/sck";
 
 export const Components = () => {
     return (

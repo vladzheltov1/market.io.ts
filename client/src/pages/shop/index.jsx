@@ -1,7 +1,8 @@
 import React from "react";
-import { Categories } from "../components/Shop/Categories";
-import { Header } from "../components/Shop/Header";
-import { Product } from "../components/Shop/Product";
+import { Categories } from "../../components/Shop/Categories";
+import { Header } from "../../components/Shop/Header";
+import { Product } from "../../components/Shop/Product";
+import "./style.scss";
 
 export const Shop = () => {
 

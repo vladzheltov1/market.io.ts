@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Icon } from "rsuite";
 import { HeaderDropdown } from "./HeaderDropdown";
+import "./style.scss";
 
 export const Header = () => {
 
