@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Icon } from "rsuite";
 import { useAuth } from "../../hooks/useAuth";
+import { Grid } from "../lib/sck";
 
 export const Header = (props) => {
 
@@ -66,7 +67,7 @@ export const Header = (props) => {
     }
 
     return (
-        <div className="shop-grid-row">
+        <Grid templateColumn="200px auto">
             <Link to="/" style={{ color: "#333", textDecoration: "none" }}><h2>Market.io</h2></Link>
             <div style={styles.container}>
                 <div style={styles.headerGroup}>
@@ -95,6 +96,6 @@ export const Header = (props) => {
                     )}
                 </div>
             </div>
-        </div>
+        </Grid>
     )
 }

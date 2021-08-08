@@ -48,7 +48,7 @@ export const Signup = () => {
                 <Space height={20} />
                 {message && (
                     <>
-                        <ErrorBlock message={message} clearMessage={clearMessage} />
+                        <ErrorBlock message={message} close={clearMessage} />
                         <Space height={15} />
                     </>
                 )}

@@ -1,4 +1,5 @@
 import React from "react";
+import { Grid } from "../../components/lib/sck";
 import { Categories } from "../../components/Shop/Categories";
 import { Header } from "../../components/Shop/Header";
 import { Product } from "../../components/Shop/Product";
@@ -28,12 +29,12 @@ export const Shop = () => {
         <div className="wrapper">
             <Header />
 
-            <div className="shop-grid-row">
+            <Grid templateColumn="200px auto">
                 <Categories />
                 <div className="shop-content">
                     <Product data={data} />
                 </div>
-            </div>
+            </Grid>
         </div>
     )
 }

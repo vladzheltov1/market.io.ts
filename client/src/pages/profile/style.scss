@@ -1,6 +1,6 @@
-@import "../../styles/general/vars.scss";
+@import "../../styles/vars.scss";
 
-$grayProfile: #efefef;
+// $grayProfile: #efefef;
 
 // .profile-block {
 //     background-color: #f7f7f7;
@@ -37,16 +37,16 @@ $grayProfile: #efefef;
     .profile__name {
         font-size: 22px;
         font-weight: 500;
-        color: $black-2;
+        color: $color--black_medium;
     }
 
     .profile__role {
         font-size: 15px;
-        color: $blue-1;
+        color: $color--blue--normal;
     }
 
     .profile__tabs {
-        border-bottom: 1px solid $gray-2;
+        border-bottom: 1px solid $color--gray_dark;
         width: 100%;
         display: flex;
         gap: 10px;
@@ -68,7 +68,7 @@ $grayProfile: #efefef;
                 bottom: -1px;
                 left: 0;
                 height: 2px;
-                background-color: $blue-2;
+                background-color: $color--blue--active;
                 width: 0;
                 transition: width 0.2s ease-in-out;
             }
@@ -90,7 +90,7 @@ $grayProfile: #efefef;
         padding: 5px 10px;
 
         &:hover {
-            background: $gray-1;
+            background: $color--gray_light;
         }
 
         .profile__data-name {
@@ -98,14 +98,14 @@ $grayProfile: #efefef;
         }
 
         .profile__data-value {
-            color: $blue-1;
+            color: $color--blue--normal;
         }
     }
 }
 
 .profile__edit-button {
-    color: $gray-3;
-    background-color: $grayProfile;
+    color: $color--gray_black;
+    background-color: $color--gray_light;
     padding: 5px 10px;
     border-radius: 20px;
     font-size: 15px;
@@ -118,8 +118,4 @@ $grayProfile: #efefef;
         color: currentColor;
         text-decoration: none;
     }
-
-    // &:active {
-    //     box-shadow: 0 0 2px 2px $border-active;
-    // }
 }

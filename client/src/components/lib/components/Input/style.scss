@@ -1,4 +1,4 @@
-@import "../../../../styles/general/vars.scss";
+@import "../../../../styles/vars.scss";
 
 input {
     outline: none;
@@ -19,28 +19,34 @@ input {
     width: 100%;
     min-width: 100%;
     max-width: 100%;
-    font-size: 15px;
-
-    border: 1px solid $blue-1;
-    border-radius: 3px;
+    font-size: $text_size--normal;
 
     transition-duration: 0.2s;
+
+    border: 2px solid $color--gray_light;
+    border-radius: $border--radius--main;
+
+    &:hover,
+    &:active,
+    &:focus {
+        border-color: $color--primary--normal !important;
+    }
 
     &.with-icon {
         padding-left: 30px;
     }
 
     &.default {
-        border-color: $gray-3;
+        border-color: $color--gray_black;
     }
     &.info {
-        border-color: $blue-1;
+        border-color: $color--blue--normal;
     }
     &.success {
-        border-color: $green-1;
+        border-color: $color--green--normal;
     }
     &.danger {
-        border-color: $red-1;
+        border-color: $color--red--normal;
     }
 }
 
@@ -50,9 +56,9 @@ input {
     top: -20%;
     left: 10px;
     padding: 0 3px;
-    background-color: $white-1;
-    font-size: 14px;
-    color: $gray-3;
+    background-color: $color--white;
+    font-size: $text_size--small;
+    color: $color--gray_dark;
 }
 
 .input-icon {

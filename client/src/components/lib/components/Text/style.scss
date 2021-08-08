@@ -1,4 +1,4 @@
-@import "../../../../styles/general/vars.scss";
+@import "../../../../styles/vars.scss";
 
 .text-bold {
     font-weight: 600;
@@ -9,5 +9,5 @@
 }
 
 .text-muted {
-    color: $gray-3;
+    color: $color--gray_black;
 }

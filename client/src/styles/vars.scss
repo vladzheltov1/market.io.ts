@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+$color--red--normal: #eb4d42;
+$color--red--active: #dc4338;
+$color--orange--normal: #f6781d;
+$color--orange--active: #e7701b;
+$color--yellow--normal: #ffcc00;
+$color--yellow--active: #f5c400;
+$color--green--normal: #4caf50;
+$color--green--active: #46a149;
+$color--blue--normal: #3e75ec;
+$color--blue--active: #386ddd;
+$color--violet--normal: #7e22ce;
+$color--violet--active: #721fbb;
+$color--white: #fff;
+$color--gray_light: #f0f2f4;
+$color--gray_medium: #ced4da;
+$color--gray_dark: #7b8691;
+$color--gray_black: #4d565a;
+$color--black_light: #333;
+$color--black_medium: #222;
+$color--black_dark: #111;
+
+$color--primary--normal: $color--blue--normal;
+$color--primary--active: $color--blue--active;
+$color--secondary--normal: $color--blue--normal;
+$color--secondary--active: $color--blue--active;
+
+$color_bg: $color--white;
+$color_text: $color--black_dark;
+
+$color_link--normal: $color--blue--normal;
+$color_link--hover: $color--blue--active;
+
+$font_family--primary: "Rubik", sans-serif;
+$font_family--secondary: "Roboto", sans-serif;
+
+$text_size--large: 18px;
+$text_size--normal: 15px;
+$text_size--small: 13px;
+
+$border--radius--main: 5px;
+
+$container--max_width: 1170px;
+
+$screen--laptop_width: 1024px;
+$screen--tablet_width: 768px;
+$screen--mobile_width: 425px;

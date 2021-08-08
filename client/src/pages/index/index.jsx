@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { Grid } from "../../components/lib/sck";
 import { Categories } from "../../components/Shop/Categories";
 import { Header } from "../../components/Shop/Header";
 import { getRandomColor } from "../../scripts/Colorizer";
@@ -54,9 +55,8 @@ export const Index = (props) => {
 
             <Header />
 
-            <div className="shop-grid-row">
+            <Grid templateColumn="200px auto">
                 <Categories />
-
                 <div className="index__main-content">
                     <div className="index__ads">
                         <Link to="/shop" className={adsClassList.join(' ') + " background-grad1"}>
@@ -95,7 +95,7 @@ export const Index = (props) => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </Grid>
         </div>
     )
 }

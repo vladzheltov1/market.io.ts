@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Button, Text } from "../../components/lib/sck";
-import { Rate } from "../../components/Market.io/market.io";
+import { Button, Rate, Text } from "../../components/lib/sck";
 import { Header } from "../../components/Shop/Header";
 import "./style.scss";
 

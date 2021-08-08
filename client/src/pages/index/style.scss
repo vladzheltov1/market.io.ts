@@ -1,11 +1,11 @@
-@import "../../styles/general/vars.scss";
+@import "../../styles/vars.scss";
 
-$indexHeaderHeight: 55px;
+// $indexHeaderHeight: 55px;
 
-$color1: #f1f7fc;
-$color2: #f9f4f4;
-$color3: #f6f6f6;
-$color4: #fcf4f0;
+// $color1: #f1f7fc;
+// $color2: #f9f4f4;
+// $color3: #f6f6f6;
+// $color4: #fcf4f0;
 
 .index-wrapper {
     width: 100%;
@@ -14,10 +14,10 @@ $color4: #fcf4f0;
 }
 
 // Category sidebar
-.index__left-bar {
-    margin-top: $indexHeaderHeight;
-    min-width: 150px;
-}
+// .index__left-bar {
+//     margin-top: $indexHeaderHeight;
+//     min-width: 150px;
+// }
 
 .index__main-content {
     display: block;
@@ -45,7 +45,7 @@ $color4: #fcf4f0;
             .index__block__text {
                 font-size: 18px;
                 font-weight: 600;
-                color: $black-1;
+                color: $color--black_light;
             }
         }
 
@@ -103,7 +103,7 @@ $color4: #fcf4f0;
         gap: 20px;
 
         .index__block.index__block-ads {
-            color: $black-3;
+            color: $color--black_dark;
             padding: 30px;
             max-width: 70%;
 
@@ -153,7 +153,7 @@ $color4: #fcf4f0;
 
     &,
     &:hover {
-        color: $white-1;
+        color: $color--white;
     }
 }
 
@@ -162,6 +162,6 @@ $color4: #fcf4f0;
 
     &,
     &:hover {
-        color: $white-1;
+        color: $color--white;
     }
 }

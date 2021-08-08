@@ -1,9 +1,9 @@
-@import "../../styles/general/vars.scss";
+@import "../../styles/vars.scss";
 
-$white: #fff;
-$darkGray: #575757;
-$mediumGray: #bababa;
-$lightGray: #f0f0f0;
+// $white: #fff;
+// $darkGray: #575757;
+// $mediumGray: #bababa;
+// $lightGray: #f0f0f0;
 
 .header {
     width: 100%;
@@ -11,7 +11,7 @@ $lightGray: #f0f0f0;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: $black-3;
+    background: $color--black_dark;
 
     div {
         display: flex;
@@ -20,7 +20,7 @@ $lightGray: #f0f0f0;
         z-index: 6;
 
         a {
-            color: $mediumGray;
+            color: $color--gray_medium;
         }
     }
 
@@ -30,7 +30,7 @@ $lightGray: #f0f0f0;
             &:active,
             &:focus {
                 text-decoration: none !important;
-                color: $white;
+                color: $color--white;
             }
         }
 
@@ -40,7 +40,7 @@ $lightGray: #f0f0f0;
                 &:active,
                 &:focus,
                 &:hover {
-                    color: $orange-1 !important;
+                    color: $color--orange--normal !important;
                 }
             }
         }
@@ -50,7 +50,7 @@ $lightGray: #f0f0f0;
 .header-top-title a {
     font-size: 36px;
     font-weight: 500;
-    color: $white !important;
+    color: $color--white !important;
     text-decoration: none;
 }
 
@@ -71,7 +71,7 @@ $lightGray: #f0f0f0;
         &:focus,
         &:target {
             background: transparent;
-            color: $lightGray;
+            color: $color--gray_light;
         }
     }
 
@@ -87,8 +87,8 @@ $lightGray: #f0f0f0;
     &:hover,
     &:active,
     &:focus {
-        color: $darkGray !important;
-        background: $lightGray;
+        color: $color--gray_dark !important;
+        background: $color--gray_light;
     }
 }
 
@@ -101,7 +101,7 @@ $lightGray: #f0f0f0;
     &:hover,
     &:active,
     &:focus {
-        color: $darkGray !important;
+        color: $color--gray_dark !important;
     }
 }
 
@@ -148,13 +148,12 @@ $lightGray: #f0f0f0;
 
     transition-duration: 0.4s;
 
-    color: $darkGray !important;
+    color: $color--gray_dark !important;
 
     &:hover,
     &:active,
     &:focus {
         background: #f0f0f0 !important;
-        // color: #575757 !important;
     }
 
     i {
@@ -172,7 +171,7 @@ $lightGray: #f0f0f0;
 
     a,
     i {
-        font-size: $font-size-primary;
+        font-size: $text_size--normal;
     }
 }
 
@@ -180,7 +179,7 @@ $lightGray: #f0f0f0;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: $white;
+    color: $color--white;
 
     &:hover {
         cursor: pointer;

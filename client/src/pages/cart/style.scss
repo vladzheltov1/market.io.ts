@@ -1,4 +1,4 @@
-@import "../../styles/general/vars.scss";
+@import "../../styles/vars.scss";
 
 .cart-grid-row {
     display: grid;
@@ -14,13 +14,13 @@
     .cart-total-inner {
         max-width: 100%;
         padding: 20px;
-        background: $gray-1;
-        color: $black-2;
+        background: $color--gray_light;
+        color: $color--black_medium;
         font-size: 16px;
 
         .cart-divider {
             margin: 10px 0;
-            background: $gray-2;
+            background: $color--gray_dark;
         }
 
         .cart-row {
@@ -34,7 +34,7 @@
         }
 
         .cart-pay-button {
-            background-color: $black-2 !important;
+            background-color: $color--black_medium !important;
             width: 100%;
         }
     }
@@ -46,9 +46,9 @@
         align-items: center;
         padding: 10px;
         justify-content: center;
-        border-left: 5px solid $red-1;
+        border-left: 5px solid $color--red--normal;
         flex-direction: column;
-        background-color: $gray-1;
+        background-color: $color--red--normal;
     }
 
     .cart-list-table {

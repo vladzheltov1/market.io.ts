@@ -1,9 +1,9 @@
-@import "../../../../styles/general/vars.scss";
+@import "../../../../styles/vars.scss";
 
 .button {
     padding: 8px 20px;
     transition-duration: 0.2s;
-    border-radius: 5px;
+    border-radius: $border--radius--main;
     font-size: 16px;
     color: #fff;
     text-align: center;
@@ -22,51 +22,51 @@
     /* Colors */
 
     &.primary {
-        background-color: $primary;
+        background-color: $color--primary--normal;
         &:hover {
-            background-color: $primary-active;
+            background-color: $color--primary--active;
         }
     }
     &.secondary {
-        background-color: $secondary;
+        background-color: $color--secondary--normal;
         &:hover {
-            background-color: $secondary-active;
+            background-color: $color--secondary--active;
         }
     }
     &.red {
-        background-color: $red-1;
+        background-color: $color--red--normal;
         &:hover {
-            background-color: $red-2;
+            background-color: $color--red--active;
         }
     }
     &.orange {
-        background-color: $orange-1;
+        background-color: $color--orange--normal;
         &:hover {
-            background-color: $orange-2;
+            background-color: $color--orange--active;
         }
     }
     &.yellow {
-        background-color: $yellow-1;
+        background-color: $color--yellow--normal;
         &:hover {
-            background-color: $yellow-2;
+            background-color: $color--yellow--active;
         }
     }
     &.green {
-        background-color: $green-1;
+        background-color: $color--green--normal;
         &:hover {
-            background-color: $green-2;
+            background-color: $color--green--active;
         }
     }
     &.blue {
-        background-color: $blue-1;
+        background-color: $color--blue--normal;
         &:hover {
-            background-color: $blue-2;
+            background-color: $color--blue--active;
         }
     }
     &.violet {
-        background-color: $violet-1;
+        background-color: $color--violet--normal;
         &:hover {
-            background-color: $violet-2;
+            background-color: $color--violet--active;
         }
     }
 }

@@ -20,7 +20,6 @@ export const Login = () => {
                 // so DON'T change this thing with props.history.push('/')
                 // because it doesn't reload the page, so the data gets outdated.
                 window.location.replace('/');
-
             }
         } catch (error) {
             console.log(error);
@@ -34,7 +33,7 @@ export const Login = () => {
                 <Space height={20} />
                 {message && (
                     <>
-                        <ErrorBlock message={message} clearMessage={clearMessage} />
+                        <ErrorBlock message={message} close={clearMessage} />
                         <Space height={15} />
                     </>
                 )}

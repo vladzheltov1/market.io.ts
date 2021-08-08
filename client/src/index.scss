@@ -1,2 +1,81 @@
-@import "./styles/general/null.scss";
-@import "./styles/lib/market.io.scss";
+@import "./styles/vars.scss";
+
+* {
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    -webkit-user-drag: none;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-weight: 400;
+    font-family: $font_family--primary !important;
+    font-size: $text_size--normal;
+}
+
+a {
+    color: $color_link--normal;
+    &:hover {
+        color: $color_link--hover;
+    }
+}
+
+body {
+    &::-webkit-scrollbar {
+        width: 8px;
+        background: rgb(219, 219, 219);
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: #9e9e9e;
+        border-radius: 20px;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: $color--black_dark;
+}
+
+.wrapper {
+    max-width: $container--max_width;
+    margin: 0 auto;
+    padding: 10px 15px;
+}
+
+// .error {
+//     color: red;
+//     font-weight: 600;
+//     font-size: 24px;
+// }
+
+section {
+    margin: 5px 0;
+}
+
+// .center {
+//     text-align: center;
+// }
+
+.text-crossed {
+    text-decoration: line-through;
+}
+
+// .link-view {
+//     color: $blue-1;
+
+//     &:hover {
+//         text-decoration: underline;
+//         cursor: pointer;
+//     }
+// }
+
+// .rate-stars {
+//     * {
+//         color: $yellow-1;
+//         font-size: 20px;
+//         margin: 0 2px;
+//     }
+// }
