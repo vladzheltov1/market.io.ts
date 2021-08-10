@@ -3,12 +3,14 @@ import React from "react";
 export const Grid = ({
     children,
     templateColumn,
-    templateRow
+    templateRow,
+    gap = 0
 }) => {
     const style = {
         display: "grid",
         gridTemplateColumns: templateColumn || "",
-        gridTemplateRows: templateRow || ""
+        gridTemplateRows: templateRow || "",
+        gap: gap
     }
 
     return (

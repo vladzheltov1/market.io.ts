@@ -6,6 +6,7 @@ import { ErrorBlock } from "./components/Error";
 import { Flex } from "./components/Flex";
 import { Form } from "./components/Form";
 import { Grid } from "./components/Grid";
+import { Image } from "./components/Image";
 import { Input } from "./components/Input";
 import { Rate } from "./components/Rate";
 import { ScrollUp } from "./components/ScrollUp";
@@ -21,6 +22,7 @@ export {
     Flex,
     Form,
     Grid,
+    Image,
     Input,
     Rate,
     ScrollUp,

@@ -1,29 +1,24 @@
 import React from "react";
+import { Flex, Text } from "../../components/lib/sck";
 
 export const NotFound = () => {
-
     const styles = {
         wrapperNf: {
             maxWidth: 800,
+            margin: "0 auto",
             display: "flex",
             height: "80vh",
-            justifyContent: "center",
-            alignItems: "center",
-            fontSize: 36
-        },
-        nfCode: {
-            fontWeight: "600"
-        },
-        nfSlash: {
-            margin: "0 5px"
+            justifyContent: "center"
         }
     }
 
     return (
-        <div className="wrapper" style={styles.wrapperNf}>
-            <div style={styles.nfCode}>404</div>
-            <div style={styles.nfSlash}>|</div>
-            <div>Not Found</div>
+        <div style={styles.wrapperNf}>
+            <Flex justify="center" align="center" gap={5}>
+                <Text size={20} bold>404</Text>
+                <Text size={24}>|</Text>
+                <Text size={20}>Страница не найдена!</Text>
+            </Flex>
         </div>
     )
 }

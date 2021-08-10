@@ -2,7 +2,7 @@ import React from "react";
 import { Icon } from "rsuite";
 import "./style.scss";
 
-const validMode = [
+const validModes = [
     "span",
     "div",
     "p",
@@ -15,6 +15,8 @@ const validMode = [
 ]
 
 export const Text = ({
+    textAlign = "start",
+    color,
     children,
     mode = "span",
     size,
@@ -26,7 +28,7 @@ export const Text = ({
     /**
      * Mode validation
      */
-    if (!validMode.includes(mode)) mode = "span";
+    if (!validModes.includes(mode)) mode = "span";
 
     const classList = [
         bold ? "text-bold" : "",
@@ -36,11 +38,12 @@ export const Text = ({
 
     const elementProperties = {
         className: classList.join(" "),
-        style: { fontSize: size }
+        style: { fontSize: size, textAlign: textAlign }
     }
 
     let elementChildren = [children];
 
+    if (color) elementProperties.style.color = color;
     if (icon) elementChildren = [<Icon icon={icon} />, children];
 
     return React.createElement(mode, elementProperties, elementChildren);
