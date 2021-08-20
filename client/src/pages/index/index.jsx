@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Flex, Grid, Image, Space, Text } from "../../components/lib/sck";
+import { Card, Flex, Grid, Image, Slider, Space, Text } from "../../components/lib";
 import { Categories } from "../../components/Shop/Categories";
 import { Header } from "../../components/Shop/Header";
 import { setGradient } from "../../scripts/Gradient";
@@ -34,8 +34,8 @@ export const Index = (props) => {
             <Header />
             <Grid templateColumn="200px auto">
                 <Categories />
-                <Grid templateColumn="66% auto" gap={20}>
-                    <Card padding={40} link="/shop" vertical={false} background={setGradient(1)}>
+                <Slider height={300} content={[
+                    (<Card padding={40} link="/shop" vertical={false} background={setGradient(1)}>
                         <Grid templateColumn="55% auto">
                             <Flex direction="column" justify="center">
                                 <Text mode="h2">Скидки!</Text>
@@ -43,20 +43,18 @@ export const Index = (props) => {
                             </Flex>
                             <Image maxWidth={200} src="https://clipart-best.com/img/headphones/headphones-clip-art-3.png" />
                         </Grid>
-                    </Card>
-                    <Flex direction="column" gap={20}>
-                        <Card padding={40} link="/shop" background={setGradient(2)}>
-                            <Text textAlign="center" bold size={20} color="#fff">
-                                Скидки на наушники до 30%!
-                            </Text>
-                        </Card>
-                        <Card padding={40} link="/shop" background={setGradient(3)}>
-                            <Text textAlign="center" bold size={20} color="#fff">
-                                Скидки на наушники до 30%!
-                            </Text>
-                        </Card>
-                    </Flex>
-                </Grid>
+                    </Card>),
+                    (<Card padding={40} link="/shop" vertical={false} background={setGradient(2)}>
+                        <Grid templateColumn="55% auto">
+                            <Flex direction="column" justify="center">
+                                <Text mode="h2">Скидки!</Text>
+                                <Text mode="div" size={18} bold>Другой текст</Text>
+                            </Flex>
+                            <Image maxWidth={200} src="https://clipart-best.com/img/headphones/headphones-clip-art-3.png" />
+                        </Grid>
+                    </Card>)
+                ]}
+                />
                 <Space />
                 <Flex direction="column">
                     <Space height={30} />

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Icon } from "rsuite";
-import { Button, ButtonGroup } from "../../sck";
+import { Button, ButtonGroup } from "../../../lib";
 import "./style.scss";
 
 export const AlertComponent = () => {

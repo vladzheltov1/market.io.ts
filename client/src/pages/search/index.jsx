@@ -1,5 +1,5 @@
 import React from "react";
-import { Text } from "../../components/lib/sck";
+import { Text } from "../../components/lib";
 
 export const Search = (props) => {
 

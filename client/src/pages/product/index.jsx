@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Rate, Text } from "../../components/lib/sck";
+import { Button, Rate, Text } from "../../components/lib";
 import { Header } from "../../components/Shop/Header";
 import "./style.scss";
 

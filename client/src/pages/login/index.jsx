@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Button, ErrorBlock, Flex, Form, Input, Space, Text } from "../../components/lib/sck";
+import { Button, ErrorBlock, Flex, Form, Input, Space, Text } from "../../components/lib";
 import { useHttp } from "../../hooks/useHttp";
 
 export const Login = () => {

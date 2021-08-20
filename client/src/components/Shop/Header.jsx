@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Icon } from "rsuite";
 import { useAuth } from "../../hooks/useAuth";
-import { Grid } from "../lib/sck";
+import { Grid } from "../lib";
 
 export const Header = (props) => {
 

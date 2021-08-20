@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex, Text } from "../../components/lib/sck";
+import { Flex, Text } from "../../components/lib";
 
 export const NotFound = () => {
     const styles = {

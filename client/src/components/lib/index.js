@@ -10,6 +10,7 @@ import { Image } from "./components/Image";
 import { Input } from "./components/Input";
 import { Rate } from "./components/Rate";
 import { ScrollUp } from "./components/ScrollUp";
+import { Slider } from "./components/Slider";
 import { Space } from "./components/Space";
 import { Text } from "./components/Text";
 
@@ -26,6 +27,7 @@ export {
     Input,
     Rate,
     ScrollUp,
+    Slider,
     Space,
     Text,
 };
