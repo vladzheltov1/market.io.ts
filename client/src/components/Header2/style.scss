@@ -12,6 +12,10 @@
     *:focus {
         text-decoration: none;
     }
+
+    .header__brand {
+        font-family: $font_family--secondary !important;
+    }
 }
 
 .header__dropdown {

@@ -2,8 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Icon } from "rsuite";
 import { categories } from "../../scripts/Category";
-import { Button, Text } from "../lib";
+import { Text } from "../lib";
 import { HeaderDropdown } from "./HeaderDropdown";
+import { HeaderSearch } from "./HeaderSearch";
 import "./style.scss";
 
 export const Header2 = () => {
@@ -13,12 +14,9 @@ export const Header2 = () => {
                 <div className="header__inner">
                     <div className="header__row header__top--row">
                         <Link to="/">
-                            <Text mode="h2">Market.io</Text>
+                            <Text mode="h2" className="header__brand">Market.io</Text>
                         </Link>
-                        <div className="header__search--group">
-                            <input className="header__search--input" placeholder="Поиск" />
-                            <Button color="red" icon="search"></Button>
-                        </div>
+                        <HeaderSearch />
                         <nav className="header__nav">
                             <Link to="/cart" className="header__nav--item">
                                 <Icon icon="shopping-cart" size="lg" />

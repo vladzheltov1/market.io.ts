@@ -3,13 +3,14 @@
 * {
     margin: 0;
     padding: 0;
+    font-weight: 400;
     user-select: none;
-    -webkit-user-drag: none;
     box-sizing: border-box;
     scroll-behavior: smooth;
-    font-weight: 400;
-    font-family: $font_family--primary !important;
+    -webkit-user-drag: none;
     font-size: $text_size--normal;
+    -webkit-font-smoothing: antialiased;
+    font-family: $font_family--primary !important;
 }
 
 a {
@@ -45,37 +46,6 @@ h6 {
     padding: 10px 15px;
 }
 
-// .error {
-//     color: red;
-//     font-weight: 600;
-//     font-size: 24px;
-// }
-
 section {
     margin: 5px 0;
 }
-
-// .center {
-//     text-align: center;
-// }
-
-.text-crossed {
-    text-decoration: line-through;
-}
-
-// .link-view {
-//     color: $blue-1;
-
-//     &:hover {
-//         text-decoration: underline;
-//         cursor: pointer;
-//     }
-// }
-
-// .rate-stars {
-//     * {
-//         color: $yellow-1;
-//         font-size: 20px;
-//         margin: 0 2px;
-//     }
-// }

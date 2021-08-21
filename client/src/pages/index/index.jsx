@@ -1,7 +1,8 @@
 import React from "react";
-import { Card, Flex, Grid, Image, Slider, Space, Text } from "../../components/lib";
-import { setGradient } from "../../scripts/Gradient";
+import { Card, Flex, Image, Space, Text } from "../../components/lib";
+import { Slider } from "./Slider";
 import "./style.scss";
+
 
 export const Index = (props) => {
     const trendingData = [
@@ -30,27 +31,8 @@ export const Index = (props) => {
     return (
         <div className="wrapper">
 
-            <Slider height={300} content={[
-                (<Card padding={40} link="/shop" vertical={false} background={setGradient(1)}>
-                    <Grid templateColumn="55% auto">
-                        <Flex direction="column" justify="center">
-                            <Text mode="h2">Скидки!</Text>
-                            <Text mode="div" size={18} bold>Самые популярные товары теперь ещё девешле!</Text>
-                        </Flex>
-                        <Image maxWidth={200} src="https://clipart-best.com/img/headphones/headphones-clip-art-3.png" />
-                    </Grid>
-                </Card>),
-                (<Card padding={40} link="/shop" vertical={false} background={setGradient(2)}>
-                    <Grid templateColumn="55% auto">
-                        <Flex direction="column" justify="center">
-                            <Text mode="h2">Скидки!</Text>
-                            <Text mode="div" size={18} bold>Другой текст</Text>
-                        </Flex>
-                        <Image maxWidth={200} src="https://clipart-best.com/img/headphones/headphones-clip-art-3.png" />
-                    </Grid>
-                </Card>)
-            ]}
-            />
+            <Slider />
+
             <Flex direction="column">
                 <Space height={30} />
                 <Text mode="h3">Популярное</Text>

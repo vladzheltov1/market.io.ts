@@ -1,0 +1,12 @@
+@import "../../styles/vars.scss";
+
+.index__slider--link {
+    * {
+        color: $color--black_dark !important;
+        width: 100% !important;
+    }
+
+    &:hover {
+        text-decoration: none !important;
+    }
+}

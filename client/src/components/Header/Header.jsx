@@ -4,6 +4,9 @@ import { Icon } from "rsuite";
 import { HeaderDropdown } from "./HeaderDropdown";
 import "./style.scss";
 
+/**
+ * @deprecated current main header is Header2
+ */
 export const Header = () => {
 
     const _MOBILE = "MOBILE";
