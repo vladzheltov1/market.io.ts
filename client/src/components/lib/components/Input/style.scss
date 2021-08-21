@@ -23,13 +23,15 @@ input {
 
     transition-duration: 0.2s;
 
-    border: 2px solid $color--gray_light;
+    border: 1px solid $color--gray_light;
     border-radius: $border--radius--main;
 
-    &:hover,
+    box-shadow: 2px 2px 1px $color--black_light;
+    
+
     &:active,
-    &:focus {
-        border-color: $color--primary--normal !important;
+    &:focus{
+        box-shadow: 4px 4px 1px $color--black_light;
     }
 
     &.with-icon {

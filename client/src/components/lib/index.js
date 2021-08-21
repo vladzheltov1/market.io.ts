@@ -2,6 +2,7 @@ import { AlertComponent } from "./components/Alert";
 import { Button } from "./components/Button";
 import { ButtonGroup } from "./components/ButtonGroup";
 import { Card } from "./components/Card";
+import { Dropdown, DropdownItem } from "./components/Dropdown";
 import { ErrorBlock } from "./components/Error";
 import { Flex } from "./components/Flex";
 import { Form } from "./components/Form";
@@ -19,6 +20,8 @@ export {
     Button,
     ButtonGroup,
     Card,
+    Dropdown,
+    DropdownItem,
     ErrorBlock,
     Flex,
     Form,

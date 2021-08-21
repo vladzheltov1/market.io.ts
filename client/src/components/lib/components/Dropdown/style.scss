@@ -1,0 +1,43 @@
+@import "../../../../styles/vars.scss";
+
+.dropdown{
+    display: block;
+    position: relative;
+
+    .dropdown__title{
+        display: flex;
+        gap: 8px;
+        align-items: center;
+
+        &:hover{
+            cursor: pointer;
+        }
+    }
+
+    .dropdown__divider{
+        margin: 5px;
+    }
+
+    .dropdown__wrapper{
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        width: 160%;
+        top: 120%;
+        left: -30%;
+        padding: 5px 0;
+        background: $color--white;
+        border-radius: $border--radius--main;
+        z-index: 99;
+        box-shadow: 0 0 2px 1px $color--gray_light, 0 2px 3px $color--black_light;
+        
+        .dropdown__item{
+            padding: 7px 15px;
+
+            &:hover{
+                background: $color--gray_light;
+                color: $color--black_light;
+            }
+        }
+    }
+}
