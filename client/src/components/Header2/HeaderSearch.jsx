@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { Button } from "../lib";
+import { Button } from "../UIkit";
 import {HeaderAutocomplete} from "./HeaderAutocomplete";
 
 export const HeaderSearch = () => {

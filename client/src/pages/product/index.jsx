@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Rate, Text } from "../../components/lib";
+import { Button, Rate, Text } from "../../components/UIkit";
 import "./style.scss";
 
 export const Product = () => {

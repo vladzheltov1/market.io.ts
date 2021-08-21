@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Radio, RadioGroup } from "rsuite";
-import { Button, ErrorBlock, Flex, Form, Input, Space, Text } from "../../components/lib";
+import { Button, ErrorBlock, Flex, Form, Input, Space, Text } from "../../components/UIkit";
 import { useHttp } from "../../hooks/useHttp";
 
 export const Signup = () => {

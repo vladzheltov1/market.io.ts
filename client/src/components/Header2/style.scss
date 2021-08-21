@@ -13,7 +13,7 @@
         text-decoration: none;
     }
 
-    .header__brand {
+    .header__brand > * {
         font-family: $font_family--secondary !important;
     }
 }

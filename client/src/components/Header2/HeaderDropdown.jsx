@@ -1,5 +1,5 @@
 import React from "react";
-import { Dropdown, DropdownItem } from "../lib";
+import { Dropdown, DropdownItem } from "../UIkit";
 
 export const HeaderDropdown = () => {
     return (

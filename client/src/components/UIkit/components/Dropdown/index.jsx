@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Text} from "../../../lib/";
+import {Text} from "../../../UIkit";
 import { Link } from "react-router-dom";
 import "./style.scss";
 import {Icon} from "rsuite";

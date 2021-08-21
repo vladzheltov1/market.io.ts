@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { Icon, Tag, TagGroup } from "rsuite";
-import { Button } from "../../components/lib";
+import { Button } from "../../components/UIkit";
 import { useHttp } from "../../hooks/useHttp";
 import { categories } from "../../scripts/Category";
 
