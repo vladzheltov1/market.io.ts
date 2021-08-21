@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Button, Rate, Text } from "../../components/lib";
-import { Header } from "../../components/Shop/Header";
 import "./style.scss";
 
 export const Product = () => {
@@ -26,7 +25,6 @@ export const Product = () => {
 
     return (
         <div className="wrapper">
-            <Header />
             <div className="product-page__wrapper">
                 <div className="product-info">
                     <Text mode="h3">

@@ -1,7 +1,4 @@
 import React from "react";
-import { Grid } from "../../components/lib";
-import { Categories } from "../../components/Shop/Categories";
-import { Header } from "../../components/Shop/Header";
 import { Product } from "../../components/Shop/Product";
 import "./style.scss";
 
@@ -27,14 +24,9 @@ export const Shop = () => {
 
     return (
         <div className="wrapper">
-            <Header />
-
-            <Grid templateColumn="200px auto">
-                <Categories />
-                <div className="shop-content">
-                    <Product data={data} />
-                </div>
-            </Grid>
+            <div className="shop-content">
+                <Product data={data} />
+            </div>
         </div>
     )
 }

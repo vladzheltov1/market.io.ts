@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
-import { Header } from "./components/Header/Header";
+import { Header2 } from "./components/Header2";
 import { Router } from "./scripts/Router";
 
 export default function App() {
@@ -9,7 +9,7 @@ export default function App() {
 
     return (
         <BrowserRouter>
-            <Header />
+            <Header2 />
             {routes}
         </BrowserRouter>
     )

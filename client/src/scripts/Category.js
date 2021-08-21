@@ -1,7 +1,15 @@
-export const _CATEROGIES = [
+export const categories = [
     {
-        label: "Телефоны",
+        label: "Смартфоны",
         value: "phone"
+    },
+    {
+        label: "Планшеты",
+        value: "tablet"
+    },
+    {
+        label: "Наушники",
+        value: "headphone"
     },
     {
         label: "Клавиатуры",
@@ -12,15 +20,11 @@ export const _CATEROGIES = [
         value: "monitor"
     },
     {
+        label: "Приставки",
+        value: "gamestation"
+    },
+    {
         label: "Джойстики",
         value: "joystick"
-    },
-    {
-        label: "Мышки",
-        value: "mouse"
-    },
-    {
-        label: "Наушники",
-        value: "headphone"
     },
 ]

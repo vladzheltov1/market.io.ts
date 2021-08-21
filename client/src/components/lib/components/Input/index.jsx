@@ -9,6 +9,7 @@ export const Input = ({
     onChange,
     icon = null,
     value = "",
+    width = "100%",
     label = "" }) => {
 
     const classList = [
@@ -17,8 +18,12 @@ export const Input = ({
         status
     ];
 
+    const style = {
+        width
+    }
+
     return (
-        <div className="input-wrapper">
+        <div className="input-wrapper" style={style}>
             {icon && (
                 <Icon icon={icon} className="input-icon" />
             )}

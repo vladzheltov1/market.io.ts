@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { Icon, Tag, TagGroup } from "rsuite";
 import { Button } from "../../components/lib";
 import { useHttp } from "../../hooks/useHttp";
-import { _CATEROGIES } from "../../scripts/Category";
+import { categories } from "../../scripts/Category";
 
 export const AddProduct = () => {
     const input = useRef();
@@ -43,7 +43,7 @@ export const AddProduct = () => {
     const [form, setForm] = useState({
         title: "",
         description: "",
-        category: _CATEROGIES[0].value,
+        category: categories[0].value,
         price: 0,
         // picture: ""
     });
@@ -96,7 +96,7 @@ export const AddProduct = () => {
                 ></textarea>
 
                 <select name="category" id="category" onChange={(event) => setForm({ ...form, category: event.target.value })} value={form.category}>
-                    {_CATEROGIES.map((category) => (
+                    {categories.map((category) => (
                         <option value={category.value} key={category.value}>{category.label}</option>
                     ))}
                 </select>
