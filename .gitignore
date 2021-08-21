@@ -3,4 +3,5 @@
 /server/node_modules
 /client/build
 /server/build
+.vscode
 .env
