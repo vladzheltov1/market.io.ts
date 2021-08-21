@@ -1,8 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { Icon } from "rsuite";
 import { categories } from "../../scripts/Category";
-import { Text } from "../lib";
+import { Text, Image } from "../lib";
 import { HeaderDropdown } from "./HeaderDropdown";
 import { HeaderSearch } from "./HeaderSearch";
 import "./style.scss";
@@ -13,7 +13,8 @@ export const Header2 = () => {
             <div className="wrapper">
                 <div className="header__inner">
                     <div className="header__row header__top--row">
-                        <Link to="/">
+                        <Link to="/" style={{display: "flex", gap: 5, alignItems: "center"}}>
+                            <Image width={40} src="https://klike.net/uploads/posts/2020-07/1593671357_15.jpg"/>
                             <Text mode="h2" className="header__brand">Market.io</Text>
                         </Link>
                         <HeaderSearch />
@@ -31,8 +32,20 @@ export const Header2 = () => {
                     </div>
                     <div className="header__row">
                         <nav className="header__nav">
+                            <NavLink
+                                to="/shop?category=all"
+                                className="header__nav--item"
+                            >
+                                Все товары
+                            </NavLink>
+                            <div>|</div>
                             {categories.map(category => (
-                                <div className="header__nav--item"><Link to={"/shop?category=" + category.value}>{category.label}</Link></div>
+                                <NavLink
+                                    to={"/shop?category=" + category.value}
+                                    className="header__nav--item"
+                                >
+                                    {category.label}
+                                </NavLink>
                             ))}
                         </nav>
                     </div>

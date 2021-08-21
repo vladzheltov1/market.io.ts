@@ -4,14 +4,19 @@ import { Link } from "react-router-dom";
 import "./style.scss";
 import {Icon} from "rsuite";
 
-export const Dropdown = ({children, title = "", icon}) => {
+export const Dropdown = ({
+    children,
+    title = "",
+    mode = "",
+    icon
+}) => {
     const [open, setOpen] = useState(false);
 
     return (
         <div className="dropdown">
             <div onClick={() => setOpen(!open)} className="dropdown__title">
                 {icon && <Icon icon={icon}/>}
-                <Text>{title}</Text>
+                <Text mode={mode}>{title}</Text>
                 {open ? (
                     <Icon icon="angle-up"/>
                 ) : (
