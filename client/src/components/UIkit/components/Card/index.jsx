@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { getRandomColor } from "../../../../scripts/Colorizer";
+import { getRandomColor } from "../../../../helpers/color";
 import "./style.scss";
 
 export const Card = ({
@@ -21,7 +21,7 @@ export const Card = ({
         card: {
             display: "flex",
             flexDirection: vertical ? "column" : "row",
-            background: background ? background : getRandomColor(),
+            background: background ? background : getRandomColor("solid"),
             padding: padding,
             maxWidth: maxWidth
         }

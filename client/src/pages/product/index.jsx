@@ -1,28 +1,8 @@
 import React, { useState } from "react";
-import { Button, Rate, Text } from "../../components/UIkit";
+import { Button, Rate, Text, Collapse } from "../../components/UIkit";
 import "./style.scss";
 
 export const Product = () => {
-    const productColors = [
-        {
-            value: "#211F25",
-            isChoosen: true
-        },
-        {
-            value: "#F9F6F4",
-            isChoosen: false,
-        },
-        {
-            value: "#063559",
-            isChoosen: false
-        }];
-
-    const [color, setColor] = useState(productColors[0]);
-
-    const chooseColor = (color) => {
-        setColor()
-    }
-
     return (
         <div className="wrapper">
             <div className="product-page__wrapper">
@@ -47,15 +27,11 @@ export const Product = () => {
                     </div>
                     <div>
                         <Text mode="h4">Цвета</Text>
-                        <div className="product-colors-wrapper">
-                            {productColors.map((color) => (
-                                <div className="product-colors-item" onClick={() => chooseColor(color)} style={{ backgroundColor: color.value }}></div>
-                            ))}
-                        </div>
+                        
                     </div>
                     <div>
-                        <Text mode="h4">Характеристики</Text>
-                        <div className="product-property-wrapper">
+                    <Collapse title={<Text mode="h4">Характеристики</Text>}>
+                    <div className="product-property-wrapper">
                             <div className="product-property-item">
                                 <Text mode="div">Диагональ экрана</Text>
                                 <Text mode="div">5.8 дюймов</Text>
@@ -85,6 +61,9 @@ export const Product = () => {
                                 <Text mode="div">2436x1125 пикс</Text>
                             </div>
                         </div>
+                    </Collapse>
+                        {/* <Text mode="h4">Характеристики</Text> */}
+                        
                     </div>
                     <div className="product-buttons">
                         <Button link="/cart" className="product-button product-tocart-button">В корзину</Button>

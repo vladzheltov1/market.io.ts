@@ -20,17 +20,6 @@ export const UItoken = {
     colorBlack_medium: "#222",
     colorBlack_dark: "#111",
 
-    colorPrimaryNormal: this.colorBlueNormal,
-    colorPrimaryActive: this.colorBlueActive,
-    colorSecondaryNormal: this.colorBlueNormal,
-    colorSecondaryActive: this.colorBlueActive,
-
-    color_text: this.colorBlack_dark,
-    color_bg: this.colorWhite,
-
-    color_linkHover: this.colorBlueActive,
-    color_linkNormal: this.colorBlueNormal,
-
     font_familyPrimary: "Rubik",
     font_familySecondary: "Roboto",
 
@@ -46,3 +35,14 @@ export const UItoken = {
     screenTablet_width: 768,
     screenMobile_width: 425,
 }
+
+UItoken.colorPrimaryNormal = UItoken.colorBlueNormal;
+UItoken.colorPrimaryActive = UItoken.colorBlueActive;
+UItoken.colorSecondaryNormal = UItoken.colorBlueNormal;
+UItoken.colorSecondaryActive = UItoken.colorBlueActive;
+
+UItoken.color_text = UItoken.colorBlack_dark;
+UItoken.color_bg = UItoken.colorWhite;
+
+UItoken.color_linkHover = UItoken.colorBlueActive;
+UItoken.color_linkNormal = UItoken.colorBlueNormal;

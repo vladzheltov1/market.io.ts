@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Icon } from "rsuite";
-import { categories } from "../../scripts/Category";
+import { categories } from "../../helpers/category";
 import { Text, Image } from "../UIkit";
 import { HeaderDropdown } from "./HeaderDropdown";
 import { HeaderSearch } from "./HeaderSearch";

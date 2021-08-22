@@ -14,12 +14,14 @@ import { ScrollUp } from "./components/ScrollUp";
 import { Slider } from "./components/Slider";
 import { Space } from "./components/Space";
 import { Text } from "./components/Text";
+import { Collapse } from "./components/Collapse";
 
 export {
     AlertComponent,
     Button,
     ButtonGroup,
     Card,
+    Collapse,
     Dropdown,
     DropdownItem,
     ErrorBlock,

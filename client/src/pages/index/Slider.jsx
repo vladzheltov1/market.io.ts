@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Carousel } from "rsuite";
 import { Flex, Text } from "../../components/UIkit";
-import { setGradient } from "../../scripts/Gradient";
+import { setGradient } from "../../helpers/gradient";
 
 export const Slider = () => {
     return (

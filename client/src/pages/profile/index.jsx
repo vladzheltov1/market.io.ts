@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import { Loader } from "rsuite";
 import { useAuth } from "../../hooks/useAuth";
 import { useHttp } from "../../hooks/useHttp";
-import { utils } from "../../scripts/Utils";
+import { dateAdapter } from "../../adapters/dateAdapter";
+import {objectValidator} from "../../validators/objectValidator";
 import "./style.scss";
 
 export const Profile = (props) => {
@@ -20,13 +21,13 @@ export const Profile = (props) => {
             const fetchData = async () => {
                 const response = await request("/api/users/" + props.match.params.id, "GET");
 
-                if (utils.isObjectEmpty(response.data) || message) {
+                if (objectValidator.isObjectEmpty(response.data) || message) {
                     props.history.push("/");
                     return;
                 }
 
                 setUser(response.data);
-                setJoined(utils.dateAdaper(response.data.user_joined));
+                setJoined(dateAdapter.convertToClient(response.data.user_joined));
             }
 
             fetchData();

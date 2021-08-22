@@ -4,7 +4,7 @@ import { NotFound } from "../pages/404";
 import { AddProduct } from "../pages/addProduct";
 import { Cart } from "../pages/cart";
 import { Components } from "../pages/components";
-import { Index } from "../pages/index";
+import { Index } from "../pages/index/index";
 import { Login } from "../pages/login";
 import { Product } from "../pages/product";
 import { Profile } from "../pages/profile";
