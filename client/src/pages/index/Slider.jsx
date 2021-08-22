@@ -7,7 +7,7 @@ import { setGradient } from "../../scripts/Gradient";
 export const Slider = () => {
     return (
         <div style={{ borderRadius: 20, overflow: "hidden" }}>
-            <Carousel autoplay shape="bar">
+            <Carousel shape="bar" autoplay>
                 <Link to="/shop" className="index__slider--link" style={{ display: "flex", padding: 40, background: setGradient(1) }}>
                     <Flex direction="column" align="center" justify="center">
                         <Text mode="h2">Скидки!</Text>
