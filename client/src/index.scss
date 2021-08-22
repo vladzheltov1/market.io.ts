@@ -10,7 +10,7 @@
     -webkit-user-drag: none;
     font-size: $text_size--normal;
     -webkit-font-smoothing: antialiased;
-    font-family: $font_family--primary !important;
+    font-family: $font_family--primary, $font_family--secondary, sans-serif;
 }
 
 a {
@@ -38,6 +38,7 @@ h4,
 h5,
 h6 {
     color: $color--black_dark;
+    font-family: $font_family--secondary;
 }
 
 .wrapper {

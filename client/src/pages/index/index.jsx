@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Flex, Image, Space, Text } from "../../components/lib";
+import { Card, Flex, Image, Space, Text } from "../../components/UIkit";
 import { Slider } from "./Slider";
 import "./style.scss";
 

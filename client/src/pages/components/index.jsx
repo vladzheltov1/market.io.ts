@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, ButtonGroup } from "../../components/lib";
+import { Button, ButtonGroup } from "../../components/UIkit";
 
 export const Components = () => {
     return (

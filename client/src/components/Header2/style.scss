@@ -13,23 +13,32 @@
         text-decoration: none;
     }
 
-    .header__brand {
+    .header__brand > * {
         font-family: $font_family--secondary !important;
     }
 }
 
-.header__dropdown {
-    padding: 5px 0;
+.header__autocomplete--wrapper{
+    position: absolute;
     display: flex;
     flex-direction: column;
+    top: 99%;
+    width: 100%;
+    background-color: $color--white;
+    box-shadow: 0 0 1px 1px $color--gray_medium;
+    padding: 5px 0;
+    z-index: 99;
+    border-radius: $border--radius--main;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
 
-    .header__dropdown--item {
-        padding: 10px;
-    }
+    .header__autocomplete--item{
+        padding: 5px 10px;
+        width: 100%;
 
-    // If we don't have it, the dropdown menu appears under the main interface.
-    * {
-        z-index: 999 !important;
+        &:hover{
+            background: $color--gray_light;
+        }
     }
 }
 

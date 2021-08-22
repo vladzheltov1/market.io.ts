@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Button, ScrollUp } from "../../components/lib";
+import { Button, ScrollUp } from "../../components/UIkit";
 import "./style.scss";
 
 export const Cart = () => {
