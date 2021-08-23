@@ -30,26 +30,20 @@ export const Button = ({
     secondary = false
 }) => {
     const btnRef = useRef();
-    const {nodeState} = useDOMAction(btnRef);
+    const { nodeState } = useDOMAction(btnRef);
     
-    const buttonState = nodeState === DOMStates.normal ? DOMStates.normal : "active";
+    const buttonState = nodeState === DOMStates.normal ? DOMStates.normal : DOMStates.active;
 
-    if(disabled){
-        style.button.opacity = "0.85"
-    }
-
-    if(primary){
-        style.button.backgroundColor = priorityColors.primary[buttonState];
-    }
-    else if(secondary){
-        style.button.backgroundColor = priorityColors.secondary[buttonState];
-    }
-    else {
-        style.button.backgroundColor = mainColors[color][buttonState];
+    const bgColor = function(){
+        if(primary) return priorityColors.primary[buttonState];
+        else if(secondary) return priorityColors.secondary[buttonState];
+        else return mainColors[color][buttonState];
     }
     
     const buttonStyle = {
-        ...style.button
+        ...style.button,
+        backgroundColor: bgColor(),
+        opacity: disabled ? 0.85 : 1
     }
 
     const type = link ? Link : "button";
@@ -59,10 +53,13 @@ export const Button = ({
         disabled: disabled,
         style: buttonStyle,
         ref: btnRef,
-        to: link ?? null
+        to: link ?? null,
     }
 
-    return React.createElement(type, componentProps, 
+    return React.createElement(
+        type,
+        componentProps, 
+        // Children //
         icon && <Icon icon={icon} />,
         children    
     );
