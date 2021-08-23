@@ -43,6 +43,7 @@ export const Header2 = () => {
                                 <NavLink
                                     to={"/shop?category=" + category.value}
                                     className="header__nav--item"
+                                    key={category.value}
                                 >
                                     {category.label}
                                 </NavLink>

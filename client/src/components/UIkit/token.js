@@ -1,4 +1,4 @@
-export const UItoken = {
+const UItoken = {
     colorRedNormal: "#eb4d42",
     colorRedActive: "#dc4338",
     colorOrangeNormal: "#f6781d",
@@ -38,11 +38,15 @@ export const UItoken = {
 
 UItoken.colorPrimaryNormal = UItoken.colorBlueNormal;
 UItoken.colorPrimaryActive = UItoken.colorBlueActive;
-UItoken.colorSecondaryNormal = UItoken.colorBlueNormal;
-UItoken.colorSecondaryActive = UItoken.colorBlueActive;
+UItoken.colorSecondaryNormal = UItoken.colorGray_dark;
+UItoken.colorSecondaryActive = UItoken.colorGray_black;
 
 UItoken.color_text = UItoken.colorBlack_dark;
 UItoken.color_bg = UItoken.colorWhite;
 
 UItoken.color_linkHover = UItoken.colorBlueActive;
 UItoken.color_linkNormal = UItoken.colorBlueNormal;
+
+export {
+    UItoken
+};

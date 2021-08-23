@@ -46,55 +46,6 @@ export const Components = () => {
                     </Button>
                 </ButtonGroup>
             </section>
-            <section>
-                <br />
-                <h3 className="center">Классовые стили</h3>
-                <h4>Тень</h4>
-                <div style={{ width: "100%", padding: 10 }} className="shadow-1">
-                    .shadow-1
-                </div>
-                <br />
-                <div style={{ width: "100%", padding: 10 }} className="shadow-2">
-                    .shadow-2
-                </div>
-                <br />
-                <div style={{ width: "100%", padding: 10 }} className="shadow-left-1">
-                    .shadow-left-1
-                </div>
-                <br />
-                <div style={{ width: "100%", padding: 10 }} className="shadow-left-2">
-                    .shadow-left-2
-                </div>
-                <br />
-                <div style={{ width: "100%", padding: 10 }} className="shadow-right-1">
-                    .shadow-right-1
-                </div>
-                <br />
-                <div style={{ width: "100%", padding: 10 }} className="shadow-right-2">
-                    .shadow-right-2
-                </div>
-                <br />
-                <br />
-                <h4>Граница</h4>
-                <div style={{ width: "100%", padding: 10 }} className="border-radius-1 shadow-1">
-                    .border-radius-1
-                </div>
-
-                <br />
-                <div style={{ width: "100%", padding: 10 }} className="border-radius-2 shadow-1">
-                    .border-radius-2
-                </div>
-
-                <br />
-                <div style={{ width: "100%", padding: 10 }} className="border-1">
-                    .border-1
-                </div>
-
-                <br />
-                <div style={{ width: "100%", padding: 10 }} className="border-2">
-                    .border-2
-                </div>
-            </section>
         </div>
     )
 }
