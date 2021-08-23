@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Icon } from "rsuite";
 import { style } from "./style";
 import { mainColors, priorityColors } from "../../../../helpers/color";
-import {useDOMAction, DOMStates} from "../../../../hooks/useDOMAction";
+import { useDOMAction, DOMStates } from "../../../../hooks/useDOMAction";
 
 export const Button = ({
     // Function to be called on click
@@ -31,21 +31,13 @@ export const Button = ({
 }) => {
     const btnRef = useRef();
     const {nodeState} = useDOMAction(btnRef);
-
-    // const btnClasses = [
-    //     "button",
-    //     (color && !primary && !secondary) ? color : "",
-    //     primary ? "primary" : "",
-    //     secondary ? "secondary" : ""
-    // ]
-
     
     const buttonState = nodeState === DOMStates.normal ? DOMStates.normal : "active";
 
     if(disabled){
         style.button.opacity = "0.85"
     }
-    
+
     if(primary){
         style.button.backgroundColor = priorityColors.primary[buttonState];
     }
@@ -60,40 +52,18 @@ export const Button = ({
         ...style.button
     }
 
-    // if(color && mainColors[color]){
-    //     buttonStyle.backgroundColor = mainColors[color][]
-    // }
+    const type = link ? Link : "button";
 
-    if (link) {
-        return (
-            <Link
-                to={link}
-                onClick={() => onClick()}
-                disabled={disabled}
-                // className={btnClasses.join(" ")}
-                style={buttonStyle}
-                ref={btnRef}
-            >
-                {icon && (
-                    <Icon icon={icon} />
-                )}
-                {children}
-            </Link>
-        )
+    const componentProps = {
+        onClick: () => onClick(),
+        disabled: disabled,
+        style: buttonStyle,
+        ref: btnRef,
+        to: link ?? null
     }
 
-    return (
-        <button
-            onClick={() => onClick()}
-            disabled={disabled}
-            // className={btnClasses.join(" ")}
-            ref={btnRef}
-            style={buttonStyle}
-        >
-            {icon && (
-                <Icon icon={icon} />
-            )}
-            {children}
-        </button>
-    )
+    return React.createElement(type, componentProps, 
+        icon && <Icon icon={icon} />,
+        children    
+    );
 }

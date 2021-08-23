@@ -19,8 +19,10 @@ export const useDOMAction = (ref) => {
     useEffect(() => {
         const node = ref.current;
 
-        if(!node) return;
-        
+        if(!node) {
+            throw new Error("A reference to the node required! Try useRef() to attach this hook to the node!");
+        }
+
         // Hover state
         node.addEventListener("mouseover", () => setNodeState(DOMStates.hovered));
         node.addEventListener("mouseout", () => setNodeState(DOMStates.normal));
