@@ -2,7 +2,7 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Icon } from "rsuite";
 import { categories } from "../../helpers/category";
-import { Text, Image } from "../UIkit";
+import { Container, Image, Text } from "../UIkit";
 import { HeaderDropdown } from "./HeaderDropdown";
 import { HeaderSearch } from "./HeaderSearch";
 import "./style.scss";
@@ -10,11 +10,11 @@ import "./style.scss";
 export const Header2 = () => {
     return (
         <header className="header">
-            <div className="wrapper">
+            <Container>
                 <div className="header__inner">
                     <div className="header__row header__top--row">
-                        <Link to="/" style={{display: "flex", gap: 5, alignItems: "center"}}>
-                            <Image width={40} src="https://klike.net/uploads/posts/2020-07/1593671357_15.jpg"/>
+                        <Link to="/" style={{ display: "flex", gap: 5, alignItems: "center" }}>
+                            <Image width={40} src="https://klike.net/uploads/posts/2020-07/1593671357_15.jpg" />
                             <Text mode="h2" className="header__brand">Market.io</Text>
                         </Link>
                         <HeaderSearch />
@@ -51,7 +51,7 @@ export const Header2 = () => {
                         </nav>
                     </div>
                 </div>
-            </div>
+            </Container>
         </header>
     )
 }

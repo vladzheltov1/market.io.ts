@@ -2,6 +2,8 @@ import { AlertComponent } from "./components/Alert";
 import { Button } from "./components/Button";
 import { ButtonGroup } from "./components/ButtonGroup";
 import { Card } from "./components/Card";
+import { Collapse } from "./components/Collapse";
+import { Container } from "./components/Container";
 import { Dropdown, DropdownItem } from "./components/Dropdown";
 import { ErrorBlock } from "./components/Error";
 import { Flex } from "./components/Flex";
@@ -14,7 +16,6 @@ import { ScrollUp } from "./components/ScrollUp";
 import { Slider } from "./components/Slider";
 import { Space } from "./components/Space";
 import { Text } from "./components/Text";
-import { Collapse } from "./components/Collapse";
 
 export {
     AlertComponent,
@@ -22,6 +23,7 @@ export {
     ButtonGroup,
     Card,
     Collapse,
+    Container,
     Dropdown,
     DropdownItem,
     ErrorBlock,
