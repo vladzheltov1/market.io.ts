@@ -30,6 +30,7 @@ export const Button = ({
 }) => {
     const { nodeRef, nodeState } = useDOMAction();
 
+    // Style of the button
     const buttonStyle = getStyle({
         state: nodeState,
         secondary,
@@ -38,8 +39,8 @@ export const Button = ({
         color,
     });
 
+    // Options for creating the component
     const type = link ? Link : "button";
-
     const componentProps = {
         onClick: () => onClick(),
         disabled: disabled,

@@ -11,7 +11,7 @@ export const DOMStates = {
 }
 
 /**
- * A hook used to get current state of the DOM node
+ * A hook used to get current state of the DOM node (normal, hovered, active, focused)
  */
 export const useDOMAction = () => {
     const [nodeState, setNodeState] = useState(DOMStates.normal);
