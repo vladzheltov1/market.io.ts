@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useEffect, useRef, useState } from "react";
 
 /**
  * Any possible states of the node
@@ -13,13 +13,15 @@ export const DOMStates = {
 /**
  * A hook used to get current state of the DOM node
  */
-export const useDOMAction = (ref) => {
+export const useDOMAction = () => {
     const [nodeState, setNodeState] = useState(DOMStates.normal);
 
-    useEffect(() => {
-        const node = ref.current;
+    const nodeRef = useRef();
 
-        if(!node) {
+    useEffect(() => {
+        const node = nodeRef.current;
+
+        if (!node) {
             throw new Error("A reference to the node required! Try useRef() to attach this hook to the node!");
         }
 
@@ -30,11 +32,11 @@ export const useDOMAction = (ref) => {
         // Focus state
         node.addEventListener("focus", () => setNodeState(DOMStates.focused));
         node.addEventListener("blur", () => setNodeState(DOMStates.normal));
-        
+
         // Active state
         node.addEventListener("mousedown", () => setNodeState(DOMStates.active));
         node.addEventListener("mouseup", () => setNodeState(DOMStates.normal));
-    }, []); 
+    }, []);
 
-    return {nodeState};
+    return { nodeRef, nodeState };
 }

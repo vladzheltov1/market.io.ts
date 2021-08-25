@@ -1,16 +1,15 @@
-import React, {useRef} from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { Icon } from "rsuite";
-import { style } from "./style";
-import { mainColors, priorityColors } from "../../../../helpers/color";
-import { useDOMAction, DOMStates } from "../../../../hooks/useDOMAction";
+import { useDOMAction } from "../../../../hooks/useDOMAction";
+import { getStyle } from "./style";
 
 export const Button = ({
-    // Function to be called on click
+    // Function called on click
     onClick = () => null,
-    
+
     // The content inside the button
-    children,
+    children = "",
 
     // Enable/disable the button
     disabled = false,
@@ -29,22 +28,15 @@ export const Button = ({
     primary = false,
     secondary = false
 }) => {
-    const btnRef = useRef();
-    const { nodeState } = useDOMAction(btnRef);
-    
-    const buttonState = nodeState === DOMStates.normal ? DOMStates.normal : DOMStates.active;
+    const { nodeRef, nodeState } = useDOMAction();
 
-    const bgColor = function(){
-        if(primary) return priorityColors.primary[buttonState];
-        else if(secondary) return priorityColors.secondary[buttonState];
-        else return mainColors[color][buttonState];
-    }
-    
-    const buttonStyle = {
-        ...style.button,
-        backgroundColor: bgColor(),
-        opacity: disabled ? 0.85 : 1
-    }
+    const buttonStyle = getStyle({
+        state: nodeState,
+        secondary,
+        disabled,
+        primary,
+        color,
+    });
 
     const type = link ? Link : "button";
 
@@ -52,15 +44,12 @@ export const Button = ({
         onClick: () => onClick(),
         disabled: disabled,
         style: buttonStyle,
-        ref: btnRef,
+        ref: nodeRef,
         to: link ?? null,
     }
 
-    return React.createElement(
-        type,
-        componentProps, 
-        // Children //
+    return React.createElement(type, componentProps,
         icon && <Icon icon={icon} />,
-        children    
+        children
     );
 }
