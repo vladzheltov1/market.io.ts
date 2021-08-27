@@ -1,4 +1,5 @@
-import { mainColors, priorityColors } from "../../../../helpers/color";
+// import { mainColors, priorityColors } from "../../../../helpers/color";
+import {getColor} from "../../../../helpers/colors";
 import { DOMStates } from "../../../../hooks/useDOMAction";
 import { UItoken } from "../../token";
 
@@ -29,10 +30,10 @@ export const getStyle = ({
 
     const componentState = state === DOMStates.normal ? DOMStates.normal : DOMStates.active;
 
-    if (primary) componentStyle.backgroundColor = priorityColors.primary[componentState];
-    else if (secondary) componentStyle.backgroundColor = priorityColors.secondary[componentState];
+    if (primary) componentStyle.backgroundColor = getColor("priority").primary[componentState];
+    else if (secondary) componentStyle.backgroundColor = getColor("priority").secondary[componentState];
     else {
-        componentStyle.backgroundColor = mainColors[color][componentState];
+        componentStyle.backgroundColor = getColor("main")[color][componentState];
     }
 
     return componentStyle;

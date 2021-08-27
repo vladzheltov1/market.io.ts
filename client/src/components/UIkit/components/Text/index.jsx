@@ -29,7 +29,7 @@ export const Text = ({
      * Mode validation
      */
     if (!validModes.includes(mode)) {
-        mode = "span";
+        mode = "div";
     }
 
     const componentStyle = getStyle({

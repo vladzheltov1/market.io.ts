@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { getRandomColor } from "../../helpers/color";
+import { getRandomSolid } from "../../helpers/colors";
 
 export const Product = ({ data }) => {
     return (
         <>
             {data && data.map((item) => (
-                <Link to={item.link} className="shop-item" key={item.title} style={{ backgroundColor: getRandomColor("solid") || 'rgb(252, 244, 240)' }}>
+                <Link to={item.link} className="shop-item" key={item.title} style={{ backgroundColor: getRandomSolid() || 'rgb(252, 244, 240)' }}>
                     <div className="shop-item-image">
                         <img src={item.image} alt="" />
                     </div>

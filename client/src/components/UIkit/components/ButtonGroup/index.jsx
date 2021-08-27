@@ -26,9 +26,5 @@ export const ButtonGroup = ({
         alignItems: vertical
     }
 
-    return (
-        <div style={style}>
-            {children}
-        </div>
-    )
+    return React.createElement("div", {style}, children);
 }

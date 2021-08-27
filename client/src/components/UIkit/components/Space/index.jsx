@@ -1,8 +1,10 @@
 import React from "react";
-import "./style.scss";
 
 export const Space = ({ height }) => {
-    return (
-        <div className="space" style={{ height }}></div>
-    )
+    const style = {
+        width: "100%",
+        height: height
+    }
+
+    return React.createElement("div", {style}, null);
 }
