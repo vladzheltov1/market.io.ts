@@ -4,6 +4,7 @@ import { ClientErrors } from "../../errors/ClientErrors";
 import { FormErrors } from "../../errors/FormErrors";
 import * as dataValidator from "../../helpers/DataHelper";
 import { isIdValid } from "../../helpers/DBHelper";
+import {sendResponse} from "../response";
 import {
     createUserModel,
     matchPasswords,
@@ -99,14 +100,16 @@ const AuthUsersAPI = {
 const DatabaseUsersAPI = {
     // Finding users with query params
     async findUsersWithParams(req, res) {
+        const httpVersion = req.httpVersion;
         const query = req.query;
 
         // We can't execute the query without query params because in this case
         // we'll always get the whole list of users, which is not safe.
         if (dataValidator.isObjectEmpty(query)) {
-            return res.status(500).json({
+            return sendResponse(res, {
                 status: 500,
-                message: "Сервер понял запрос, но отказывается его выполнять!"
+                httpVersion: req.httpVersion,
+                message: "Недостаточно данных!"
             });
         }
 
@@ -114,11 +117,20 @@ const DatabaseUsersAPI = {
 
         // Nothing was found
         if (dataValidator.isArrayEmpty(response)) {
-            return notFound(res, ClientErrors[404]);
+            return sendResponse(res, {
+                httpVersion,
+                status: 404,
+                message: ClientErrors[404]
+            })
         }
 
         // Success
-        return res.json({ status: 200, data: response });
+        return sendResponse(res, {
+            httpVersion: req.httpVersion,
+            status: 200,
+            data: response
+        })
+        // return res.json({ status: 200, data: response });
     },
 
     /**
@@ -127,23 +139,36 @@ const DatabaseUsersAPI = {
     async findUserWithId(req, res) {
         // This endpoint only works when it gets an id, so we don't need to check if it's given 
         const { id } = req.params;
+        const httpVersion = req.httpVersion;
 
         // If we send a request with id, which length is not 24 characters, we get
         // an error from the database. It doesn't crash the server, but a response
         // doesn't come either, so we need to check it to avoid any possible errors.
         if (!isIdValid(id)) {
-            return notFound(res, ClientErrors[404]);
+            return sendResponse(res, {
+                httpVersion,
+                status: 404,
+                message: ClientErrors[404]
+            });
         }
 
         const response = await methods.get({ table: "users", where: { _id: id } });
 
         // Nothing was found
         if (dataValidator.isArrayEmpty(response)) {
-            return notFound(res, ClientErrors[404]);
+            return sendResponse(res, {
+                httpVersion,
+                status: 404,
+                message: ClientErrors[404]
+            });
         }
 
         // Success
-        return res.status(200).json({ status: 200, data: response });
+        return sendResponse(res, {
+            httpVersion,
+            status: 200,
+            data: response
+        })
     },
 
     /**

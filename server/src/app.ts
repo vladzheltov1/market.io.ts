@@ -13,7 +13,7 @@ const IP: string = process.env.IP;
 APP.use(cookieParser());
 APP.use(express.json());
 
-APP.get("/", (_, res) => res.send("Server works!"));
+APP.get("/", (_, res) => res.send("No visual setup at this server! Please, contact administrator for more info!"));
 APP.use('/api', require('./router/APIRouter'));
 
 try {
