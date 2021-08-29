@@ -7,8 +7,7 @@ export const Flex = ({
     justify = "flex-start",
     gap = 0
 }) => {
-
-    const style = {
+    const componentStyle = {
         position: "relative",
         display: "flex",
         flexDirection: direction,
@@ -17,9 +16,9 @@ export const Flex = ({
         gap: gap
     }
 
-    return (
-        <div style={style}>
-            {children}
-        </div>
-    )
+    const componentProps = {
+        style: componentStyle
+    }
+
+    return React.createElement("div", componentProps, children);
 }
