@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Icon } from "rsuite";
-import { Button, ButtonGroup } from "../../../UIkit";
+import { ButtonGroup } from "../../../UIkit";
 import "./style.scss";
 
 export const AlertComponent = () => {
@@ -11,11 +11,29 @@ export const AlertComponent = () => {
     const showAlert = () => setVisible(true);
     const closeAlert = () => setVisible(false);
 
+    const types = {
+        info: {
+            icon: "info",
+            label: "Информация!"
+        },
+        success: {
+            icon: "check-circle",
+            label: "Успех!"
+        },
+        warning: {
+            icon: "exclamation-triangle",
+            label: "Внимание!"
+        },
+        danger: {
+            icon: "warning",
+            label: "Ошибка!"
+        }
+    }
+
     const Alert = ({
         type = "info",
-        title = "Внимание!",
-        description = "Системное оповещение!",
-        children
+        description = "Оповещение!",
+        controls
     }) => {
         return (
             <>
@@ -25,18 +43,20 @@ export const AlertComponent = () => {
                         <div className={"alert-window alert__type-" + type}>
                             <div onClick={closeAlert} className="alert__close"><Icon icon="close" /></div>
                             <div className="alert-window__icon">
-                                {type === "info" && (<Icon className="alert__icon" icon="info" />)}
-                                {type === "warning" && (<Icon className="alert__icon" icon="exclamation-triangle" />)}
-                                {type === "danger" && (<Icon className="alert__icon" icon="warning" />)}
-                                {type === "success" && (<Icon className="alert__icon" icon="check-circle" />)}
+                                <Icon className="alert__icon" icon={types[type].icon} />
                             </div>
-                            <div className="alert-window__title">{title}</div>
-                            <div className="alert-window__description">{description}</div>
-                            <ButtonGroup gap="3px">
-                                {children || (
-                                    <Button action={closeAlert} view="primary">Ок</Button>
-                                )}
-                            </ButtonGroup>
+                            <div style={{display: "flex", flexDirection: "column"}}>
+                                <div className="alert-window__title">{types[type].label}</div>
+                                <div className="alert-window__description">{description}</div>
+
+                                {controls && 
+                                    (<div className="alert-window__controls">
+                                        <ButtonGroup gap="3px">
+                                            {controls}
+                                        </ButtonGroup>
+                                    </div>)
+                                }
+                            </div>
                         </div>
                     </div>
                 )
