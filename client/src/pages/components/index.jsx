@@ -1,14 +1,21 @@
 import React from "react";
-import { Button, ButtonGroup, Container, Space, Text } from "../../components/UIkit";
+import { 
+    Button,
+    ButtonGroup,
+    Input,
+    Container,
+    Space,
+    Text
+} from "../../components/UIkit";
 import "./style.scss";
 
 export const Components = () => {
     return (
         <Container>
             <div>
-                <Text mode="h1">Компоненты UIkit</Text>
-                <section id="buttons">
-                    <Text mode="h3">Кнопки</Text>
+                <Text mode="h1">UIkit components</Text>
+                <section>
+                    <Text mode="h3">Button</Text>
 
                     <ButtonGroup justify="start" >
                         <Button primary>
@@ -19,7 +26,7 @@ export const Components = () => {
                         </Button>
                     </ButtonGroup>
 
-                    <Space height={20} />
+                    <Space height={10} />
 
                     <ButtonGroup justify="start" >
                         <Button color="red">
@@ -41,6 +48,14 @@ export const Components = () => {
                             Violet
                         </Button>
                     </ButtonGroup>
+                </section>
+                <section>
+                    <Text mode="h3">Input</Text>
+
+                    <Input placeholder="With placeholder"/>
+                    <Input status="success" value="With value"/>
+                    <Input label="With label"/>
+                    <Input placeholder="With label and placeholder" label="With label and placeholder"/>
                 </section>
             </div>
         </Container>

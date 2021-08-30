@@ -1,43 +1,48 @@
 import React from "react";
 import { Icon } from "rsuite";
-import "./style.scss";
+import {useDOMAction} from "../../../../hooks/useDOMAction";
+// import "./style.scss";
+import {getStyle} from "./style";
 
 export const Input = ({
     type = "text",
+
+    // Input status (default/info/success/warning/danger)
     status = "default",
+
     placeholder = "",
-    onChange,
+    onChange = () => void 0,
     icon = null,
     value = "",
     width = "100%",
-    label = "" }) => {
+    label = ""
+}) => {
+    const {nodeRef, nodeState} = useDOMAction();
 
-    const classList = [
-        "input",
-        icon ? "with-icon" : "",
-        status
-    ];
+    const componentStyle = getStyle({
+        state: nodeState,
+        status: status
+    });
 
-    const style = {
-        width
-    }
+    console.log({nodeState});
 
     return (
-        <div className="input-wrapper" style={style}>
+        <div className="input-wrapper" style={componentStyle.wrapper}>
             {icon && (
                 <Icon icon={icon} className="input-icon" />
             )}
             {label && (
-                <label className="input-label">
+                <label style={componentStyle.label}>
                     {label}
                 </label>
             )}
             <input
+                ref={nodeRef}
                 type={type}
                 value={value}
-                placeholder={placeholder}
-                className={classList.join(" ")}
-                onChange={typeof onChange === "function" && ((event) => onChange(event))}
+                placeholder={placeholder} 
+                style={componentStyle.input}
+                onChange={event => onChange(event)}
             />
         </div>
     )

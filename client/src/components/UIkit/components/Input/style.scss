@@ -1,70 +1,70 @@
-@import "../../../../styles/vars.scss";
+// @import "../../../../styles/vars.scss";
 
-input {
-    outline: none;
-}
+// input {
+//     outline: none;
+// }
 
-.input-wrapper {
-    display: block;
-    position: relative;
-}
+// .input-wrapper {
+//     display: block;
+//     position: relative;
+// }
 
-.input,
-.textarea,
-.select {
-    padding: 10px 15px;
-    outline: none;
+// .input,
+// .textarea,
+// .select {
+//     padding: 10px 15px;
+//     // margin: 15px 0;
+//     outline: none;
 
-    display: block;
-    width: 100%;
-    min-width: 100%;
-    max-width: 100%;
-    font-size: $text_size--normal;
+//     display: block;
+//     width: 100%;
+//     min-width: 100%;
+//     max-width: 100%;
+//     font-size: $text_size--normal;
 
-    transition-duration: 0.2s;
+//     transition-duration: 0.3s;
+//     transition: box-shadow 0.2s ease-out;
 
-    border: 1px solid $color--gray_light;
-    border-radius: $border--radius--main;
-
-    box-shadow: 2px 2px 1px $color--black_light;
+//     border: 2px solid $color--gray_light;
+//     border-radius: $border--radius--main;
     
+//     &:active,
+//     &:focus{
+//         border-color: $color--primary--normal !important;
+//         box-shadow: 0 0 4px 1px $color--primary--normal;
+//     }
 
-    &:active,
-    &:focus{
-        box-shadow: 4px 4px 1px $color--black_light;
-    }
+//     &.with-icon {
+//         padding-left: 30px;
+//     }
 
-    &.with-icon {
-        padding-left: 30px;
-    }
+//     &.default {
+//         border-color: $color--gray_black;
+//     }
+//     &.info {
+//         border-color: $color--blue--normal;
+//     }
+//     &.success {
+//         border-color: $color--green--normal;
+//     }
+//     &.danger {
+//         border-color: $color--red--normal;
+//     }
+// }
 
-    &.default {
-        border-color: $color--gray_black;
-    }
-    &.info {
-        border-color: $color--blue--normal;
-    }
-    &.success {
-        border-color: $color--green--normal;
-    }
-    &.danger {
-        border-color: $color--red--normal;
-    }
-}
+// .input-label {
+//     position: absolute;
+//     text-align: center;
+//     top: -20%;
+//     left: 10px;
+//     padding: 0 3px;
+//     background-color: $color--white;
+//     font-size: $text_size--small;
+//     color: $color--gray_dark;
+// }
 
-.input-label {
-    position: absolute;
-    text-align: center;
-    top: -20%;
-    left: 10px;
-    padding: 0 3px;
-    background-color: $color--white;
-    font-size: $text_size--small;
-    color: $color--gray_dark;
-}
-
-.input-icon {
-    position: absolute;
-    left: 13px;
-    bottom: 36%;
-}
+// .input-icon {
+//     position: absolute;
+//     left: 13px;
+//     bottom: 36%;
+// }

@@ -8,8 +8,8 @@ export const Grid = ({
 }) => {
     const style = {
         display: "grid",
-        gridTemplateColumns: templateColumn || "",
-        gridTemplateRows: templateRow || "",
+        gridTemplateColumns: templateColumn || null,
+        gridTemplateRows: templateRow || null,
         gap: gap
     }
 
